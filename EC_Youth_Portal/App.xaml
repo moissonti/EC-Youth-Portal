@@ -7,7 +7,6 @@
     <Application.Resources>
         <ResourceDictionary>
 
-
             <!-- App Colors -->
             <Color x:Key="PrimaryNavy">#1E3A5F</Color>
             <Color x:Key="PrimaryOrange">#FFA500</Color>

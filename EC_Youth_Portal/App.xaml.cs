@@ -8,14 +8,8 @@ namespace EC_Youth_Portal
         {
             InitializeComponent();
 
-            // Set SplashScreen as the initial page with NavigationPage
-            // This allows for smooth navigation between pages
-            MainPage = new NavigationPage(new SplashPage())
-            {
-                // Customize the navigation bar to match your brand
-                BarBackgroundColor = Color.FromArgb("#1E3A5F"), // Navy Blue
-                BarTextColor = Colors.White
-            };
+            MainPage = new AppShell();
+
 
         }
 

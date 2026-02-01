@@ -1,13 +1,388 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EC_Youth_Portal.ViewModel"
              x:Class="EC_Youth_Portal.Views.RegisterPage"
-             Title="RegisterPage">
-    
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <viewmodels:RegisterPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- MAIN CONTENT -->
+        <ScrollView>
+            <VerticalStackLayout Spacing="0">
+
+                <!-- HEADER SECTION -->
+                <Grid HeightRequest="220"
+                      BackgroundColor="#1E3A5F">
+
+                    <!-- Accent Overlay -->
+                    <BoxView BackgroundColor="#FFA500" 
+                             Opacity="0.1"/>
+
+                    <VerticalStackLayout Padding="25,40,25,25"
+                                        Spacing="15"
+                                        VerticalOptions="Center">
+
+                        <!-- Logo -->
+                        <Frame BackgroundColor="#FFA500"
+                               WidthRequest="70"
+                               HeightRequest="70"
+                               CornerRadius="20"
+                               Padding="0"
+                               HasShadow="True"
+                               HorizontalOptions="Center">
+                            <Label Text="EC"
+                                   FontSize="32"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Frame>
+
+                        <!-- Title -->
+                        <Label Text="Create Account"
+                               TextColor="White"
+                               FontSize="28"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"/>
+
+                        <!-- Subtitle -->
+                        <Label Text="Join the Eastern Cape Youth Portal"
+                               TextColor="White"
+                               FontSize="14"
+                               Opacity="0.9"
+                               HorizontalOptions="Center"/>
+
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- FORM SECTION -->
+                <VerticalStackLayout Padding="25,30,25,25"
+                                    Spacing="20">
+
+                    <!-- Full Name Field -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Full Name"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame Padding="0"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0"
+                               BackgroundColor="White">
+                            <Entry Placeholder="Enter your full name"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="15"
+                                   Margin="15,0"
+                                   Text="{Binding FullName}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Username Field -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Username"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame Padding="0"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0"
+                               BackgroundColor="White">
+                            <Entry Placeholder="Choose a username"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="15"
+                                   Margin="15,0"
+                                   Text="{Binding Username}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Location Field -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Location"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame Padding="0"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0"
+                               BackgroundColor="White">
+                            <Entry Placeholder="Your city/town"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="15"
+                                   Margin="15,0"
+                                   Text="{Binding Location}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Password Field -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Password"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame Padding="0"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0"
+                               BackgroundColor="White">
+                            <Entry Placeholder="Create a password"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="15"
+                                   IsPassword="True"
+                                   Margin="15,0"
+                                   Text="{Binding Password}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Re-enter Password Field -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Re-enter Password"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame Padding="0"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0"
+                               BackgroundColor="White">
+                            <Entry Placeholder="Confirm your password"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="15"
+                                   IsPassword="True"
+                                   Margin="15,0"
+                                   Text="{Binding RePassword}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Register Button -->
+                    <Button Text="Register"
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            CornerRadius="12"
+                            HeightRequest="55"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            Margin="0,15,0,0"
+                            Command="{Binding RegisterCommand}"/>
+
+                    <!-- Login Link -->
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                          Spacing="5">
+                        <Label Text="Already have an account?"
+                               FontSize="13"
+                               TextColor="#64748B"/>
+                        <Label Text="Login"
+                               FontSize="13"
+                               TextColor="#FFA500"
+                               FontAttributes="Bold"
+                               TextDecorations="Underline">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LoginCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- BOTTOM SHEET OVERLAY (Hidden by default) -->
+        <BoxView BackgroundColor="Black"
+                 Opacity="{Binding OverlayOpacity}"
+                 InputTransparent="{Binding IsOverlayInputTransparent}">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding OverlayTappedCommand}"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- BOTTOM SHEET MODAL -->
+        <Frame BackgroundColor="White"
+               CornerRadius="25"
+               Padding="0"
+               HasShadow="True"
+               VerticalOptions="End"
+               TranslationY="{Binding BottomSheetTranslationY}">
+
+            <Grid RowDefinitions="Auto,*,Auto"
+                  RowSpacing="0">
+
+                <!-- Handle Bar -->
+                <VerticalStackLayout Grid.Row="0"
+                                    Padding="0,15,0,15"
+                                    HorizontalOptions="Center">
+                    <BoxView WidthRequest="40"
+                             HeightRequest="4"
+                             BackgroundColor="#E0E0E0"
+                             CornerRadius="2"
+                             HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Modal Content -->
+                <ScrollView Grid.Row="1"
+                           MaximumHeightRequest="500">
+                    <VerticalStackLayout Padding="25,10,25,20"
+                                        Spacing="15">
+
+                        <!-- Header -->
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Privacy Policy &amp; Terms"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"
+                                   HorizontalOptions="Center"/>
+
+                            <BoxView HeightRequest="3"
+                                     WidthRequest="60"
+                                     BackgroundColor="#FFA500"
+                                     HorizontalOptions="Center"
+                                     CornerRadius="2"/>
+
+                            <Label Text="Please review and accept to continue"
+                                   FontSize="13"
+                                   TextColor="#64748B"
+                                   HorizontalOptions="Center"
+                                   Margin="0,5,0,0"/>
+                        </VerticalStackLayout>
+
+                        <!-- PPIA Content -->
+                        <Frame BackgroundColor="#F5F5F5"
+                               Padding="15"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               Margin="0,10,0,0">
+                            <VerticalStackLayout Spacing="12">
+
+                                <!-- Section 1 -->
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="1. Information Collection"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                    <Label Text="We collect personal information including your name, username, and location to provide you with access to opportunities in the Eastern Cape province."
+                                           FontSize="13"
+                                           TextColor="#444"
+                                           LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+
+                                <!-- Section 2 -->
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="2. Data Usage"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                    <Label Text="Your information will be used to match you with relevant jobs, bursaries, internships, and training programs. We do not sell your data to third parties."
+                                           FontSize="13"
+                                           TextColor="#444"
+                                           LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+
+                                <!-- Section 3 -->
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="3. Data Security"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                    <Label Text="We implement industry-standard security measures to protect your personal information from unauthorized access, disclosure, or modification."
+                                           FontSize="13"
+                                           TextColor="#444"
+                                           LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+
+                                <!-- Section 4 -->
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="4. Your Rights"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                    <Label Text="You have the right to access, update, or delete your personal information at any time. Contact our support team for assistance."
+                                           FontSize="13"
+                                           TextColor="#444"
+                                           LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+
+                                <!-- Section 5 -->
+                                <VerticalStackLayout Spacing="6">
+                                    <Label Text="5. Cookies &amp; Tracking"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                    <Label Text="We use cookies to enhance your experience and analyze usage patterns. You can disable cookies in your browser settings."
+                                           FontSize="13"
+                                           TextColor="#444"
+                                           LineBreakMode="WordWrap"/>
+                                </VerticalStackLayout>
+
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Acceptance Notice -->
+                        <Frame BackgroundColor="#FFF3E0"
+                               Padding="12"
+                               CornerRadius="10"
+                               HasShadow="False"
+                               BorderColor="#FFA500">
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="⚠️"
+                                       FontSize="20"
+                                       VerticalOptions="Start"/>
+                                <Label Text="By accepting, you agree to our terms and confirm that you have read our privacy policy."
+                                       FontSize="12"
+                                       TextColor="#1E3A5F"
+                                       LineBreakMode="WordWrap"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                    </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Action Buttons -->
+                <Grid Grid.Row="2"
+                      ColumnDefinitions="*,*"
+                      ColumnSpacing="12"
+                      Padding="25,15,25,25"
+                      BackgroundColor="White">
+
+                    <Button Grid.Column="0"
+                            Text="Decline"
+                            BackgroundColor="Transparent"
+                            TextColor="#1E3A5F"
+                            BorderColor="#1E3A5F"
+                            BorderWidth="2"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            Command="{Binding DeclineCommand}"/>
+
+                    <Button Grid.Column="1"
+                            Text="Accept &amp; Continue"
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            Command="{Binding AcceptCommand}"/>
+
+                </Grid>
+
+            </Grid>
+        </Frame>
+
+    </Grid>
+
 </ContentPage>

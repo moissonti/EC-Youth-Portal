@@ -11,34 +11,24 @@ namespace EC_Youth_Portal.ViewModel
     {
         public MainPageViewModel()
         {
-            // Initialize commands
-            LoginCommand = new Command(OnLogin);
-            RegisterCommand = new Command(OnRegister);
-            OpenWebsiteCommand = new Command(OnOpenWebsite);
+            LoginCommand = new Command(async () => await OnLogin());
+            RegisterCommand = new Command(async () => await OnRegister());
+            OpenWebsiteCommand = new Command(async () => await OnOpenWebsite());
         }
-
-        #region Properties
-
-        // Add your properties here as needed
-
-        #endregion
 
         #region Commands
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
         public ICommand OpenWebsiteCommand { get; }
-
         #endregion
 
         #region Command Methods
 
-        private async void OnLogin()
+        private async Task OnLogin()
         {
-            // Navigate to login page
             try
             {
-                await Application.Current.MainPage.Navigation.PushAsync(
-                    new Views.LoginPage());
+                await Shell.Current.GoToAsync(nameof(Views.LoginPage));
             }
             catch (Exception ex)
             {
@@ -46,13 +36,11 @@ namespace EC_Youth_Portal.ViewModel
             }
         }
 
-        private void OnRegister()
+        private async Task OnRegister()
         {
-            // Navigate to register page
             try
             {
-                Application.Current.MainPage.Navigation.PushAsync(
-                    new Views.RegisterPage());
+                await Shell.Current.GoToAsync(nameof(Views.RegisterPage));
             }
             catch (Exception ex)
             {
@@ -60,11 +48,10 @@ namespace EC_Youth_Portal.ViewModel
             }
         }
 
-        private async void OnOpenWebsite()
+        private async Task OnOpenWebsite()
         {
             try
             {
-                
                 string url = "https://www.ccmlplabs.com";
                 await Microsoft.Maui.ApplicationModel.Launcher.OpenAsync(url);
             }
@@ -77,18 +64,12 @@ namespace EC_Youth_Portal.ViewModel
         #endregion
 
         #region INotifyPropertyChanged
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         #endregion
     }
 }
-
-
-
-

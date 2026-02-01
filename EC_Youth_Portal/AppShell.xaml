@@ -3,13 +3,26 @@
     x:Class="EC_Youth_Portal.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:EC_Youth_Portal"
+    xmlns:views="clr-namespace:EC_Youth_Portal.Views"
     Title="EC_Youth_Portal">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="SplashPage"
+        ContentTemplate="{DataTemplate views:SplashPage}" />
+
+    <ShellContent
+        Route="MainPage"
+        ContentTemplate="{DataTemplate views:MainPage}" />
+
+
+    <ShellContent
+        Route="LoginPage"
+        ContentTemplate="{DataTemplate views:LoginPage}" />
+
+    <ShellContent
+        Route="RegisterPage"
+        ContentTemplate="{DataTemplate views:RegisterPage}" />
+
 
 
 </Shell>

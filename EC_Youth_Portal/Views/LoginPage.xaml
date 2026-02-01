@@ -3,45 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EC_Youth_Portal.Views.LoginPage"
              Title="LoginPage"
-              BackgroundColor="#F5F5F5"
+             BackgroundColor="#F5F5F5"
              NavigationPage.HasNavigationBar="False">
 
     <Grid RowDefinitions="Auto,*,Auto">
-
-        <!-- Custom Header -->
-        <Frame Grid.Row="0"
-               BackgroundColor="#1E3A5F"
-               Padding="20,50,20,20"
-               CornerRadius="0"
-               HasShadow="False">
-            <Grid ColumnDefinitions="Auto,*">
-                <!-- Back Button -->
-                <Frame WidthRequest="40"
-                       HeightRequest="40"
-                       CornerRadius="10"
-                       Padding="0"
-                       BackgroundColor="#2C5282"
-                       HasShadow="False">
-                    <Label Text="←"
-                           FontSize="20"
-                           TextColor="White"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </Frame>
-
-                <Label Grid.Column="1"
-                       Text="Login"
-                       FontSize="24"
-                       FontAttributes="Bold"
-                       TextColor="White"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
-            </Grid>
-        </Frame>
 
         <!-- Main Content -->
         <ScrollView Grid.Row="1">

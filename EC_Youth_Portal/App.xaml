@@ -1,0 +1,21 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EC_Youth_Portal"
+             x:Class="EC_Youth_Portal.App">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+
+
+            <!-- App Colors -->
+            <Color x:Key="PrimaryNavy">#1E3A5F</Color>
+            <Color x:Key="PrimaryOrange">#FFA500</Color>
+            <Color x:Key="SecondaryNavy">#2C5282</Color>
+            <Color x:Key="BackgroundLight">#F5F5F5</Color>
+            <Color x:Key="TextPrimary">#1E3A5F</Color>
+            <Color x:Key="TextSecondary">#64748B</Color>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

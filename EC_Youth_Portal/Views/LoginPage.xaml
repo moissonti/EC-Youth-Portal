@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EC_Youth_Portal.Views.LoginPage"
+             Title="LoginPage"
+              BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Custom Header -->
+        <Frame Grid.Row="0"
+               BackgroundColor="#1E3A5F"
+               Padding="20,50,20,20"
+               CornerRadius="0"
+               HasShadow="False">
+            <Grid ColumnDefinitions="Auto,*">
+                <!-- Back Button -->
+                <Frame WidthRequest="40"
+                       HeightRequest="40"
+                       CornerRadius="10"
+                       Padding="0"
+                       BackgroundColor="#2C5282"
+                       HasShadow="False">
+                    <Label Text="←"
+                           FontSize="20"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Frame>
+
+                <Label Grid.Column="1"
+                       Text="Login"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </Grid>
+        </Frame>
+
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="25"
+                                Spacing="25">
+
+                <!-- Welcome Section -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Welcome Back!"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Label Text="Login to continue exploring opportunities"
+                           FontSize="14"
+                           TextColor="#64748B"/>
+                </VerticalStackLayout>
+
+                <!-- Login Form -->
+                <VerticalStackLayout Spacing="20"
+                                    Margin="0,20,0,0">
+
+                    <!-- Email Input -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Email Address"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame BackgroundColor="White"
+                               Padding="15,12"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0">
+                            <Grid ColumnDefinitions="Auto,*">
+                                <Label Text="📧"
+                                       FontSize="18"
+                                       VerticalOptions="Center"
+                                       Margin="0,0,10,0"/>
+                                <Entry Grid.Column="1"
+                                       Placeholder="example@email.com"
+                                       Text="{Binding Email}"
+                                       Keyboard="Email"
+                                       TextColor="#1E3A5F"
+                                       PlaceholderColor="#94A3B8"
+                                       BackgroundColor="Transparent"/>
+                            </Grid>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Password Input -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Password"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame BackgroundColor="White"
+                               Padding="15,12"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0">
+                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                <Label Text="🔒"
+                                       FontSize="18"
+                                       VerticalOptions="Center"
+                                       Margin="0,0,10,0"/>
+                                <Entry Grid.Column="1"
+                                       Placeholder="Enter your password"
+                                       TextColor="#1E3A5F"
+                                       PlaceholderColor="#94A3B8"
+                                       BackgroundColor="Transparent"/>
+                                <Label Grid.Column="2"
+                                       FontSize="18"
+                                       VerticalOptions="Center"
+                                       Margin="10,0,0,0">
+                                    <Label.GestureRecognizers>
+                                    
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <Grid ColumnDefinitions="*,Auto">
+                        <HorizontalStackLayout Spacing="8">
+                            <CheckBox 
+                                     Color="#FFA500"/>
+                            <Label Text="Remember me"
+                                   FontSize="13"
+                                   TextColor="#64748B"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <Label Grid.Column="1"
+                               Text="Forgot Password?"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#FFA500"
+                               VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <!-- Login Button -->
+                    <Button Text="Login"
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="54"
+                            Margin="0,10,0,0">
+                        <Button.Shadow>
+                            <Shadow Brush="#FFA500"
+                                    Offset="0,4"
+                                    Radius="10"
+                                    Opacity="0.3"/>
+                        </Button.Shadow>
+                    </Button>
+
+                    <!-- Error Message -->
+                    <Frame 
+                            BackgroundColor="#FEE2E2"
+                           Padding="15,12"
+                           CornerRadius="10"
+                           HasShadow="False"
+                           BorderColor="#FCA5A5">
+                        <Label Text="{Binding ErrorMessage}"
+                               FontSize="13"
+                               TextColor="#DC2626"
+                               LineBreakMode="WordWrap"/>
+                    </Frame>
+
+                </VerticalStackLayout>
+
+                <!-- OR Divider -->
+                <Grid ColumnDefinitions="*,Auto,*"
+                      Margin="0,10,0,10">
+                    <BoxView Grid.Column="0"
+                            HeightRequest="1"
+                            BackgroundColor="#E0E0E0"
+                            VerticalOptions="Center"/>
+                    <Label Grid.Column="1"
+                           Text="OR"
+                           FontSize="12"
+                           TextColor="#94A3B8"
+                           Margin="15,0"/>
+                    <BoxView Grid.Column="2"
+                            HeightRequest="1"
+                            BackgroundColor="#E0E0E0"
+                            VerticalOptions="Center"/>
+                </Grid>
+
+                <!-- Social Login Options -->
+                <VerticalStackLayout Spacing="12">
+
+                    <!-- Google Login -->
+                    <Frame BackgroundColor="White"
+                           Padding="15"
+                           CornerRadius="12"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoogleLoginCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Source="google_icon.png"
+                                   WidthRequest="24"
+                                   HeightRequest="24"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="Continue with Google"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Microsoft Login -->
+                    <Frame BackgroundColor="White"
+                           Padding="15"
+                           CornerRadius="12"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding MicrosoftLoginCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <Image Source="microsoft_icon.png"
+                                   WidthRequest="24"
+                                   HeightRequest="24"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="Continue with Microsoft"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Sign Up Link -->
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                      Spacing="5"
+                                      Margin="0,20,0,0">
+                    <Label Text="Don't have an account?"
+                           FontSize="14"
+                           TextColor="#64748B"/>
+                    <Label Text="Sign Up"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#FFA500">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Safe Area -->
+        <BoxView Grid.Row="2"
+                 HeightRequest="20"
+                 BackgroundColor="Transparent"/>
+
+    </Grid>
+</ContentPage>

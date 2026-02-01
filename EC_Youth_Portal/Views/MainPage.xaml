@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EC_Youth_Portal.Views.MainPage"
+               BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False">
+
+    <!-- MAIN GRID -->
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- SCROLLABLE CONTENT -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="0">
+
+                <!-- MODERN HERO SECTION -->
+                <Grid HeightRequest="480">
+                    <!-- Background Image with Overlay -->
+                    <Image Source="hero_background.jpg" 
+                           Aspect="AspectFill"/>
+
+                    <!-- Dark Gradient Overlay -->
+                    <BoxView BackgroundColor="#1E3A5F" 
+                             Opacity="0.75"/>
+
+                    <!-- Accent Gradient Overlay -->
+                    <BoxView BackgroundColor="#FFA500" 
+                             Opacity="0.15"/>
+
+                    <!-- Hero Content -->
+                    <VerticalStackLayout Padding="25,40,25,25"
+                                        Spacing="0">
+
+                        <!-- Top Bar with Logo -->
+                        <Grid ColumnDefinitions="Auto,*,Auto" 
+                              Margin="0,0,0,25">
+                            <Frame BackgroundColor="#FFA500"
+                                   WidthRequest="45"
+                                   HeightRequest="45"
+                                   CornerRadius="12"
+                                   Padding="0"
+                                   HasShadow="False">
+                                <Label Text="EC"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            </Frame>
+
+                            <Label Grid.Column="1"
+                                   Text="Eastern Cape Portal"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   VerticalOptions="Center"
+                                   Margin="12,0,0,0"/>
+                        </Grid>
+
+                        <!-- Main Hero Content -->
+                        <VerticalStackLayout Spacing="12"
+                                            Margin="0,10,0,0">
+
+                            <Label Text="Your Gateway to"
+                                   TextColor="White"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   Opacity="0.95"/>
+
+                            <Label Text="Eastern Cape Opportunities"
+                                   TextColor="#FFA500"
+                                   FontSize="32"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="WordWrap"/>
+
+                            <BoxView HeightRequest="4"
+                                     WidthRequest="60"
+                                     BackgroundColor="#FFA500"
+                                     HorizontalOptions="Start"
+                                     CornerRadius="2"
+                                     Margin="0,5,0,5"/>
+
+                            <Label Text="Connect with jobs, bursaries, training programs, and funding opportunities. Building futures, honouring our legacy."
+                                   TextColor="White"
+                                   FontSize="14"
+                                   LineBreakMode="WordWrap"
+                                   Opacity="0.9"
+                                   MaxLines="3"
+                                   Margin="0,0,0,10"/>
+
+                            <Button Text="Explore Opportunities →"
+                                    BackgroundColor="#FFA500"
+                                    TextColor="White"
+                                    CornerRadius="25"
+                                    HeightRequest="48"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start"
+                                    Margin="0,0,0,15">
+                                
+                            </Button>
+                                
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- QUICK ACCESS SECTION -->
+                <VerticalStackLayout Padding="20,25,20,20" 
+                                    BackgroundColor="White" 
+                                    Spacing="18">
+                    <Grid ColumnDefinitions="Auto,*" 
+                          ColumnSpacing="12">
+                        <BoxView Grid.Column="0" 
+                                 WidthRequest="4" 
+                                 HeightRequest="28" 
+                                 BackgroundColor="#FFA500" 
+                                 CornerRadius="2"/>
+                        <Label Grid.Column="1"
+                               Text="Quick Access" 
+                               FontSize="22" 
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                    <Label Text="Explore opportunities that match your goals"
+                           FontSize="13"
+                           TextColor="#64748B"
+                           Margin="16,0,0,5"/>
+                </VerticalStackLayout>
+
+                <!-- CATEGORY CARDS - MODERN GRID -->
+                <Grid ColumnSpacing="12" 
+                      RowSpacing="12" 
+                      Padding="20,0,20,20" 
+                      RowDefinitions="Auto,Auto,Auto" 
+                      ColumnDefinitions="*,*" 
+                      BackgroundColor="White">
+
+                    <!-- Jobs Card -->
+                    <Frame Grid.Row="0" 
+                           Grid.Column="0" 
+                           BackgroundColor="#1E3A5F" 
+                           CornerRadius="16" 
+                           Padding="18" 
+                           HasShadow="True">
+                        <Frame.GestureRecognizers>
+                           
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="10">
+                            <Frame BackgroundColor="#FFA500" 
+                                   WidthRequest="48" 
+                                   HeightRequest="48" 
+                                   CornerRadius="14" 
+                                   Padding="0" 
+                                   HasShadow="False">
+                                <Label Text="💼" 
+                                       FontSize="26" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center"/>
+                            </Frame>
+                            <Label Text="Jobs" 
+                                   TextColor="White" 
+                                   FontSize="17" 
+                                   FontAttributes="Bold"/>
+                            <Label Text="120 Opportunities" 
+                                   TextColor="#94A3B8" 
+                                   FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Bursaries Card -->
+                    <Frame Grid.Row="0" 
+                           Grid.Column="1" 
+                           BackgroundColor="#1E3A5F" 
+                           CornerRadius="16" 
+                           Padding="18" 
+                           HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
+                                                 CommandParameter="Bursaries"/>-->
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="10">
+                            <Frame BackgroundColor="#FFA500" 
+                                   WidthRequest="48" 
+                                   HeightRequest="48" 
+                                   CornerRadius="14" 
+                                   Padding="0" 
+                                   HasShadow="False">
+                                <Label Text="🎓" 
+                                       FontSize="26" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center"/>
+                            </Frame>
+                            <Label Text="Bursaries" 
+                                   TextColor="White" 
+                                   FontSize="17" 
+                                   FontAttributes="Bold"/>
+                            <Label Text="19 Programmes" 
+                                   TextColor="#94A3B8" 
+                                   FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Learnerships Card -->
+                    <Frame Grid.Row="1" 
+                           Grid.Column="0" 
+                           BackgroundColor="#1E3A5F" 
+                           CornerRadius="16" 
+                           Padding="18" 
+                           HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
+                                                 CommandParameter="Learnerships"/>-->
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="10">
+                            <Frame BackgroundColor="#FFA500" 
+                                   WidthRequest="48" 
+                                   HeightRequest="48" 
+                                   CornerRadius="14" 
+                                   Padding="0" 
+                                   HasShadow="False">
+                                <Label Text="🧩" 
+                                       FontSize="26" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center"/>
+                            </Frame>
+                            <Label Text="Learnerships" 
+                                   TextColor="White" 
+                                   FontSize="17" 
+                                   FontAttributes="Bold"/>
+                            <Label Text="41 Programmes" 
+                                   TextColor="#94A3B8" 
+                                   FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Internships Card -->
+                    <Frame Grid.Row="1" 
+                           Grid.Column="1" 
+                           BackgroundColor="#1E3A5F" 
+                           CornerRadius="16" 
+                           Padding="18" 
+                           HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
+                                                 CommandParameter="Internships"/>-->
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="10">
+                            <Frame BackgroundColor="#FFA500" 
+                                   WidthRequest="48" 
+                                   HeightRequest="48" 
+                                   CornerRadius="14" 
+                                   Padding="0" 
+                                   HasShadow="False">
+                                <Label Text="🏢" 
+                                       FontSize="26" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center"/>
+                            </Frame>
+                            <Label Text="Internships" 
+                                   TextColor="White" 
+                                   FontSize="17" 
+                                   FontAttributes="Bold"/>
+                            <Label Text="73 Positions" 
+                                   TextColor="#94A3B8" 
+                                   FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Training Card -->
+                    <Frame Grid.Row="2" 
+                           Grid.Column="0" 
+                           BackgroundColor="#1E3A5F" 
+                           CornerRadius="16" 
+                           Padding="18" 
+                           HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
+                                                 CommandParameter="Training"/>-->
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="10">
+                            <Frame BackgroundColor="#FFA500" 
+                                   WidthRequest="48" 
+                                   HeightRequest="48" 
+                                   CornerRadius="14" 
+                                   Padding="0" 
+                                   HasShadow="False">
+                                <Label Text="📘" 
+                                       FontSize="26" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center"/>
+                            </Frame>
+                            <Label Text="Training" 
+                                   TextColor="White" 
+                                   FontSize="17" 
+                                   FontAttributes="Bold"/>
+                            <Label Text="Skills Dev" 
+                                   TextColor="#94A3B8" 
+                                   FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- SMME Funding Card -->
+                    <Frame Grid.Row="2" 
+                           Grid.Column="1" 
+                           BackgroundColor="#1E3A5F" 
+                           CornerRadius="16" 
+                           Padding="18" 
+                           HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
+                                                 CommandParameter="SMME"/>-->
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="10">
+                            <Frame BackgroundColor="#FFA500" 
+                                   WidthRequest="48" 
+                                   HeightRequest="48" 
+                                   CornerRadius="14" 
+                                   Padding="0" 
+                                   HasShadow="False">
+                                <Label Text="💰" 
+                                       FontSize="26" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center"/>
+                            </Frame>
+                            <Label Text="SMME" 
+                                   TextColor="White" 
+                                   FontSize="17" 
+                                   FontAttributes="Bold"/>
+                            <Label Text="Funding" 
+                                   TextColor="#94A3B8" 
+                                   FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- FEATURED OPPORTUNITIES SECTION -->
+                <VerticalStackLayout Padding="20,30,20,15" 
+                                    Spacing="18">
+                    <Grid ColumnDefinitions="Auto,*" 
+                          ColumnSpacing="12">
+                        <BoxView Grid.Column="0" 
+                                 WidthRequest="4" 
+                                 HeightRequest="28" 
+                                 BackgroundColor="#FFA500" 
+                                 CornerRadius="2"/>
+                        <Label Grid.Column="1"
+                               Text="Featured Opportunities" 
+                               FontSize="22" 
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                    <Label Text="Latest updates and programs"
+                           FontSize="13"
+                           TextColor="#64748B"
+                           Margin="16,0,0,5"/>
+                </VerticalStackLayout>
+
+                <!-- Featured Opportunity Cards -->
+                <VerticalStackLayout Padding="20,0,20,20" 
+                                    Spacing="15">
+
+                    <!-- Featured Card 1 -->
+                    <Frame BackgroundColor="White"
+                           Padding="18"
+                           CornerRadius="16"
+                           HasShadow="True"
+                           BorderColor="#E0E0E0">
+                        <Grid RowDefinitions="Auto,Auto,Auto"
+                              RowSpacing="12">
+
+                            <HorizontalStackLayout Grid.Row="0"
+                                                  Spacing="12">
+                                <Frame WidthRequest="50"
+                                       HeightRequest="50"
+                                       CornerRadius="12"
+                                       Padding="0"
+                                       BackgroundColor="#E3F2FD"
+                                       HasShadow="False">
+                                    <Label Text="💼"
+                                           FontSize="24"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <VerticalStackLayout Spacing="3"
+                                                    VerticalOptions="Center">
+                                    <Label Text="Software Developer"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                    <Label Text="Tech Company • Port Elizabeth"
+                                           FontSize="12"
+                                           TextColor="#666"
+                                           Opacity="0.8"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+
+                            <Label Grid.Row="1"
+                                   Text="Exciting opportunity for a passionate developer to join our growing team..."
+                                   FontSize="13"
+                                   TextColor="#444"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="2"/>
+
+                            <HorizontalStackLayout Grid.Row="2"
+                                                  Spacing="8">
+                                <Frame Padding="8,4"
+                                       BackgroundColor="#E8F5E9"
+                                       CornerRadius="6"
+                                       HasShadow="False">
+                                    <Label Text="Full-time"
+                                           FontSize="11"
+                                           TextColor="#4CAF50"
+                                           FontAttributes="Bold"/>
+                                </Frame>
+                                <Frame Padding="8,4"
+                                       BackgroundColor="#FFF3E0"
+                                       CornerRadius="6"
+                                       HasShadow="False">
+                                    <Label Text="Entry Level"
+                                           FontSize="11"
+                                           TextColor="#FF9800"
+                                           FontAttributes="Bold"/>
+                                </Frame>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Featured Card 2 -->
+                    <Frame BackgroundColor="White"
+                           Padding="18"
+                           CornerRadius="16"
+                           HasShadow="True"
+                           BorderColor="#E0E0E0">
+                        <Grid RowDefinitions="Auto,Auto,Auto"
+                              RowSpacing="12">
+
+                            <HorizontalStackLayout Grid.Row="0"
+                                                  Spacing="12">
+                                <Frame WidthRequest="50"
+                                       HeightRequest="50"
+                                       CornerRadius="12"
+                                       Padding="0"
+                                       BackgroundColor="#FFF3E0"
+                                       HasShadow="False">
+                                    <Label Text="🎓"
+                                           FontSize="24"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Frame>
+                                <VerticalStackLayout Spacing="3"
+                                                    VerticalOptions="Center">
+                                    <Label Text="Engineering Bursary"
+                                           FontSize="16"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                    <Label Text="Provincial Government • Eastern Cape"
+                                           FontSize="12"
+                                           TextColor="#666"
+                                           Opacity="0.8"/>
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+
+                            <Label Grid.Row="1"
+                                   Text="Full bursary covering tuition, accommodation and allowance for deserving students..."
+                                   FontSize="13"
+                                   TextColor="#444"
+                                   LineBreakMode="TailTruncation"
+                                   MaxLines="2"/>
+
+                            <HorizontalStackLayout Grid.Row="2"
+                                                  Spacing="8">
+                                <Frame Padding="8,4"
+                                       BackgroundColor="#E1F5FE"
+                                       CornerRadius="6"
+                                       HasShadow="False">
+                                    <Label Text="Bursary"
+                                           FontSize="11"
+                                           TextColor="#0288D1"
+                                           FontAttributes="Bold"/>
+                                </Frame>
+                                <Frame Padding="8,4"
+                                       BackgroundColor="#FCE4EC"
+                                       CornerRadius="6"
+                                       HasShadow="False">
+                                    <Label Text="Closes Soon"
+                                           FontSize="11"
+                                           TextColor="#C2185B"
+                                           FontAttributes="Bold"/>
+                                </Frame>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Frame>
+
+                </VerticalStackLayout>
+
+                <!-- Footer Section -->
+                <VerticalStackLayout Spacing="0"
+                                    Margin="0,30,0,0">
+
+                    <!-- Decorative Line -->
+                    <BoxView HeightRequest="1"
+                            Color="#E0E0E0"
+                            HorizontalOptions="Fill"
+                            Margin="0,0,0,20"/>
+
+                    <!-- Footer Content -->
+                    <VerticalStackLayout Spacing="12"
+                                        HorizontalOptions="Center"
+                                        Padding="20,0,20,30">
+
+                        <!-- Made by Text -->
+                        <Label Text="Developed with ❤️ by"
+                               FontSize="13"
+                               TextColor="#666"
+                               HorizontalOptions="Center"
+                               Opacity="0.8"/>
+
+                        <!-- Company Logo/Name -->
+                        <Frame BackgroundColor="#1E3A5F"
+                               Padding="15,10"
+                               CornerRadius="8"
+                               HasShadow="False"
+                               HorizontalOptions="Center">
+                            <Label Text="CCMLP LABS"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFA500"
+                                   HorizontalOptions="Center"/>
+                        </Frame>
+
+                        <!-- Website URL -->
+                        <Label HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="🌐 "
+                                          FontSize="12"/>
+                                    <Span Text="www.ccmlplabs.com"
+                                          FontSize="12"
+                                          TextColor="#FFA500"
+                                          TextDecorations="Underline"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                            <Label.GestureRecognizers>
+                                <!--<TapGestureRecognizer Command="{Binding OpenWebsiteCommand}"/>-->
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <!-- Tagline -->
+                        <Label Text="Innovating Solutions for Tomorrow"
+                               FontSize="11"
+                               TextColor="#666"
+                               FontAttributes="Italic"
+                               HorizontalOptions="Center"
+                               Opacity="0.7"
+                               Margin="0,5,0,0"/>
+
+                        <!-- Copyright -->
+                        <Label Text="© 2026 CCMLP Labs. All rights reserved."
+                               FontSize="10"
+                               TextColor="#999"
+                               HorizontalOptions="Center"
+                               Margin="0,8,0,0"/>
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+
+                <!-- Bottom Spacing for Fixed Button Bar --><!--
+                <BoxView HeightRequest="100"
+                         Color="Transparent"/>-->
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- FIXED BOTTOM BAR - AUTHENTICATION BUTTONS -->
+        <Frame Grid.Row="1" 
+               BackgroundColor="White" 
+               Padding="20,15" 
+               CornerRadius="0" 
+               HasShadow="True">
+            <VerticalStackLayout Spacing="12">
+
+                <Label Text="Ready to unlock your potential?"
+                       FontSize="13"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"
+                       HorizontalOptions="Center"/>
+
+                <Grid ColumnDefinitions="*,*" 
+                      ColumnSpacing="12">
+                    <Button Text="Login"
+                            Grid.Column="0"
+                            BackgroundColor="Transparent"
+                            TextColor="#1E3A5F"
+                            BorderColor="#1E3A5F"
+                            BorderWidth="2"
+                            CornerRadius="10"
+                            Padding="0,12"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            Command="{Binding LoginCommand}" />
+
+
+
+
+                    <Button Text="Register"
+                            Grid.Column="1"
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Padding="0,12"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            Command="{Binding RegisterCommand}" />
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>
+

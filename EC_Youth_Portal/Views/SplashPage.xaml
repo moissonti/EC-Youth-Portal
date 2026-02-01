@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EC_Youth_Portal.Views.SplashPage"
+             Title="SplashPage"
+              BackgroundColor="#1E3A5F"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <!-- Background Gradient Overlay -->
+        <BoxView>
+            <BoxView.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#1E3A5F" Offset="0.0" />
+                    <GradientStop Color="#2C5282" Offset="0.5" />
+                    <GradientStop Color="#1E3A5F" Offset="1.0" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+
+        <!-- Decorative Background Pattern -->
+        <Grid Opacity="0.05">
+            <Ellipse WidthRequest="400" 
+                     HeightRequest="400" 
+                     Fill="White"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="-200,-200,0,0"/>
+            <Ellipse WidthRequest="300" 
+                     HeightRequest="300" 
+                     Fill="White"
+                     HorizontalOptions="End"
+                     VerticalOptions="End"
+                     Margin="0,0,-150,-150"/>
+        </Grid>
+
+        <!-- Main Content -->
+        <VerticalStackLayout VerticalOptions="Center" 
+                            HorizontalOptions="Center"
+                            Spacing="30"
+                            x:Name="MainContent">
+
+            <!-- Logo Container with Animation -->
+            <Frame BackgroundColor="#FFA500"
+                   CornerRadius="75"
+                   WidthRequest="150"
+                   HeightRequest="150"
+                   HasShadow="True"
+                   Padding="0"
+                   HorizontalOptions="Center" 
+                   x:Name="LogoFrame">
+                <Frame.Shadow>
+                    <Shadow Brush="#FFA500"
+                            Offset="0,8"
+                            Radius="20"
+                            Opacity="0.5"/>
+                </Frame.Shadow>
+
+                <Grid>
+                    <!-- Replace this with your actual logo -->
+                    <Label Text="EC"
+                           FontSize="56"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+
+            <!-- App Title -->
+            <VerticalStackLayout Spacing="10" 
+                                x:Name="TitleContainer"
+                                Opacity="0">
+                <Label Text="Your Gateway to"
+                       FontSize="18"
+                       TextColor="White"
+                       Opacity="0.8"
+                       HorizontalOptions="Center"
+                       FontAttributes="None"/>
+
+                <Label Text="Eastern Cape"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="#FFA500"
+                       HorizontalOptions="Center"/>
+
+                <Label Text="Opportunities"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="#FFA500"
+                       HorizontalOptions="Center"
+                       Margin="0,-15,0,0"/>
+            </VerticalStackLayout>
+
+            <!-- Tagline -->
+            <Label Text="Building futures, honouring our legacy"
+                   FontSize="14"
+                   TextColor="White"
+                   Opacity="0.7"
+                   HorizontalOptions="Center"
+                   FontAttributes="Italic"
+                   x:Name="Tagline"
+                   Margin="0,10,0,0"/>
+
+        </VerticalStackLayout>
+
+        <!-- Loading Indicator -->
+        <VerticalStackLayout VerticalOptions="End" 
+                            Spacing="15"
+                            Margin="0,0,0,60"
+                            x:Name="LoadingContainer"
+                            Opacity="0">
+
+            <!-- Custom Loading Animation -->
+            <HorizontalStackLayout HorizontalOptions="Center" 
+                                  Spacing="10">
+                <BoxView WidthRequest="12" 
+                        HeightRequest="12" 
+                        CornerRadius="6"
+                        Color="#FFA500"
+                        x:Name="Dot1"/>
+                <BoxView WidthRequest="12" 
+                        HeightRequest="12" 
+                        CornerRadius="6"
+                        Color="#FFA500"
+                        x:Name="Dot2"/>
+                <BoxView WidthRequest="12" 
+                        HeightRequest="12" 
+                        CornerRadius="6"
+                        Color="#FFA500"
+                        x:Name="Dot3"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Loading your opportunities..."
+                   FontSize="13"
+                   TextColor="White"
+                   Opacity="0.6"
+                   HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+
+        <!-- Version Info -->
+        <Label Text="Version 1.0.0"
+               FontSize="11"
+               TextColor="White"
+               Opacity="0.4"
+               HorizontalOptions="Center"
+               VerticalOptions="End"
+               Margin="0,0,0,20"/>
+
+    </Grid>
+</ContentPage>

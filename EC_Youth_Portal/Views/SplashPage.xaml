@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EC_Youth_Portal.Views.SplashPage"
              Title="SplashPage"
-              BackgroundColor="#1E3A5F"
-             NavigationPage.HasNavigationBar="False">
+             BackgroundColor="#1E3A5F"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled">
 
     <Grid>
         <!-- Background Gradient Overlay -->

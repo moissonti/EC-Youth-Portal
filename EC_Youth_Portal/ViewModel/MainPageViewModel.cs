@@ -28,7 +28,7 @@ namespace EC_Youth_Portal.ViewModel
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(Views.LoginPage));
+                await Shell.Current.GoToAsync("//LoginPage");
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace EC_Youth_Portal.ViewModel
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(Views.RegisterPage));
+                await Shell.Current.GoToAsync("//RegisterPage");
             }
             catch (Exception ex)
             {

@@ -8,21 +8,70 @@
 
     <ShellContent
         Route="SplashPage"
-        ContentTemplate="{DataTemplate views:SplashPage}" />
+        ContentTemplate="{DataTemplate views:SplashPage}"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False" />
 
-    <ShellContent
+    <!-- Main Tab Bar - Starts from MainPage -->
+    <TabBar Route="MainTabs">
+
+        <!-- Main Page Tab -->
+        <ShellContent
+        Title="Home"
         Route="MainPage"
-        ContentTemplate="{DataTemplate views:MainPage}" />
+        ContentTemplate="{DataTemplate views:MainPage}">
+            <ShellContent.Icon>
+                <FontImageSource 
+                Glyph="🏠" 
+                FontFamily="Segoe UI Emoji"
+                Color="{StaticResource PrimaryNavy}"/>
+            </ShellContent.Icon>
+        </ShellContent>
 
-
-    <ShellContent
+        <!-- Login Page Tab -->
+        <ShellContent
+        Title="Login"
         Route="LoginPage"
-        ContentTemplate="{DataTemplate views:LoginPage}" />
+        ContentTemplate="{DataTemplate views:LoginPage}">
+            <ShellContent.Icon>
+                <FontImageSource 
+                Glyph="🔑" 
+                FontFamily="Segoe UI Emoji"
+                Color="{StaticResource PrimaryNavy}"/>
+            </ShellContent.Icon>
+        </ShellContent>
 
-    <ShellContent
+        <!-- Register Page Tab -->
+        <ShellContent
+        Title="Register"
         Route="RegisterPage"
-        ContentTemplate="{DataTemplate views:RegisterPage}" />
+        ContentTemplate="{DataTemplate views:RegisterPage}">
+            <ShellContent.Icon>
+                <FontImageSource 
+                Glyph="✨" 
+                FontFamily="Segoe UI Emoji"
+                Color="{StaticResource PrimaryOrange}"/>
+            </ShellContent.Icon>
+        </ShellContent>
 
+    </TabBar>
 
+    <!-- Shell Styling -->
+    <Shell.Resources>
+        <!-- Tab Bar Style -->
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.TabBarBackgroundColor" Value="White"/>
+            <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource PrimaryNavy}"/>
+            <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource PrimaryNavy}"/>
+            <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TextSecondary}"/>
+        </Style>
+
+        <!-- Selected Tab Style -->
+        <Style TargetType="ShellContent" ApplyToDerivedTypes="True">
+            <Setter Property="Shell.ForegroundColor" Value="{StaticResource PrimaryOrange}"/>
+            <Setter Property="Shell.TitleColor" Value="{StaticResource PrimaryOrange}"/>
+        </Style>
+    </Shell.Resources>
 
 </Shell>

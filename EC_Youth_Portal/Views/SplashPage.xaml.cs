@@ -17,6 +17,7 @@ public partial class SplashPage : ContentPage
             // Navigate to MainPage after animations
             await Task.Delay(2000); // Additional delay before navigation
             await Shell.Current.GoToAsync("//MainPage");
+
     }
 
         private async Task AnimateSplashScreen()

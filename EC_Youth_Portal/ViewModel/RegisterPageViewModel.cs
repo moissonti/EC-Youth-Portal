@@ -154,9 +154,7 @@ namespace EC_Youth_Portal.ViewModel
         {
             await HideBottomSheet();
 
-            // Show success message
-            await Application.Current.MainPage.DisplayAlert("Success", "Terms accepted! Ready to navigate to profile page.", "OK");
-
+            await Shell.Current.GoToAsync(nameof(Views.CreateProfilePage));
         }
         
 
@@ -166,7 +164,8 @@ namespace EC_Youth_Portal.ViewModel
 
             try
             {
-                await Shell.Current.GoToAsync(nameof(Views.MainPage));
+                await Shell.Current.GoToAsync("//MainPage");
+                //await Shell.Current.GoToAsync(nameof(Views.MainPage));
             }
             catch (Exception ex)
             {

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EC_Youth_Portal.Views.ProfileSections.DocumentsSection">
+
+    <VerticalStackLayout Spacing="20">
+
+        <!-- Section Header -->
+        <VerticalStackLayout Spacing="8">
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="📄" FontSize="24"/>
+                <Label Text="Documents and Review"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <Label Text="Upload your documents and review your profile"
+                   FontSize="14"
+                   TextColor="#64748B"/>
+        </VerticalStackLayout>
+
+        <!-- Documents Upload Card -->
+        <Frame BackgroundColor="White"
+               CornerRadius="16"
+               Padding="20"
+               HasShadow="False"
+               BorderColor="#E0E0E0">
+            <VerticalStackLayout Spacing="18">
+
+                <Label Text="Required Documents"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"/>
+
+                <!-- ID Document -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="ID Document / Passport *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Button Text="📎 Upload ID Document"
+                            BackgroundColor="Transparent"
+                            TextColor="#FFA500"
+                            BorderColor="#FFA500"
+                            BorderWidth="2"
+                            CornerRadius="12"
+                            Padding="12,10"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            Command="{Binding UploadIDCommand}"/>
+                    <Label Text="{Binding IDDocumentName}"
+                           FontSize="12"
+                           TextColor="#64748B"
+                           IsVisible="{Binding HasIDDocument}"/>
+                </VerticalStackLayout>
+
+                <!-- CV/Resume -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="CV / Resume (Optional)"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Button Text="📎 Upload CV/Resume"
+                            BackgroundColor="Transparent"
+                            TextColor="#FFA500"
+                            BorderColor="#FFA500"
+                            BorderWidth="2"
+                            CornerRadius="12"
+                            Padding="12,10"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            Command="{Binding UploadCVCommand}"/>
+                    <Label Text="{Binding CVDocumentName}"
+                           FontSize="12"
+                           TextColor="#64748B"
+                           IsVisible="{Binding HasCVDocument}"/>
+                </VerticalStackLayout>
+
+                <!-- Matric Certificate -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Matric Certificate (Optional)"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Button Text="📎 Upload Matric Certificate"
+                            BackgroundColor="Transparent"
+                            TextColor="#FFA500"
+                            BorderColor="#FFA500"
+                            BorderWidth="2"
+                            CornerRadius="12"
+                            Padding="12,10"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            Command="{Binding UploadMatricCommand}"/>
+                    <Label Text="{Binding MatricDocumentName}"
+                           FontSize="12"
+                           TextColor="#64748B"
+                           IsVisible="{Binding HasMatricDocument}"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Profile Summary Card -->
+        <Frame BackgroundColor="#E8F5E9"
+               BorderColor="#4CAF50"
+               CornerRadius="16"
+               Padding="20"
+               HasShadow="False">
+            <VerticalStackLayout Spacing="15">
+
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="✅" FontSize="24"/>
+                    <Label Text="Profile Summary"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <Label Text="Review your information before submitting:"
+                       FontSize="13"
+                       TextColor="#64748B"/>
+
+                <VerticalStackLayout Spacing="8">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="•" TextColor="#4CAF50" FontSize="16"/>
+                        <Label Text="{Binding SummaryPersonalInfo}"
+                               FontSize="13"
+                               TextColor="#1E3A5F"
+                               LineBreakMode="WordWrap"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="•" TextColor="#4CAF50" FontSize="16"/>
+                        <Label Text="{Binding SummaryEducation}"
+                               FontSize="13"
+                               TextColor="#1E3A5F"
+                               LineBreakMode="WordWrap"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="•" TextColor="#4CAF50" FontSize="16"/>
+                        <Label Text="{Binding SummaryEmployment}"
+                               FontSize="13"
+                               TextColor="#1E3A5F"
+                               LineBreakMode="WordWrap"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="•" TextColor="#4CAF50" FontSize="16"/>
+                        <Label Text="{Binding SummaryPreferences}"
+                               FontSize="13"
+                               TextColor="#1E3A5F"
+                               LineBreakMode="WordWrap"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Terms and Conditions -->
+        <Frame BackgroundColor="White"
+               CornerRadius="16"
+               Padding="20"
+               HasShadow="False"
+               BorderColor="#E0E0E0">
+            <VerticalStackLayout Spacing="15">
+
+                <Label Text="Terms and Conditions"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"/>
+
+                <HorizontalStackLayout Spacing="12">
+                    <CheckBox IsChecked="{Binding AcceptTerms}"
+                              Color="#FFA500"/>
+                    <Label VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="I agree to the " 
+                                      FontSize="13" 
+                                      TextColor="#64748B"/>
+                                <Span Text="Terms and Conditions" 
+                                      FontSize="13" 
+                                      TextColor="#FFA500" 
+                                      FontAttributes="Bold"
+                                      TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ViewTermsCommand}"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="12">
+                    <CheckBox IsChecked="{Binding AcceptPrivacy}"
+                              Color="#FFA500"/>
+                    <Label VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="I agree to the " 
+                                      FontSize="13" 
+                                      TextColor="#64748B"/>
+                                <Span Text="Privacy Policy" 
+                                      FontSize="13" 
+                                      TextColor="#FFA500" 
+                                      FontAttributes="Bold"
+                                      TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ViewPrivacyCommand}"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+
+</ContentView>

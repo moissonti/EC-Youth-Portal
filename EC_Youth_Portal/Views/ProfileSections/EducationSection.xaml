@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EC_Youth_Portal.Views.ProfileSections.EducationSection">
+
+    <VerticalStackLayout Spacing="20">
+
+        <!-- Section Header -->
+        <VerticalStackLayout Spacing="8">
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="🎓" FontSize="24"/>
+                <Label Text="Education and Qualifications"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <Label Text="Your educational background"
+                   FontSize="14"
+                   TextColor="#64748B"/>
+        </VerticalStackLayout>
+
+        <!-- Education Card -->
+        <Frame BackgroundColor="White"
+               CornerRadius="16"
+               Padding="20"
+               HasShadow="False"
+               BorderColor="#E0E0E0">
+            <VerticalStackLayout Spacing="18">
+
+                <!-- Highest Education Level -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Highest Education Level *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Frame Padding="0"
+                           CornerRadius="12"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0"
+                           BackgroundColor="White">
+                        <Picker SelectedItem="{Binding EducationLevel}"
+                                TextColor="#1E3A5F"
+                                FontSize="14"
+                                Margin="12,0">
+                            <Picker.Items>
+                                <x:String>No schooling</x:String>
+                                <x:String>Some primary school</x:String>
+                                <x:String>Completed primary school</x:String>
+                                <x:String>Some high school</x:String>
+                                <x:String>Matric / Grade 12</x:String>
+                                <x:String>Certificate</x:String>
+                                <x:String>Diploma</x:String>
+                                <x:String>Degree</x:String>
+                                <x:String>Postgraduate</x:String>
+                                <x:String>Prefer not to say</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Currently Studying -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Currently Studying?"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Frame BackgroundColor="#F5F5F5"
+                           CornerRadius="12"
+                           Padding="15"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0">
+                        <VerticalStackLayout Spacing="10">
+                            <HorizontalStackLayout Spacing="12">
+                                <Switch IsToggled="{Binding IsCurrentlyStudying}"
+                                        OnColor="#FFA500"
+                                        ThumbColor="White"/>
+                                <Label Text="Yes, I am currently studying"
+                                       FontSize="14"
+                                       TextColor="#1E3A5F"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+
+                            <!-- Conditional Input -->
+                            <Entry Placeholder="What are you studying?"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="14"
+                                   IsVisible="{Binding IsCurrentlyStudying}"
+                                   Text="{Binding CurrentStudy}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Field of Study -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Field of Study"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Frame Padding="0"
+                           CornerRadius="12"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0"
+                           BackgroundColor="White">
+                        <Entry Placeholder="e.g., Engineering, IT, Business"
+                               PlaceholderColor="#94A3B8"
+                               TextColor="#1E3A5F"
+                               FontSize="15"
+                               Margin="15,0"
+                               Text="{Binding FieldOfStudy}"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Institution -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Institution"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Frame Padding="0"
+                           CornerRadius="12"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0"
+                           BackgroundColor="White">
+                        <Entry Placeholder="School/College/University"
+                               PlaceholderColor="#94A3B8"
+                               TextColor="#1E3A5F"
+                               FontSize="14"
+                               Margin="12,0"
+                               Text="{Binding Institution}"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Year Completed -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Year Completed"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Frame Padding="0"
+                           CornerRadius="12"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0"
+                           BackgroundColor="White">
+                        <Entry Placeholder="e.g., 2024"
+                               PlaceholderColor="#94A3B8"
+                               TextColor="#1E3A5F"
+                               FontSize="14"
+                               Keyboard="Numeric"
+                               MaxLength="4"
+                               Margin="12,0"
+                               Text="{Binding YearCompleted}"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Short Courses Upload -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Certificates / Short Courses (Optional)"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Button Text="📎 Upload Certificates"
+                            BackgroundColor="Transparent"
+                            TextColor="#FFA500"
+                            BorderColor="#FFA500"
+                            BorderWidth="2"
+                            CornerRadius="12"
+                            Padding="12,10"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            Command="{Binding UploadCertificatesCommand}"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+
+</ContentView>

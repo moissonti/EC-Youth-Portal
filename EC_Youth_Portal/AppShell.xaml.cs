@@ -1,4 +1,5 @@
 ﻿using EC_Youth_Portal.Views;
+using EC_Youth_Portal.Views.DashBoard;
 
 namespace EC_Youth_Portal
 {
@@ -8,7 +9,9 @@ namespace EC_Youth_Portal
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(CreateProfilePage), typeof(CreateProfilePage));
+            Routing.RegisterRoute("CreateProfilePage", typeof(CreateProfilePage));
+
+            Routing.RegisterRoute("DashboardLandingPage", typeof(DashboardLandingPage));
 
         }
     }

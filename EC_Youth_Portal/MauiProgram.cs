@@ -21,13 +21,14 @@ namespace EC_Youth_Portal
     		builder.Logging.AddDebug();
 #endif
 
-            // Register Pages
+            // Registered Pages
             builder.Services.AddTransient<Views.CreateProfilePage>();
             builder.Services.AddTransient<Views.RegisterPage>();
             builder.Services.AddTransient<Views.LoginPage>();
             builder.Services.AddTransient<Views.MainPage>();
+            builder.Services.AddTransient<Views.DashBoard.DashboardLandingPage>();
 
-            // Register ViewModels
+            // Registered ViewModels
             builder.Services.AddTransient<ViewModel.RegisterPageViewModel>();
             builder.Services.AddTransient<ViewModel.CreateProfilePageViewModel>();
             builder.Services.AddTransient<ViewModel.MainPageViewModel>();

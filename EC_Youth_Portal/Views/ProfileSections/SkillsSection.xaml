@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EC_Youth_Portal.ViewModel"
+             x:Class="EC_Youth_Portal.Views.ProfileSections.SkillsSection">
+
+    <VerticalStackLayout Spacing="20">
+
+        <!-- Section Header -->
+        <VerticalStackLayout Spacing="8">
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="💼" FontSize="24"/>
+                <Label Text="Skills and Employment"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <Label Text="Tell us about your skills and work experience"
+                   FontSize="14"
+                   TextColor="#64748B"/>
+        </VerticalStackLayout>
+
+        <!-- Employment Status Card -->
+        <Frame BackgroundColor="White"
+               CornerRadius="16"
+               Padding="20"
+               HasShadow="False"
+               BorderColor="#E0E0E0">
+            <VerticalStackLayout Spacing="18">
+
+                <!-- Employment Status -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Employment Status *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Frame Padding="0"
+                           CornerRadius="12"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0"
+                           BackgroundColor="White">
+                        <Picker SelectedItem="{Binding EmploymentStatus}"
+                                TextColor="#1E3A5F"
+                                FontSize="14"
+                                Margin="12,0">
+                            <Picker.Items>
+                                <x:String>Unemployed</x:String>
+                                <x:String>Looking for work</x:String>
+                                <x:String>Working full-time</x:String>
+                                <x:String>Working part-time</x:String>
+                                <x:String>Freelancer</x:String>
+                                <x:String>Entrepreneur</x:String>
+                                <x:String>Student</x:String>
+                                <x:String>Other</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Frame>
+                </VerticalStackLayout>
+
+                <!-- Conditional: If Employed -->
+                <VerticalStackLayout Spacing="12" 
+                                    IsVisible="{Binding IsEmployed}">
+                    <BoxView HeightRequest="1" 
+                             BackgroundColor="#E0E0E0"/>
+
+                    <!-- Company Name -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Company/Business Name"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame Padding="0"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0"
+                               BackgroundColor="White">
+                            <Entry Placeholder="Where do you work?"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="14"
+                                   Margin="12,0"
+                                   Text="{Binding CompanyName}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Position -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Position"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame Padding="0"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0"
+                               BackgroundColor="White">
+                            <Entry Placeholder="Your role"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="14"
+                                   Margin="12,0"
+                                   Text="{Binding Position}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Duration -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Duration"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+                        <Frame Padding="0"
+                               CornerRadius="12"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0"
+                               BackgroundColor="White">
+                            <Entry Placeholder="e.g., 2 years"
+                                   PlaceholderColor="#94A3B8"
+                                   TextColor="#1E3A5F"
+                                   FontSize="14"
+                                   Margin="12,0"
+                                   Text="{Binding Duration}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Skills Card -->
+        <Frame BackgroundColor="White"
+               CornerRadius="16"
+               Padding="20"
+               HasShadow="False"
+               BorderColor="#E0E0E0">
+            <VerticalStackLayout Spacing="18">
+
+                <!-- Technical Skills -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Technical Skills *"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Label Text="Select all that apply"
+                           FontSize="12"
+                           TextColor="#64748B"/>
+
+                    <!-- Multi-Select Dropdown Trigger -->
+                    <Frame BackgroundColor="#F5F5F5"
+                           BorderColor="#FFA500"
+                           CornerRadius="12"
+                           Padding="0"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenTechnicalSkillsCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="*,Auto" 
+                              Padding="15,12">
+                            <Label Grid.Column="0"
+                                   Text="{Binding TechnicalSkillsDisplayText}"
+                                   TextColor="{Binding TechnicalSkillsTextColor}"
+                                   FontSize="14"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="▼"
+                                   FontSize="14"
+                                   TextColor="#FFA500"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Selected Skills Display  -->
+                    <Label Text="{Binding SelectedTechnicalSkillsText}"
+                           FontSize="13"
+                           TextColor="#1E3A5F"
+                           IsVisible="{Binding HasTechnicalSkills}"/>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="1" BackgroundColor="#E0E0E0"/>
+
+                <!-- Soft Skills -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Soft Skills"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Label Text="Select all that apply"
+                           FontSize="12"
+                           TextColor="#64748B"/>
+
+                    <Frame BackgroundColor="#F5F5F5"
+                           BorderColor="#E0E0E0"
+                           CornerRadius="12"
+                           Padding="0"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenSoftSkillsCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="*,Auto" 
+                              Padding="15,12">
+                            <Label Grid.Column="0"
+                                   Text="{Binding SoftSkillsDisplayText}"
+                                   TextColor="{Binding SoftSkillsTextColor}"
+                                   FontSize="14"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="▼"
+                                   FontSize="14"
+                                   TextColor="#64748B"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <Label Text="{Binding SelectedSoftSkillsText}"
+                           FontSize="13"
+                           TextColor="#1E3A5F"
+                           IsVisible="{Binding HasSoftSkills}"/>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="1" BackgroundColor="#E0E0E0"/>
+
+                <!-- Industries -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Industries of Interest"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Label Text="Select industries you're interested in"
+                           FontSize="12"
+                           TextColor="#64748B"/>
+
+                    <Frame BackgroundColor="#F5F5F5"
+                           BorderColor="#E0E0E0"
+                           CornerRadius="12"
+                           Padding="0"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenIndustriesCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="*,Auto" 
+                              Padding="15,12">
+                            <Label Grid.Column="0"
+                                   Text="{Binding IndustriesDisplayText}"
+                                   TextColor="{Binding IndustriesTextColor}"
+                                   FontSize="14"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="▼"
+                                   FontSize="14"
+                                   TextColor="#64748B"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <Label Text="{Binding SelectedIndustriesText}"
+                           FontSize="13"
+                           TextColor="#1E3A5F"
+                           IsVisible="{Binding HasIndustries}"/>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="1" BackgroundColor="#E0E0E0"/>
+
+                <!-- Goals -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Your Goals"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                    <Label Text="What do you want to achieve?"
+                           FontSize="12"
+                           TextColor="#64748B"/>
+
+                    <Frame BackgroundColor="#F5F5F5"
+                           BorderColor="#E0E0E0"
+                           CornerRadius="12"
+                           Padding="0"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenGoalsCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="*,Auto" 
+                              Padding="15,12">
+                            <Label Grid.Column="0"
+                                   Text="{Binding GoalsDisplayText}"
+                                   TextColor="{Binding GoalsTextColor}"
+                                   FontSize="14"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="▼"
+                                   FontSize="14"
+                                   TextColor="#64748B"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <Label Text="{Binding SelectedGoalsText}"
+                           FontSize="13"
+                           TextColor="#1E3A5F"
+                           IsVisible="{Binding HasGoals}"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+
+</ContentView>

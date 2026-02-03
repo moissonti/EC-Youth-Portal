@@ -4,7 +4,8 @@
              x:Class="EC_Youth_Portal.Views.LoginPage"
              Title="LoginPage"
              BackgroundColor="#F5F5F5"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+              Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="Auto,*,Auto">
 
@@ -13,15 +14,19 @@
             <VerticalStackLayout Padding="25"
                                 Spacing="25">
 
-                <!-- Welcome Section -->
-                <VerticalStackLayout Spacing="10">
+                <!-- Welcome Section - CENTERED -->
+                <VerticalStackLayout Spacing="10"
+                    HorizontalOptions="Center"
+                    Margin="0,20,0,0">
                     <Label Text="Welcome Back!"
-                           FontSize="28"
-                           FontAttributes="Bold"
-                           TextColor="#1E3A5F"/>
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="#1E3A5F"
+                    HorizontalTextAlignment="Center"/>
                     <Label Text="Login to continue exploring opportunities"
-                           FontSize="14"
-                           TextColor="#64748B"/>
+                    FontSize="14"
+                    TextColor="#64748B"
+                    HorizontalTextAlignment="Center"/>
                 </VerticalStackLayout>
 
                 <!-- Login Form -->
@@ -127,7 +132,7 @@
                         </Button.Shadow>
                     </Button>
 
-                    <!-- Error Message -->
+                    <!-- Error Message --><!--
                     <Frame 
                             BackgroundColor="#FEE2E2"
                            Padding="15,12"
@@ -138,7 +143,7 @@
                                FontSize="13"
                                TextColor="#DC2626"
                                LineBreakMode="WordWrap"/>
-                    </Frame>
+                    </Frame>-->
 
                 </VerticalStackLayout>
 

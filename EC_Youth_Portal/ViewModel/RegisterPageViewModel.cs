@@ -6,6 +6,13 @@ namespace EC_Youth_Portal.ViewModel
 {
     internal class RegisterPageViewModel : INotifyPropertyChanged
     {
+        private Page _page; 
+
+        public void SetView(Page page) 
+        {
+            _page = page;
+        }
+
         // Fields
         private string _fullName;
         private string _username;
@@ -125,26 +132,23 @@ namespace EC_Youth_Portal.ViewModel
         {
             IsOverlayInputTransparent = false;
 
-            // Animate overlay
+            // Use _page instead of Application.Current.MainPage
             var overlayAnimation = new Animation(v => OverlayOpacity = v, 0, 0.5);
-            overlayAnimation.Commit(Application.Current.MainPage, "OverlayFadeIn", 16, 250, Easing.CubicOut);
+            overlayAnimation.Commit(_page, "OverlayFadeIn", 16, 250, Easing.CubicOut);
 
-            // Animate bottom sheet
             var sheetAnimation = new Animation(v => BottomSheetTranslationY = v, 800, 0);
-            sheetAnimation.Commit(Application.Current.MainPage, "SheetSlideUp", 16, 350, Easing.CubicOut);
+            sheetAnimation.Commit(_page, "SheetSlideUp", 16, 350, Easing.CubicOut);
 
             await Task.Delay(350);
         }
 
         private async Task HideBottomSheet()
         {
-            // Animate bottom sheet
             var sheetAnimation = new Animation(v => BottomSheetTranslationY = v, 0, 800);
-            sheetAnimation.Commit(Application.Current.MainPage, "SheetSlideDown", 16, 300, Easing.CubicIn);
+            sheetAnimation.Commit(_page, "SheetSlideDown", 16, 300, Easing.CubicIn);
 
-            // Animate overlay
             var overlayAnimation = new Animation(v => OverlayOpacity = v, 0.5, 0);
-            overlayAnimation.Commit(Application.Current.MainPage, "OverlayFadeOut", 16, 200, Easing.CubicIn);
+            overlayAnimation.Commit(_page, "OverlayFadeOut", 16, 200, Easing.CubicIn);
 
             await Task.Delay(300);
             IsOverlayInputTransparent = true;
@@ -154,11 +158,19 @@ namespace EC_Youth_Portal.ViewModel
         {
             await HideBottomSheet();
 
-            // Show success message
-            await Application.Current.MainPage.DisplayAlert("Success", "Terms accepted! Ready to navigate to profile page.", "OK");
+            // Add a small delay to ensure animations complete and clean up
+            await Task.Delay(100);
 
+            try
+            {
+                await Shell.Current.GoToAsync("CreateProfilePage");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Navigation error: {ex.Message}");
+            }
         }
-        
+
 
         private async Task OnDecline()
         {
@@ -166,14 +178,13 @@ namespace EC_Youth_Portal.ViewModel
 
             try
             {
-                await Shell.Current.GoToAsync(nameof(Views.MainPage));
+                await Shell.Current.GoToAsync("//MainPage");
+                //await Shell.Current.GoToAsync(nameof(Views.MainPage));
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Navigation error: {ex.Message}");
             }
-
-
         }
 
         private async Task OnOverlayTapped()

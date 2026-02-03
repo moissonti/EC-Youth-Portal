@@ -4,7 +4,8 @@
              xmlns:viewmodels="clr-namespace:EC_Youth_Portal.ViewModel"
              x:Class="EC_Youth_Portal.Views.RegisterPage"
              BackgroundColor="#F5F5F5"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+              Shell.NavBarIsVisible="False">
 
     <ContentPage.BindingContext>
         <viewmodels:RegisterPageViewModel/>
@@ -15,50 +16,21 @@
         <ScrollView>
             <VerticalStackLayout Spacing="0">
 
-                <!-- HEADER SECTION -->
-                <Grid HeightRequest="220"
-                      BackgroundColor="#1E3A5F">
 
-                    <!-- Accent Overlay -->
-                    <BoxView BackgroundColor="#FFA500" 
-                             Opacity="0.1"/>
-
-                    <VerticalStackLayout Padding="25,40,25,25"
-                                        Spacing="15"
-                                        VerticalOptions="Center">
-
-                        <!-- Logo -->
-                        <Frame BackgroundColor="#FFA500"
-                               WidthRequest="70"
-                               HeightRequest="70"
-                               CornerRadius="20"
-                               Padding="0"
-                               HasShadow="True"
-                               HorizontalOptions="Center">
-                            <Label Text="EC"
-                                   FontSize="32"
-                                   FontAttributes="Bold"
-                                   TextColor="White"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                        </Frame>
-
-                        <!-- Title -->
-                        <Label Text="Create Account"
-                               TextColor="White"
-                               FontSize="28"
-                               FontAttributes="Bold"
-                               HorizontalOptions="Center"/>
-
-                        <!-- Subtitle -->
-                        <Label Text="Join the Eastern Cape Youth Portal"
-                               TextColor="White"
-                               FontSize="14"
-                               Opacity="0.9"
-                               HorizontalOptions="Center"/>
-
-                    </VerticalStackLayout>
-                </Grid>
+                <!-- Welcome Section - CENTERED -->
+                <VerticalStackLayout Spacing="10"
+                     HorizontalOptions="Center"
+                     Margin="0,20,0,0">
+                                    <Label Text="Register Here !!"
+                     FontSize="28"
+                     FontAttributes="Bold"
+                     TextColor="#1E3A5F"
+                     HorizontalTextAlignment="Center"/>
+                                <Label Text="Join our Community to access a pool of information"
+                     FontSize="14"
+                     TextColor="#64748B"
+                     HorizontalTextAlignment="Center"/>     
+                </VerticalStackLayout>
 
                 <!-- FORM SECTION -->
                 <VerticalStackLayout Padding="25,30,25,25"

@@ -7,11 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False">
-
-    <ContentPage.BindingContext>
-        <viewmodels:CreateProfilePageViewModel/>
-    </ContentPage.BindingContext>
-
+    
     <Grid RowDefinitions="Auto,*,Auto">
 
         <!-- HEADER WITH PROGRESS -->

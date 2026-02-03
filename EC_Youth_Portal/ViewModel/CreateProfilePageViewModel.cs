@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EC_Youth_Portal.ViewModel
 {
-    internal class CreateProfilePageViewModel
+    public class CreateProfilePageViewModel
     {
     }
 }

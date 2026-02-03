@@ -4,12 +4,12 @@ namespace EC_Youth_Portal.Views;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    public MainPage(MainPageViewModel viewModel)
     {
         InitializeComponent();
 
         // Bind ViewModel to the View
-        BindingContext = new MainPageViewModel();
+        BindingContext = viewModel;
 
     }
 }

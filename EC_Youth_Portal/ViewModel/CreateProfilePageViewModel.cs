@@ -69,7 +69,7 @@ namespace EC_Youth_Portal.ViewModel
         public bool ShowPreviousButton => CurrentStep > 1;
         public string NextButtonText => CurrentStep < 5 ? "Next →" : "Complete Profile";
 
-        // KEEP ONLY THESE COMMANDS (remove the duplicates below)
+        // Commands
         public ICommand NextCommand { get; }
         public ICommand PreviousCommand { get; }
 
@@ -127,7 +127,7 @@ namespace EC_Youth_Portal.ViewModel
 
         private async void CompleteProfile()
         {
-            await Shell.Current.GoToAsync("DashboardLandingPage");
+            await Shell.Current.GoToAsync("//DashboardTabs/DashboardHome");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

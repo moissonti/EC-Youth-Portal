@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:EC_Youth_Portal.Views"
+    xmlns:dashboard="clr-namespace:EC_Youth_Portal.Views.DashBoard"
     Title="EC_Youth_Portal">
 
     <ShellContent
@@ -12,6 +13,7 @@
         Shell.FlyoutBehavior="Disabled"
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False" />
+    
 
     <!-- Main Tab Bar - Starts from MainPage -->
     <TabBar Route="MainTabs">
@@ -56,6 +58,77 @@
         </ShellContent>
 
     </TabBar>
+
+    <!-- Dashboard Tab Bar (After Login) -->
+    <TabBar Route="DashboardTabs">
+
+        <!-- Home/Dashboard -->
+        <ShellContent
+            Title="Home"
+            Route="DashboardHome"
+            ContentTemplate="{DataTemplate dashboard:DashboardLandingPage}">
+            <ShellContent.Icon>
+                <FontImageSource 
+                    Glyph="🏠" 
+                    FontFamily="Segoe UI Emoji"
+                    Color="{StaticResource PrimaryNavy}"/>
+            </ShellContent.Icon>
+        </ShellContent>
+
+        <!-- Y2R Connect -->
+        <ShellContent
+            Title="Y2R"
+            Route="Y2RPage"
+            ContentTemplate="{DataTemplate dashboard:Y2RPage}">
+            <ShellContent.Icon>
+                <FontImageSource 
+                    Glyph="🤝" 
+                    FontFamily="Segoe UI Emoji"
+                    Color="{StaticResource PrimaryNavy}"/>
+            </ShellContent.Icon>
+        </ShellContent>
+
+        <!-- My Applications -->
+        <ShellContent
+            Title="Applications"
+            Route="ApplicationsPage"
+            ContentTemplate="{DataTemplate dashboard:MyApplicationsPage}">
+            <ShellContent.Icon>
+                <FontImageSource 
+                    Glyph="📋" 
+                    FontFamily="Segoe UI Emoji"
+                    Color="{StaticResource PrimaryNavy}"/>
+            </ShellContent.Icon>
+        </ShellContent>
+
+        <!-- Pathway Builder -->
+        <ShellContent
+            Title="Pathway"
+            Route="PathwayPage"
+            ContentTemplate="{DataTemplate dashboard:PathwayBuilderPage}">
+            <ShellContent.Icon>
+                <FontImageSource 
+                    Glyph="🎯" 
+                    FontFamily="Segoe UI Emoji"
+                    Color="{StaticResource PrimaryNavy}"/>
+            </ShellContent.Icon>
+        </ShellContent>
+
+        <!-- Track Progress -->
+        <ShellContent
+            Title="Track"
+            Route="TrackPage"
+            ContentTemplate="{DataTemplate dashboard:TrackPage}">
+            <ShellContent.Icon>
+                <FontImageSource 
+                    Glyph="📊" 
+                    FontFamily="Segoe UI Emoji"
+                    Color="{StaticResource PrimaryNavy}"/>
+            </ShellContent.Icon>
+        </ShellContent>
+
+    </TabBar>
+
 
     <!-- Shell Styling -->
     <Shell.Resources>

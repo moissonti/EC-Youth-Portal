@@ -158,7 +158,7 @@ namespace EC_Youth_Portal.ViewModel
         {
             await HideBottomSheet();
 
-            // Add a small delay to ensure animations complete and clean up
+            // small delay to ensure animations complete and clean up
             await Task.Delay(100);
 
             try

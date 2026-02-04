@@ -10,9 +10,6 @@ namespace EC_Youth_Portal
             InitializeComponent();
 
             Routing.RegisterRoute("CreateProfilePage", typeof(CreateProfilePage));
-
-            Routing.RegisterRoute("DashboardLandingPage", typeof(DashboardLandingPage));
-
         }
     }
 }

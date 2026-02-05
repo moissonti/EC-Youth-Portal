@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using EC_Youth_Portal.ViewModel;
+using EC_Youth_Portal.Views.DashBoard;
+using Microsoft.Extensions.Logging;
 
 namespace EC_Youth_Portal
 {
@@ -21,24 +23,36 @@ namespace EC_Youth_Portal
     		builder.Logging.AddDebug();
 #endif
 
-            // Registered Pages
+            // Authentication Pages
             builder.Services.AddTransient<Views.CreateProfilePage>();
             builder.Services.AddTransient<Views.RegisterPage>();
             builder.Services.AddTransient<Views.LoginPage>();
             builder.Services.AddTransient<Views.MainPage>();
 
+            // Dashboard Pages
             builder.Services.AddTransient<Views.DashBoard.DashboardLandingPage>();
             builder.Services.AddTransient<Views.DashBoard.Y2RPage>();
             builder.Services.AddTransient<Views.DashBoard.MyApplicationsPage>();
             builder.Services.AddTransient<Views.DashBoard.PathwayBuilderPage>();
-            builder.Services.AddTransient<Views.DashBoard.TrackPage>();
+            builder.Services.AddTransient<Views.DashBoard.MyProfilePage>();
+            builder.Services.AddTransient<Views.DashBoard.AccountInformationPage>(); 
 
-            // Registered ViewModels
+            // Authentication ViewModels
             builder.Services.AddTransient<ViewModel.RegisterPageViewModel>();
-            builder.Services.AddTransient<ViewModel.CreateProfilePageViewModel>();
             builder.Services.AddTransient<ViewModel.MainPageViewModel>();
-            builder.Services.AddTransient<ViewModel.DashboardLandingPageViewModel>();
             builder.Services.AddTransient<ViewModel.LoginPageViewModel>();
+            builder.Services.AddTransient<ViewModel.CreateProfilePageViewModel>();
+
+            // DasBoard ViewModels
+            builder.Services.AddTransient<ViewModel.DashboardLandingPageViewModel>();
+            builder.Services.AddTransient<ViewModel.MyProfilePageViewModel>();
+            builder.Services.AddTransient<ViewModel.PersonalInfoSectionViewModel>();
+            builder.Services.AddTransient<ViewModel.EducationSectionViewModel>();
+            builder.Services.AddTransient<ViewModel.SkillsSectionViewModel>();
+            builder.Services.AddTransient<ViewModel.DocumentsSectionViewModel>(); 
+            builder.Services.AddTransient<ViewModel.EditProfilePageViewModel>();
+            builder.Services.AddTransient<ViewModel.AccountInformationPageViewModel>();
+
 
 
             return builder.Build();

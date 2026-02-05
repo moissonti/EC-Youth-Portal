@@ -18,24 +18,6 @@
                   Padding="15,10"
                   HeightRequest="60">
 
-                <!-- User Profile Icon (Left) -->
-                <Frame Grid.Column="0"
-                       BackgroundColor="#FFA500"
-                       CornerRadius="25"
-                       Padding="0"
-                       WidthRequest="40"
-                       HeightRequest="40"
-                       VerticalOptions="Center"
-                       HasShadow="False">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ProfileTappedCommand}"/>
-                    </Frame.GestureRecognizers>
-                    <Label Text="👤"
-                           FontSize="24"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"/>
-                </Frame>
-
                 <!-- Page Title (Center) -->
                 <Label Grid.Column="1"
                        Text="Dashboard"
@@ -123,6 +105,74 @@
                                TextColor="#64748B"
                                LineBreakMode="WordWrap"/>
                     </VerticalStackLayout>
+                </Frame>
+
+                <!-- Location Display -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="12"
+                       Padding="15"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeLocationCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Label Grid.Column="0"
+                               Text="📍"
+                               FontSize="20"
+                               VerticalOptions="Center"
+                               Margin="0,0,10,0"/>
+                        <VerticalStackLayout Grid.Column="1"
+                                           Spacing="2"
+                                           VerticalOptions="Center">
+                            <Label Text="Your Location"
+                                   FontSize="11"
+                                   TextColor="#94A3B8"/>
+                            <Label Text="{Binding UserLocation}"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2"
+                               Text="›"
+                               FontSize="20"
+                               TextColor="#FFA500"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Search Bar -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="12"
+                       Padding="15,12"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SearchTappedCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid ColumnDefinitions="Auto,*,Auto">
+                        <Label Grid.Column="0"
+                               Text="🔍"
+                               FontSize="20"
+                               VerticalOptions="Center"
+                               Margin="0,0,10,0"/>
+                        <Label Grid.Column="1"
+                               Text="Search for jobs, internships, events..."
+                               FontSize="14"
+                               TextColor="#94A3B8"
+                               VerticalOptions="Center"/>
+                        <Frame Grid.Column="2"
+                               BackgroundColor="#FFA500"
+                               CornerRadius="8"
+                               Padding="8,6"
+                               HasShadow="False">
+                            <Label Text="GO"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="White"
+                                   VerticalOptions="Center"/>
+                        </Frame>
+                    </Grid>
                 </Frame>
 
                 <!-- Quick Stats Grid -->

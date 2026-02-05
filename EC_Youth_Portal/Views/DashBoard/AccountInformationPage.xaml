@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EC_Youth_Portal.Views.DashBoard.AccountInformationPage"
+             BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
+
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- CUSTOM HEADER -->
+        <Frame Grid.Row="0"
+               BackgroundColor="#1E3A5F"
+               CornerRadius="0"
+               Padding="0"
+               HasShadow="True">
+            <Grid ColumnDefinitions="50,*,50"
+                  Padding="15,10"
+                  HeightRequest="60">
+
+                <!-- Back Button -->
+                <Frame Grid.Column="0"
+                       BackgroundColor="Transparent"
+                       Padding="0"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       VerticalOptions="Center"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="←"
+                           FontSize="28"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Page Title -->
+                <Label Grid.Column="1"
+                       Text="Account Information"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+
+                <!-- Save Button -->
+                <Frame Grid.Column="2"
+                       BackgroundColor="#4CAF50"
+                       CornerRadius="8"
+                       Padding="8,6"
+                       VerticalOptions="Center"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Save"
+                           FontSize="13"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+            </Grid>
+        </Frame>
+
+        <!-- SCROLLABLE CONTENT -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="25">
+
+                <!-- Page Description -->
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Manage your account credentials and basic information"
+                           FontSize="14"
+                           TextColor="#64748B"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Account Details Card -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0">
+                    <VerticalStackLayout Spacing="20">
+
+                        <Label Text="Account Details"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+
+                        <!-- Full Name -->
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Full Name *"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"/>
+                            <Frame Padding="0"
+                                   CornerRadius="12"
+                                   HasShadow="False"
+                                   BorderColor="#E0E0E0"
+                                   BackgroundColor="White">
+                                <Entry Placeholder="Enter your full name"
+                                       PlaceholderColor="#94A3B8"
+                                       TextColor="#1E3A5F"
+                                       FontSize="15"
+                                       Margin="15,0"
+                                       Text="{Binding FullName}"/>
+                            </Frame>
+                        </VerticalStackLayout>
+
+                        <!-- Email Address -->
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Email Address *"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"/>
+                            <Frame Padding="0"
+                                   CornerRadius="12"
+                                   HasShadow="False"
+                                   BorderColor="#E0E0E0"
+                                   BackgroundColor="White">
+                                <Entry Placeholder="your.email@example.com"
+                                       PlaceholderColor="#94A3B8"
+                                       TextColor="#1E3A5F"
+                                       FontSize="15"
+                                       Keyboard="Email"
+                                       Margin="15,0"
+                                       Text="{Binding Email}"/>
+                            </Frame>
+                            <Label Text="This is your login email"
+                                   FontSize="12"
+                                   TextColor="#94A3B8"/>
+                        </VerticalStackLayout>
+
+                        <!-- Location -->
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Location *"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"/>
+                            <Frame Padding="0"
+                                   CornerRadius="12"
+                                   HasShadow="False"
+                                   BorderColor="#E0E0E0"
+                                   BackgroundColor="White">
+                                <Entry Placeholder="City, Province"
+                                       PlaceholderColor="#94A3B8"
+                                       TextColor="#1E3A5F"
+                                       FontSize="15"
+                                       Margin="15,0"
+                                       Text="{Binding Location}"/>
+                            </Frame>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Password Management Card -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0">
+                    <VerticalStackLayout Spacing="20">
+
+                        <Label Text="Password Management"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+
+                        <!-- Change Password Toggle -->
+                        <Frame BackgroundColor="#F5F5F5"
+                               CornerRadius="12"
+                               Padding="15"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0">
+                            <HorizontalStackLayout Spacing="12">
+                                <Switch IsToggled="{Binding IsChangingPassword}"
+                                        OnColor="#FFA500"
+                                        ThumbColor="White"/>
+                                <Label Text="I want to change my password"
+                                       FontSize="14"
+                                       TextColor="#1E3A5F"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                        <!-- Password Change Fields (Conditional) -->
+                        <VerticalStackLayout Spacing="18" 
+                                           IsVisible="{Binding IsChangingPassword}">
+
+                            <!-- Current Password -->
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Current Password *"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                                <Frame Padding="0"
+                                       CornerRadius="12"
+                                       HasShadow="False"
+                                       BorderColor="#E0E0E0"
+                                       BackgroundColor="White">
+                                    <Entry Placeholder="Enter current password"
+                                           PlaceholderColor="#94A3B8"
+                                           TextColor="#1E3A5F"
+                                           FontSize="15"
+                                           IsPassword="True"
+                                           Margin="15,0"
+                                           Text="{Binding CurrentPassword}"/>
+                                </Frame>
+                            </VerticalStackLayout>
+
+                            <!-- New Password -->
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="New Password *"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                                <Frame Padding="0"
+                                       CornerRadius="12"
+                                       HasShadow="False"
+                                       BorderColor="#E0E0E0"
+                                       BackgroundColor="White">
+                                    <Entry Placeholder="Enter new password"
+                                           PlaceholderColor="#94A3B8"
+                                           TextColor="#1E3A5F"
+                                           FontSize="15"
+                                           IsPassword="True"
+                                           Margin="15,0"
+                                           Text="{Binding NewPassword}"/>
+                                </Frame>
+                                <Label Text="Minimum 8 characters"
+                                       FontSize="12"
+                                       TextColor="#94A3B8"/>
+                            </VerticalStackLayout>
+
+                            <!-- Confirm New Password -->
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Confirm New Password *"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                                <Frame Padding="0"
+                                       CornerRadius="12"
+                                       HasShadow="False"
+                                       BorderColor="#E0E0E0"
+                                       BackgroundColor="White">
+                                    <Entry Placeholder="Re-enter new password"
+                                           PlaceholderColor="#94A3B8"
+                                           TextColor="#1E3A5F"
+                                           FontSize="15"
+                                           IsPassword="True"
+                                           Margin="15,0"
+                                           Text="{Binding ConfirmPassword}"/>
+                                </Frame>
+                            </VerticalStackLayout>
+
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Account Actions Card -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0">
+                    <VerticalStackLayout Spacing="15">
+
+                        <Label Text="Account Actions"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+
+                        <!-- Delete Account Button -->
+                        <Button Text="Delete Account"
+                                BackgroundColor="Transparent"
+                                TextColor="#DC2626"
+                                BorderColor="#DC2626"
+                                BorderWidth="2"
+                                CornerRadius="12"
+                                Padding="12,10"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                Command="{Binding DeleteAccountCommand}"/>
+
+                        <Label Text="⚠️ This action cannot be undone"
+                               FontSize="12"
+                               TextColor="#DC2626"
+                               HorizontalTextAlignment="Center"/>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Save Button (Bottom) -->
+                <Button Text="Save Changes"
+                        BackgroundColor="#4CAF50"
+                        TextColor="White"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        CornerRadius="12"
+                        HeightRequest="50"
+                        Margin="0,10,0,20"
+                        Command="{Binding SaveCommand}">
+                    <Button.Shadow>
+                        <Shadow Brush="#4CAF50"
+                                Offset="0,4"
+                                Radius="10"
+                                Opacity="0.3"/>
+                    </Button.Shadow>
+                </Button>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:sections="clr-namespace:EC_Youth_Portal.Views.ProfileSections"
+             x:Class="EC_Youth_Portal.Views.DashBoard.EditProfilePage"
+             BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- CUSTOM HEADER -->
+        <Frame Grid.Row="0"
+               BackgroundColor="#1E3A5F"
+               CornerRadius="0"
+               Padding="0"
+               HasShadow="True">
+            <Grid ColumnDefinitions="50,*,50"
+                  Padding="15,10"
+                  HeightRequest="60">
+
+                <!-- Back Button -->
+                <Frame Grid.Column="0"
+                       BackgroundColor="Transparent"
+                       Padding="0"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       VerticalOptions="Center"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="←"
+                           FontSize="28"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Page Title -->
+                <Label Grid.Column="1"
+                       Text="Edit Profile"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+
+                <!-- Save Button -->
+                <Frame Grid.Column="2"
+                       BackgroundColor="#FFA500"
+                       CornerRadius="8"
+                       Padding="8,6"
+                       VerticalOptions="Center"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveCurrentSectionCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Save"
+                           FontSize="13"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+            </Grid>
+        </Frame>
+
+        <!-- TAB BAR -->
+        <ScrollView Grid.Row="1" 
+                    Orientation="Horizontal"
+                    HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout Spacing="0" 
+                                  Padding="10,15"
+                                  BackgroundColor="White">
+
+                <!-- Tab 1: Personal Info -->
+                <Frame BackgroundColor="{Binding PersonalInfoTabColor}"
+                       Padding="20,12"
+                       CornerRadius="12"
+                       Margin="5,0"
+                       HasShadow="False"
+                       BorderColor="{Binding PersonalInfoBorderColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SwitchToPersonalInfoCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="👤"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Text="Personal"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{Binding PersonalInfoTextColor}"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!-- Tab 2: Education -->
+                <Frame BackgroundColor="{Binding EducationTabColor}"
+                       Padding="20,12"
+                       CornerRadius="12"
+                       Margin="5,0"
+                       HasShadow="False"
+                       BorderColor="{Binding EducationBorderColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SwitchToEducationCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="🎓"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Text="Education"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{Binding EducationTextColor}"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!-- Tab 3: Skills & Employment -->
+                <Frame BackgroundColor="{Binding SkillsTabColor}"
+                       Padding="20,12"
+                       CornerRadius="12"
+                       Margin="5,0"
+                       HasShadow="False"
+                       BorderColor="{Binding SkillsBorderColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SwitchToSkillsCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="💼"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Text="Skills"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{Binding SkillsTextColor}"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!-- Tab 4: Documents -->
+                <Frame BackgroundColor="{Binding DocumentsTabColor}"
+                       Padding="20,12"
+                       CornerRadius="12"
+                       Margin="5,0"
+                       HasShadow="False"
+                       BorderColor="{Binding DocumentsBorderColor}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SwitchToDocumentsCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="📄"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Text="Documents"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{Binding DocumentsTextColor}"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- CONTENT AREA (Lazy Loading) -->
+        <ScrollView Grid.Row="2" Padding="20">
+            <ContentPresenter Content="{Binding CurrentSectionView}"/>
+        </ScrollView>
+
+        <!-- BOTTOM SAVE BUTTON -->
+        <Frame Grid.Row="3"
+               BackgroundColor="White"
+               CornerRadius="0"
+               Padding="20,15"
+               HasShadow="True">
+            <Button Text="{Binding SaveButtonText}"
+                    BackgroundColor="#FFA500"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    Command="{Binding SaveCurrentSectionCommand}">
+                <Button.Shadow>
+                    <Shadow Brush="#FFA500"
+                            Offset="0,4"
+                            Radius="10"
+                            Opacity="0.3"/>
+                </Button.Shadow>
+            </Button>
+        </Frame>
+
+    </Grid>
+</ContentPage>

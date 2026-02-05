@@ -8,6 +8,7 @@ namespace EC_Youth_Portal.ViewModel
 {
     public class CreateProfilePageViewModel : INotifyPropertyChanged
     {
+        // Will Move all these to become Models on all my view Models
         private int _currentStep = 1;
         private ContentView _currentSectionView;
         private string stepColour = "#FFA500";

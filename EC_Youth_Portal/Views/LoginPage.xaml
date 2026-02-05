@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:EC_Youth_Portal.Converters"
              x:Class="EC_Youth_Portal.Views.LoginPage"
              Title="LoginPage"
              BackgroundColor="#F5F5F5"
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StringToBoolConverter x:Key="StringToBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto,*,Auto">
 
@@ -89,7 +96,7 @@
                                        VerticalOptions="Center"
                                        Margin="10,0,0,0">
                                     <Label.GestureRecognizers>
-                                    
+                                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
                                     </Label.GestureRecognizers>
                                 </Label>
                             </Grid>
@@ -139,16 +146,16 @@
 
                     <!-- Error Message -->
                     <Frame 
-    BackgroundColor="#FEE2E2"
-    Padding="15,12"
-    CornerRadius="10"
-    HasShadow="False"
-    BorderColor="#FCA5A5"
-    IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}">
-                        <Label Text="{Binding ErrorMessage}"
-           FontSize="13"
-           TextColor="#DC2626"
-           LineBreakMode="WordWrap"/>
+                    BackgroundColor="#FEE2E2"
+                    Padding="15,12"
+                    CornerRadius="10"
+                    HasShadow="False"
+                    BorderColor="#FCA5A5"
+                    IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}">
+                                        <Label Text="{Binding ErrorMessage}"
+                           FontSize="13"
+                           TextColor="#DC2626"
+                           LineBreakMode="WordWrap"/>
                     </Frame>
 
                 </VerticalStackLayout>

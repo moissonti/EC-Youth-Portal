@@ -13,7 +13,7 @@ namespace EC_Youth_Portal.ViewModel
             _page = page;
         }
 
-        // Fields
+        //  Will Move all these Fields to become Models on all my view Models
         private string _fullName;
         private string _username;
         private string _location;

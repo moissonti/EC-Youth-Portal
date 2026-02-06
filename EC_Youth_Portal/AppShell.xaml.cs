@@ -12,6 +12,7 @@ namespace EC_Youth_Portal
             Routing.RegisterRoute("CreateProfilePage", typeof(CreateProfilePage));
             Routing.RegisterRoute("EditProfilePage", typeof(EditProfilePage)); 
              Routing.RegisterRoute("AccountInformationPage", typeof(AccountInformationPage));
+                Routing.RegisterRoute("ApplyOpportunityPage", typeof(ApplyOpportunityPage));
         }
     }
 }

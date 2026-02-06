@@ -5,7 +5,8 @@
              x:Class="EC_Youth_Portal.Views.DashBoard.EditProfilePage"
              BackgroundColor="#F5F5F5"
              NavigationPage.HasNavigationBar="False"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
 
     <Grid RowDefinitions="Auto,Auto,*,Auto">
 

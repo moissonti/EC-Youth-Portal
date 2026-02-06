@@ -35,7 +35,9 @@ namespace EC_Youth_Portal
             builder.Services.AddTransient<Views.DashBoard.MyApplicationsPage>();
             builder.Services.AddTransient<Views.DashBoard.PathwayBuilderPage>();
             builder.Services.AddTransient<Views.DashBoard.MyProfilePage>();
-            builder.Services.AddTransient<Views.DashBoard.AccountInformationPage>(); 
+            builder.Services.AddTransient<Views.DashBoard.AccountInformationPage>();
+            builder.Services.AddTransient<Views.DashBoard.ApplyOpportunityPage>();
+
 
             // Authentication ViewModels
             builder.Services.AddTransient<ViewModel.RegisterPageViewModel>();
@@ -52,6 +54,7 @@ namespace EC_Youth_Portal
             builder.Services.AddTransient<ViewModel.DocumentsSectionViewModel>(); 
             builder.Services.AddTransient<ViewModel.EditProfilePageViewModel>();
             builder.Services.AddTransient<ViewModel.AccountInformationPageViewModel>();
+            builder.Services.AddTransient<ViewModel.ApplyOpportunityPageViewModel>();
 
 
 

@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace EC_Youth_Portal.ViewModel
 {
-    public class AccountInformationPageViewModel
+    public class AccountInformationPageViewModel : BaseViewModel
     {
         private string _fullName;
         private string _email;
@@ -18,15 +18,13 @@ namespace EC_Youth_Portal.ViewModel
         private string _confirmPassword;
 
         // Properties
+        
         public string FullName
         {
             get => _fullName;
-            set
-            {
-                _fullName = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _fullName, value);
         }
+
 
         public string Email
         {
@@ -237,12 +235,6 @@ namespace EC_Youth_Portal.ViewModel
             {
                 return false;
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

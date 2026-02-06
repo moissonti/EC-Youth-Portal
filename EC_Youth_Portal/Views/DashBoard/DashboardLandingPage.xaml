@@ -417,6 +417,206 @@
 
                 </VerticalStackLayout>
 
+                <!-- Featured Opportunities Section -->
+                <VerticalStackLayout Spacing="15">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+               Text="Featured Opportunities"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="#1E3A5F"/>
+                        <Label Grid.Column="1"
+               Text="View All ›"
+               FontSize="14"
+               FontAttributes="Bold"
+               TextColor="#FFA500"
+               VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ViewAllOpportunitiesCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <!-- Bursary Opportunity Card -->
+                    <Frame BackgroundColor="White"
+           CornerRadius="16"
+           Padding="0"
+           HasShadow="False"
+           BorderColor="#E0E0E0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewBursaryDetailCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid RowDefinitions="Auto,Auto,Auto,Auto" Padding="15">
+
+                            <!-- Header: Match Badge & Type -->
+                            <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+                                <Frame Grid.Column="0"
+                       BackgroundColor="#4CAF50"
+                       Padding="8,4"
+                       CornerRadius="12"
+                       HasShadow="False"
+                       HorizontalOptions="Start">
+                                    <Label Text="95% Match"
+                           TextColor="White"
+                           FontSize="11"
+                           FontAttributes="Bold"/>
+                                </Frame>
+                                <Frame Grid.Column="1"
+                       BackgroundColor="#FFD54F"
+                       Padding="8,4"
+                       CornerRadius="6"
+                       HasShadow="False">
+                                    <Label Text="BURSARY"
+                           TextColor="#1E3A5F"
+                           FontSize="10"
+                           FontAttributes="Bold"/>
+                                </Frame>
+                            </Grid>
+
+                            <!-- Title & Company -->
+                            <VerticalStackLayout Grid.Row="1" Spacing="6" Margin="0,0,0,12">
+                                <Label Text="Engineering Excellence Bursary 2026"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"
+                       LineBreakMode="WordWrap"/>
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="🏢"
+                           FontSize="12"/>
+                                    <Label Text="National Bursary Foundation"
+                           FontSize="13"
+                           TextColor="#64748B"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <!-- Details Grid -->
+                            <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,0,0,12">
+                                <VerticalStackLayout Grid.Column="0" Spacing="3">
+                                    <Label Text="📍 Location"
+                           FontSize="10"
+                           TextColor="#94A3B8"/>
+                                    <Label Text="Eastern Cape"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                    <Label Text="💰 Value"
+                           FontSize="10"
+                           TextColor="#94A3B8"/>
+                                    <Label Text="R120,000 p/a"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <!-- View More Button -->
+                            <Button Grid.Row="3"
+                    Text="View Details →"
+                    BackgroundColor="Transparent"
+                    TextColor="#FFA500"
+                    BorderColor="#FFA500"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                    Padding="10,8"
+                    FontSize="13"
+                    FontAttributes="Bold"
+                    Command="{Binding ViewBursaryDetailCommand}"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Job Opportunity Card -->
+                    <Frame BackgroundColor="White"
+           CornerRadius="16"
+           Padding="0"
+           HasShadow="False"
+           BorderColor="#E0E0E0">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewJobDetailCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid RowDefinitions="Auto,Auto,Auto,Auto" Padding="15">
+
+                            <!-- Header: Match Badge & Type -->
+                            <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+                                <Frame Grid.Column="0"
+                       BackgroundColor="#FF9800"
+                       Padding="8,4"
+                       CornerRadius="12"
+                       HasShadow="False"
+                       HorizontalOptions="Start">
+                                    <Label Text="88% Match"
+                           TextColor="White"
+                           FontSize="11"
+                           FontAttributes="Bold"/>
+                                </Frame>
+                                <Frame Grid.Column="1"
+                       BackgroundColor="#81C784"
+                       Padding="8,4"
+                       CornerRadius="6"
+                       HasShadow="False">
+                                    <Label Text="JOB"
+                           TextColor="White"
+                           FontSize="10"
+                           FontAttributes="Bold"/>
+                                </Frame>
+                            </Grid>
+
+                            <!-- Title & Company -->
+                            <VerticalStackLayout Grid.Row="1" Spacing="6" Margin="0,0,0,12">
+                                <Label Text="Junior Software Developer"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"
+                       LineBreakMode="WordWrap"/>
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="🏢"
+                           FontSize="12"/>
+                                    <Label Text="Tech Solutions SA"
+                           FontSize="13"
+                           TextColor="#64748B"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <!-- Details Grid -->
+                            <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,0,0,12">
+                                <VerticalStackLayout Grid.Column="0" Spacing="3">
+                                    <Label Text="📍 Location"
+                           FontSize="10"
+                           TextColor="#94A3B8"/>
+                                    <Label Text="East London"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                    <Label Text="💼 Type"
+                           FontSize="10"
+                           TextColor="#94A3B8"/>
+                                    <Label Text="Full-time"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <!-- View More Button -->
+                            <Button Grid.Row="3"
+                    Text="View Details →"
+                    BackgroundColor="Transparent"
+                    TextColor="#FFA500"
+                    BorderColor="#FFA500"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                    Padding="10,8"
+                    FontSize="13"
+                    FontAttributes="Bold"
+                    Command="{Binding ViewJobDetailCommand}"/>
+                        </Grid>
+                    </Frame>
+
+                </VerticalStackLayout>
+
                 <!-- Recent Activity Section -->
                 <VerticalStackLayout Spacing="15">
                     <Label Text="Recent Activity"

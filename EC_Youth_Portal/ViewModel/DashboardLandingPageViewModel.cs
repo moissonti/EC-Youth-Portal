@@ -76,6 +76,10 @@ namespace EC_Youth_Portal.ViewModel
         }
 
         // Commands
+
+        public ICommand ViewBursaryDetailCommand { get; }
+        public ICommand ViewJobDetailCommand { get; }
+        public ICommand ViewAllOpportunitiesCommand { get; }
         public ICommand NotificationsTappedCommand { get; }
         public ICommand OptionsTappedCommand { get; }
         public ICommand ViewApplicationsCommand { get; }
@@ -100,12 +104,51 @@ namespace EC_Youth_Portal.ViewModel
             Y2RConnectCommand = new Command(OnY2RConnect);
             SearchTappedCommand = new Command(OnSearchTapped);
             ChangeLocationCommand = new Command(OnChangeLocation);
+            ViewBursaryDetailCommand = new Command(async () => await OnViewBursaryDetail());
+            ViewJobDetailCommand = new Command(async () => await OnViewJobDetail());
+            ViewAllOpportunitiesCommand = new Command(async () => await OnViewAllOpportunities());
         }
 
-        //private async void OnProfileTapped()
-        //{
-        //    await Shell.Current.DisplayAlert("Profile", "Navigate to profile page", "OK");
-        //}
+        private async Task OnViewBursaryDetail()
+        {
+            // Pass bursary data to the detail page
+                    var navigationParameter = new Dictionary<string, object>
+            {
+                { "OpportunityType", "Bursary" },
+                { "Title", "Engineering Excellence Bursary 2026" },
+                { "Company", "National Bursary Foundation" },
+                { "MatchScore", "95% Match" },
+                { "Location", "Eastern Cape" },
+                { "Value", "R120,000 p/a" },
+                { "Duration", "4 Years" },
+                { "Description", "Full bursary covering tuition, accommodation, and living expenses for Engineering students." }
+            };
+
+            await Shell.Current.GoToAsync("ApplyOpportunityPage", navigationParameter);
+        }
+
+        private async Task OnViewJobDetail()
+        {
+            // Pass job data to the detail page
+            var navigationParameter = new Dictionary<string, object>
+                {
+                    { "OpportunityType", "Job" },
+                    { "Title", "Junior Software Developer" },
+                    { "Company", "Tech Solutions SA" },
+                    { "MatchScore", "88% Match" },
+                    { "Location", "East London" },
+                    { "JobType", "Full-time" },
+                    { "Salary", "R25,000 - R35,000" },
+                    { "Description", "Exciting opportunity for a Junior Software Developer to join our growing team." }
+                };
+
+            await Shell.Current.GoToAsync("ApplyOpportunityPage", navigationParameter);
+        }
+
+        private async Task OnViewAllOpportunities()
+        {
+            await Shell.Current.DisplayAlert("All Opportunities", "View all opportunities page coming soon!", "OK");
+        }
 
         private async void OnSearchTapped()
         {
@@ -161,7 +204,8 @@ namespace EC_Youth_Portal.ViewModel
 
         private async void OnUpdateProfile()
         {
-            await Shell.Current.DisplayAlert("Update Profile", "Edit your profile", "OK");
+            //await Shell.Current.DisplayAlert("Update Profile", "Edit your profile", "OK");
+            await Shell.Current.GoToAsync("//DashboardTabs/MyProfilePage");
         }
 
         private async void OnY2RConnect()

@@ -86,7 +86,7 @@ namespace EC_Youth_Portal.ViewModel
             //    return false;
             //}
 
-            // TODO: Submit final profile to API
+            // TODO: Submit final profile 
             await Task.Delay(500);
             return true;
         }

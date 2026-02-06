@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EC_Youth_Portal.Views.DashBoard.ApplyOpportunityPage"
+              BackgroundColor="#F5F5F5"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- TOP HEADER WITH BACK BUTTON -->
+        <Frame Grid.Row="0"
+               BackgroundColor="#1E3A5F"
+               CornerRadius="0"
+               Padding="0"
+               HasShadow="True">
+            <Grid ColumnDefinitions="50,*,50" Padding="15,10" HeightRequest="60">
+
+                <!-- Back Button -->
+                <Frame Grid.Column="0"
+                       BackgroundColor="Transparent"
+                       Padding="0"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       VerticalOptions="Center"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="←"
+                           FontSize="28"
+                           TextColor="White"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+
+                <!-- Page Title -->
+                <Label Grid.Column="1"
+                       Text="Opportunity Details"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+
+                <!-- Save/Favorite Button -->
+                <Frame Grid.Column="2"
+                       BackgroundColor="Transparent"
+                       Padding="0"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       VerticalOptions="Center"
+                       HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveOpportunityCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="♡"
+                           FontSize="28"
+                           TextColor="#FFA500"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <!-- MAIN CONTENT -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="0">
+
+                <!-- HERO SECTION -->
+                <Frame BackgroundColor="#1E3A5F"
+                       CornerRadius="0"
+                       Padding="20"
+                       HasShadow="False"
+                       Margin="0">
+                    <VerticalStackLayout Spacing="16">
+
+                        <!-- Match Badge & Type -->
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#FFA500"
+                                   Padding="10,6"
+                                   CornerRadius="20"
+                                   HasShadow="False"
+                                   HorizontalOptions="Start">
+                                <Label Text="{Binding MatchScore}"
+                                       TextColor="White"
+                                       FontSize="12"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+                            <Frame Grid.Column="1"
+                                   BackgroundColor="#FFD54F"
+                                   Padding="10,6"
+                                   CornerRadius="6"
+                                   HasShadow="False">
+                                <Label Text="{Binding OpportunityType}"
+                                       TextColor="#1E3A5F"
+                                       FontSize="11"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+                        </Grid>
+
+                        <!-- Title -->
+                        <Label Text="{Binding Title}"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               LineBreakMode="WordWrap"/>
+
+                        <!-- Company -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                            <Label Grid.Column="0"
+                                   Text="🏢"
+                                   FontSize="16"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding Company}"
+                                   FontSize="14"
+                                   TextColor="#94A3B8"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+
+                        <!-- Location & Duration/Salary -->
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                <Label Text="📍 Location"
+                                       FontSize="11"
+                                       TextColor="#64748B"/>
+                                <Label Text="{Binding Location}"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="White"/>
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                <Label Text="{Binding DetailLabel}"
+                                       FontSize="11"
+                                       TextColor="#64748B"/>
+                                <Label Text="{Binding DetailValue}"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="White"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- WHY THIS MATCH SECTION -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0"
+                       Margin="15,15,15,0">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Why This Match?"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+
+                        <!-- Match Reason 1 -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#FFA500"
+                                   WidthRequest="36"
+                                   HeightRequest="36"
+                                   CornerRadius="18"
+                                   Padding="0"
+                                   HasShadow="False"
+                                   VerticalOptions="Start"
+                                   Margin="0,2,0,0">
+                                <Label Text="✓"
+                                       TextColor="White"
+                                       FontSize="18"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <Label Text="Skill Match"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                                <Label Text="Your profile matches key requirements"
+                                       FontSize="12"
+                                       TextColor="#64748B"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Match Reason 2 -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#FFA500"
+                                   WidthRequest="36"
+                                   HeightRequest="36"
+                                   CornerRadius="18"
+                                   Padding="0"
+                                   HasShadow="False"
+                                   VerticalOptions="Start"
+                                   Margin="0,2,0,0">
+                                <Label Text="✓"
+                                       TextColor="White"
+                                       FontSize="18"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <Label Text="Location Match"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                                <Label Text="Within your preferred location"
+                                       FontSize="12"
+                                       TextColor="#64748B"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <!-- Match Reason 3 -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#FFA500"
+                                   WidthRequest="36"
+                                   HeightRequest="36"
+                                   CornerRadius="18"
+                                   Padding="0"
+                                   HasShadow="False"
+                                   VerticalOptions="Start"
+                                   Margin="0,2,0,0">
+                                <Label Text="✓"
+                                       TextColor="White"
+                                       FontSize="18"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <Label Text="Career Growth"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                                <Label Text="Aligns with your career goals"
+                                       FontSize="12"
+                                       TextColor="#64748B"/>
+                            </VerticalStackLayout>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- ABOUT THE OPPORTUNITY -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0"
+                       Margin="15,15,15,0">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="About the Opportunity"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+
+                        <Label Text="{Binding Description}"
+                               FontSize="13"
+                               TextColor="#64748B"
+                               LineBreakMode="WordWrap"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- KEY REQUIREMENTS -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="16"
+                       Padding="20"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0"
+                       Margin="15,15,15,0">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Key Requirements"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"/>
+
+                        <!-- Requirement Items -->
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <BoxView Grid.Column="0"
+                                     WidthRequest="6"
+                                     HeightRequest="6"
+                                     CornerRadius="3"
+                                     BackgroundColor="#FFA500"
+                                     VerticalOptions="Center"
+                                     Margin="0,4,0,0"/>
+                            <Label Grid.Column="1"
+                                   Text="Relevant qualification or currently studying"
+                                   FontSize="13"
+                                   TextColor="#64748B"
+                                   LineBreakMode="WordWrap"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <BoxView Grid.Column="0"
+                                     WidthRequest="6"
+                                     HeightRequest="6"
+                                     CornerRadius="3"
+                                     BackgroundColor="#FFA500"
+                                     VerticalOptions="Center"
+                                     Margin="0,4,0,0"/>
+                            <Label Grid.Column="1"
+                                   Text="South African citizen"
+                                   FontSize="13"
+                                   TextColor="#64748B"
+                                   LineBreakMode="WordWrap"/>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <BoxView Grid.Column="0"
+                                     WidthRequest="6"
+                                     HeightRequest="6"
+                                     CornerRadius="3"
+                                     BackgroundColor="#FFA500"
+                                     VerticalOptions="Center"
+                                     Margin="0,4,0,0"/>
+                            <Label Grid.Column="1"
+                                   Text="Passion for learning and growth"
+                                   FontSize="13"
+                                   TextColor="#64748B"
+                                   LineBreakMode="WordWrap"/>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- BOTTOM SPACING -->
+                <BoxView HeightRequest="20" Color="Transparent"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- FIXED BOTTOM APPLY BUTTON -->
+        <Frame Grid.Row="2"
+               BackgroundColor="White"
+               CornerRadius="0"
+               Padding="15"
+               HasShadow="True">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Ready to take the next step?"
+                       FontSize="12"
+                       TextColor="#64748B"
+                       HorizontalOptions="Center"/>
+
+                <Button Text="Apply Now   →"
+                        BackgroundColor="#FFA500"
+                        TextColor="White"
+                        CornerRadius="25"
+                        Padding="15,12"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        Command="{Binding ApplyCommand}">
+                    <Button.Shadow>
+                        <Shadow Brush="#FFA500"
+                                Offset="0,4"
+                                Radius="10"
+                                Opacity="0.3"/>
+                    </Button.Shadow>
+                </Button>
+            </VerticalStackLayout>
+        </Frame>
+
+    </Grid>
+</ContentPage>

@@ -114,19 +114,17 @@
             </ShellContent.Icon>
         </ShellContent>
 
-        <!-- Track Progress -->
         <ShellContent
-            Title="Track"
-            Route="TrackPage"
-            ContentTemplate="{DataTemplate dashboard:TrackPage}">
+            Title="Me"
+            Route="MyProfilePage"
+            ContentTemplate="{DataTemplate dashboard:MyProfilePage}">
             <ShellContent.Icon>
                 <FontImageSource 
-                    Glyph="📊" 
-                    FontFamily="Segoe UI Emoji"
-                    Color="{StaticResource PrimaryNavy}"/>
+            Glyph="👤" 
+            FontFamily="Segoe UI Emoji"
+            Color="{StaticResource PrimaryNavy}"/>
             </ShellContent.Icon>
         </ShellContent>
-
     </TabBar>
 
 

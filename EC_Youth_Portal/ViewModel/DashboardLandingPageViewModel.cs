@@ -9,8 +9,10 @@ namespace EC_Youth_Portal.ViewModel
 {
     public class DashboardLandingPageViewModel : INotifyPropertyChanged 
     {
+        // Will Move all these to become Models on all my view Models
         private string _welcomeMessage = "Welcome back, User!";
         private string _subMessage = "Here's what's happening with your opportunities today.";
+        private string _userLocation = "East London, Eastern Cape";
         private int _applicationCount = 5;
         private int _opportunityCount = 23;
         private string _profileCompletionPercentage = "85%";
@@ -23,6 +25,12 @@ namespace EC_Youth_Portal.ViewModel
         {
             get => _welcomeMessage;
             set { _welcomeMessage = value; OnPropertyChanged(); }
+        }
+
+        public string UserLocation
+        {
+            get => _userLocation;
+            set { _userLocation = value; OnPropertyChanged(); }
         }
 
         public string SubMessage
@@ -68,7 +76,6 @@ namespace EC_Youth_Portal.ViewModel
         }
 
         // Commands
-        public ICommand ProfileTappedCommand { get; }
         public ICommand NotificationsTappedCommand { get; }
         public ICommand OptionsTappedCommand { get; }
         public ICommand ViewApplicationsCommand { get; }
@@ -77,10 +84,12 @@ namespace EC_Youth_Portal.ViewModel
         public ICommand BrowseJobsCommand { get; }
         public ICommand UpdateProfileCommand { get; }
         public ICommand Y2RConnectCommand { get; }
+        public ICommand SearchTappedCommand { get; }
+        public ICommand ChangeLocationCommand { get; }
 
         public DashboardLandingPageViewModel()
         {
-            ProfileTappedCommand = new Command(OnProfileTapped);
+            //ProfileTappedCommand = new Command(OnProfileTapped);
             NotificationsTappedCommand = new Command(OnNotificationsTapped);
             OptionsTappedCommand = new Command(OnOptionsTapped);
             ViewApplicationsCommand = new Command(OnViewApplications);
@@ -89,11 +98,24 @@ namespace EC_Youth_Portal.ViewModel
             BrowseJobsCommand = new Command(OnBrowseJobs);
             UpdateProfileCommand = new Command(OnUpdateProfile);
             Y2RConnectCommand = new Command(OnY2RConnect);
+            SearchTappedCommand = new Command(OnSearchTapped);
+            ChangeLocationCommand = new Command(OnChangeLocation);
         }
 
-        private async void OnProfileTapped()
+        //private async void OnProfileTapped()
+        //{
+        //    await Shell.Current.DisplayAlert("Profile", "Navigate to profile page", "OK");
+        //}
+
+        private async void OnSearchTapped()
         {
-            await Shell.Current.DisplayAlert("Profile", "Navigate to profile page", "OK");
+            // TODO: Navigate to search page when created
+            await Shell.Current.DisplayAlert("Search", "Search page coming soon!", "OK");
+        }
+
+        private async void OnChangeLocation()
+        {
+            await Shell.Current.DisplayAlert("Location", "Change location feature coming soon!", "OK");
         }
 
         private async void OnNotificationsTapped()

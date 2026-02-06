@@ -10,6 +10,7 @@ namespace EC_Youth_Portal.ViewModel
     public class LoginPageViewModel : INotifyPropertyChanged
     {
 
+        // Will Move all these to become Models on all my view Models
         private string _email;
         private string _password;
         private string _errorMessage;

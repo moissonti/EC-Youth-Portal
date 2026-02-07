@@ -210,7 +210,7 @@ namespace EC_Youth_Portal.ViewModel
 
         private async void OnY2RConnect()
         {
-            await Shell.Current.GoToAsync("//DashboardTabs/Y2RPage");
+            await Shell.Current.GoToAsync("//DashboardTabs/ApplicationsPage");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

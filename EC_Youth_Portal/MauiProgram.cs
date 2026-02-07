@@ -1,5 +1,6 @@
 ﻿using EC_Youth_Portal.ViewModel;
 using EC_Youth_Portal.Views.DashBoard;
+using Microcharts.Maui;
 using Microsoft.Extensions.Logging;
 
 namespace EC_Youth_Portal
@@ -11,16 +12,19 @@ namespace EC_Youth_Portal
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                 .UseMicrocharts()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            
+
 
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             // Authentication Pages
@@ -46,6 +50,7 @@ namespace EC_Youth_Portal
             builder.Services.AddTransient<ViewModel.CreateProfilePageViewModel>();
 
             // DasBoard ViewModels
+
             builder.Services.AddTransient<ViewModel.DashboardLandingPageViewModel>();
             builder.Services.AddTransient<ViewModel.MyProfilePageViewModel>();
             builder.Services.AddTransient<ViewModel.PersonalInfoSectionViewModel>();
@@ -55,6 +60,8 @@ namespace EC_Youth_Portal
             builder.Services.AddTransient<ViewModel.EditProfilePageViewModel>();
             builder.Services.AddTransient<ViewModel.AccountInformationPageViewModel>();
             builder.Services.AddTransient<ViewModel.ApplyOpportunityPageViewModel>();
+            builder.Services.AddTransient<ViewModel.MyApplicationsPageViewModel>();
+
 
 
 

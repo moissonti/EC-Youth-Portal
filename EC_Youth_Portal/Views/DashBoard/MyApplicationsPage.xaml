@@ -1,15 +1,681 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
              x:Class="EC_Youth_Portal.Views.DashBoard.MyApplicationsPage"
-              BackgroundColor="#F5F5F5"
+             BackgroundColor="#F5F5F5"
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False">
-    
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid>
+        <!-- MAIN CONTENT -->
+        <Grid RowDefinitions="Auto,*">
+
+            <!-- CUSTOM HEADER -->
+            <Frame Grid.Row="0"
+                   BackgroundColor="#1E3A5F"
+                   CornerRadius="0"
+                   Padding="0"
+                   HasShadow="True">
+                <Grid ColumnDefinitions="*,50"
+                      Padding="15,10"
+                      HeightRequest="60">
+
+                    <!-- Page Title -->
+                    <VerticalStackLayout Grid.Column="0" 
+                                        Spacing="4" 
+                                        VerticalOptions="Center">
+                        <Label Text="My Applications"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+                        <Label Text="Track your opportunity journey"
+                               FontSize="13"
+                               TextColor="#94A3B8"/>
+                    </VerticalStackLayout>
+
+                    <!-- View All Applications Button -->
+                    <Frame Grid.Column="1"
+                           BackgroundColor="#2C5282"
+                           Padding="0"
+                           WidthRequest="40"
+                           HeightRequest="40"
+                           CornerRadius="10"
+                           VerticalOptions="Center"
+                           HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenDrawerCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Label Text="📋"
+                               FontSize="22"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Frame>
+
+                </Grid>
+            </Frame>
+
+            <!-- SCROLLABLE CONTENT -->
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout Padding="15" Spacing="20">
+
+                    <!-- OVERVIEW HEADING -->
+                    <Label Text="Overview"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"
+                           Margin="0,5,0,0"/>
+
+                    <!-- SUMMARY STATS GRID -->
+                    <Grid ColumnDefinitions="*,*" 
+                          ColumnSpacing="12" 
+                          RowSpacing="12">
+
+                        <!-- Total Applications -->
+                        <Frame Grid.Column="0"
+                               BackgroundColor="White"
+                               CornerRadius="14"
+                               Padding="16"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="📝" FontSize="24"/>
+                                <Label Text="Total Applied"
+                                       FontSize="11"
+                                       TextColor="#64748B"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding TotalApplications}"
+                                       FontSize="32"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Success Rate -->
+                        <Frame Grid.Column="1"
+                               BackgroundColor="White"
+                               CornerRadius="14"
+                               Padding="16"
+                               HasShadow="False"
+                               BorderColor="#E0E0E0">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="📈" FontSize="24"/>
+                                <Label Text="Success Rate"
+                                       FontSize="11"
+                                       TextColor="#64748B"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding SuccessRate}"
+                                       FontSize="32"
+                                       FontAttributes="Bold"
+                                       TextColor="#4CAF50"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+
+                    <!-- APPLICATION BREAKDOWN CHART -->
+                    <Frame BackgroundColor="White"
+                           CornerRadius="16"
+                           Padding="20"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0">
+                        <VerticalStackLayout Spacing="15">
+
+                            <Label Text="Application Breakdown"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"/>
+
+                            <!-- Donut Chart -->
+                            <microcharts:ChartView x:Name="ApplicationChart"
+                                                  HeightRequest="220"
+                                                  Chart="{Binding ApplicationChart}"/>
+
+                            <!-- Legend -->
+                            <Grid ColumnDefinitions="*,*" 
+                                  ColumnSpacing="10" 
+                                  RowDefinitions="Auto,Auto"
+                                  RowSpacing="8">
+
+                                <!-- Approved -->
+                                <HorizontalStackLayout Grid.Column="0" Grid.Row="0" Spacing="8">
+                                    <BoxView WidthRequest="12"
+                                            HeightRequest="12"
+                                            CornerRadius="6"
+                                            BackgroundColor="#4CAF50"
+                                            VerticalOptions="Center"/>
+                                    <Label Text="Approved"
+                                           FontSize="12"
+                                           TextColor="#64748B"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+
+                                <!-- Replied -->
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="0" Spacing="8">
+                                    <BoxView WidthRequest="12"
+                                            HeightRequest="12"
+                                            CornerRadius="6"
+                                            BackgroundColor="#2196F3"
+                                            VerticalOptions="Center"/>
+                                    <Label Text="Replied"
+                                           FontSize="12"
+                                           TextColor="#64748B"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+
+                                <!-- Pending -->
+                                <HorizontalStackLayout Grid.Column="0" Grid.Row="1" Spacing="8">
+                                    <BoxView WidthRequest="12"
+                                            HeightRequest="12"
+                                            CornerRadius="6"
+                                            BackgroundColor="#FFA500"
+                                            VerticalOptions="Center"/>
+                                    <Label Text="Pending"
+                                           FontSize="12"
+                                           TextColor="#64748B"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+
+                                <!-- Rejected -->
+                                <HorizontalStackLayout Grid.Column="1" Grid.Row="1" Spacing="8">
+                                    <BoxView WidthRequest="12"
+                                            HeightRequest="12"
+                                            CornerRadius="6"
+                                            BackgroundColor="#F44336"
+                                            VerticalOptions="Center"/>
+                                    <Label Text="Rejected"
+                                           FontSize="12"
+                                           TextColor="#64748B"
+                                           VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- STATUS BREAKDOWN -->
+                    <Label Text="Application Status"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"/>
+
+                    <Grid ColumnDefinitions="*,*" 
+                          ColumnSpacing="12" 
+                          RowSpacing="12">
+
+                        <!-- Replied -->
+                        <Frame Grid.Column="0" Grid.Row="0"
+                               BackgroundColor="#E3F2FD"
+                               CornerRadius="14"
+                               Padding="16"
+                               HasShadow="False"
+                               BorderColor="#2196F3">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
+                                                    CommandParameter="Replied"/>
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout Spacing="6">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Grid.Column="0"
+                                           Text="Replied"
+                                           FontSize="12"
+                                           TextColor="#0D47A1"
+                                           FontAttributes="Bold"/>
+                                    <Label Grid.Column="1"
+                                           Text="💬"
+                                           FontSize="16"/>
+                                </Grid>
+                                <Label Text="{Binding RepliedCount}"
+                                       FontSize="28"
+                                       FontAttributes="Bold"
+                                       TextColor="#0D47A1"/>
+                                <Label Text="{Binding RepliedPercent}"
+                                       FontSize="10"
+                                       TextColor="#1976D2"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Pending -->
+                        <Frame Grid.Column="1" Grid.Row="0"
+                               BackgroundColor="#FFF3E0"
+                               CornerRadius="14"
+                               Padding="16"
+                               HasShadow="False"
+                               BorderColor="#FFA500">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
+                                                    CommandParameter="Pending"/>
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout Spacing="6">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Grid.Column="0"
+                                           Text="Pending"
+                                           FontSize="12"
+                                           TextColor="#E65100"
+                                           FontAttributes="Bold"/>
+                                    <Label Grid.Column="1"
+                                           Text="⏳"
+                                           FontSize="16"/>
+                                </Grid>
+                                <Label Text="{Binding PendingCount}"
+                                       FontSize="28"
+                                       FontAttributes="Bold"
+                                       TextColor="#E65100"/>
+                                <Label Text="{Binding PendingPercent}"
+                                       FontSize="10"
+                                       TextColor="#F57C00"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Approved -->
+                        <Frame Grid.Column="0" Grid.Row="1"
+                               BackgroundColor="#E8F5E9"
+                               CornerRadius="14"
+                               Padding="16"
+                               HasShadow="False"
+                               BorderColor="#4CAF50">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
+                                                    CommandParameter="Approved"/>
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout Spacing="6">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Grid.Column="0"
+                                           Text="Approved"
+                                           FontSize="12"
+                                           TextColor="#1B5E20"
+                                           FontAttributes="Bold"/>
+                                    <Label Grid.Column="1"
+                                           Text="✅"
+                                           FontSize="16"/>
+                                </Grid>
+                                <Label Text="{Binding ApprovedCount}"
+                                       FontSize="28"
+                                       FontAttributes="Bold"
+                                       TextColor="#1B5E20"/>
+                                <Label Text="{Binding ApprovedPercent}"
+                                       FontSize="10"
+                                       TextColor="#2E7D32"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Rejected -->
+                        <Frame Grid.Column="1" Grid.Row="1"
+                               BackgroundColor="#FFEBEE"
+                               CornerRadius="14"
+                               Padding="16"
+                               HasShadow="False"
+                               BorderColor="#F44336">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
+                                                    CommandParameter="Rejected"/>
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout Spacing="6">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label Grid.Column="0"
+                                           Text="Rejected"
+                                           FontSize="12"
+                                           TextColor="#B71C1C"
+                                           FontAttributes="Bold"/>
+                                    <Label Grid.Column="1"
+                                           Text="❌"
+                                           FontSize="16"/>
+                                </Grid>
+                                <Label Text="{Binding RejectedCount}"
+                                       FontSize="28"
+                                       FontAttributes="Bold"
+                                       TextColor="#B71C1C"/>
+                                <Label Text="{Binding RejectedPercent}"
+                                       FontSize="10"
+                                       TextColor="#C62828"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                    </Grid>
+
+                    <!-- INSIGHTS CARD -->
+                    <Frame BackgroundColor="#1E3A5F"
+                           CornerRadius="16"
+                           Padding="20"
+                           HasShadow="False"
+                           BorderColor="#E0E0E0"
+                           Margin="0,10,0,0">
+                        <VerticalStackLayout Spacing="12">
+
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                <Frame Grid.Column="0"
+                                       BackgroundColor="#FFA500"
+                                       WidthRequest="44"
+                                       HeightRequest="44"
+                                       CornerRadius="12"
+                                       Padding="0"
+                                       HasShadow="False">
+                                    <Label Text="💡"
+                                           FontSize="22"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"/>
+                                </Frame>
+                                <VerticalStackLayout Grid.Column="1" 
+                                                    Spacing="2" 
+                                                    VerticalOptions="Center">
+                                    <Label Text="Quick Insights"
+                                           FontSize="15"
+                                           FontAttributes="Bold"
+                                           TextColor="White"/>
+                                    <Label Text="Based on your applications"
+                                           FontSize="11"
+                                           TextColor="#94A3B8"/>
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="{Binding Insight1}"
+                                       FontSize="12"
+                                       TextColor="#CBD5E1"/>
+                                <Label Text="{Binding Insight2}"
+                                       FontSize="12"
+                                       TextColor="#CBD5E1"/>
+                                <Label Text="{Binding Insight3}"
+                                       FontSize="12"
+                                       TextColor="#CBD5E1"/>
+                            </VerticalStackLayout>
+
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Quick Action to View All -->
+                    <Frame BackgroundColor="#2C5282"
+                           CornerRadius="16"
+                           Padding="18"
+                           HasShadow="True"
+                           Margin="0,10,0,20">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenDrawerCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <Frame Grid.Column="0"
+                                   BackgroundColor="#3D5A80"
+                                   WidthRequest="50"
+                                   HeightRequest="50"
+                                   CornerRadius="25"
+                                   Padding="0"
+                                   HasShadow="False">
+                                <Label Text="📋"
+                                       FontSize="26"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" 
+                                                Spacing="3" 
+                                                VerticalOptions="Center">
+                                <Label Text="View All Applications"
+                                       FontSize="15"
+                                       FontAttributes="Bold"
+                                       TextColor="White"/>
+                                <Label Text="{Binding TotalApplications, StringFormat='{0} opportunities tracked'}"
+                                       FontSize="12"
+                                       TextColor="#94A3B8"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2"
+                                   Text="→"
+                                   FontSize="28"
+                                   TextColor="White"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </Grid>
+
+        <!-- OVERLAY (BACKDROP) -->
+        <BoxView BackgroundColor="#000000"
+                 Opacity="0.5"
+                 IsVisible="{Binding IsOverlayVisible}"
+                 InputTransparent="False">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseDrawerCommand}"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- OFF-CANVAS DRAWER -->
+        <Frame BackgroundColor="White"
+               CornerRadius="0"
+               Padding="0"
+               HasShadow="True"
+               HorizontalOptions="End"
+               WidthRequest="380"
+               IsVisible="{Binding IsDrawerOpen}">
+
+            <Grid RowDefinitions="Auto,Auto,*">
+
+                <!-- DRAWER HEADER -->
+                <Frame Grid.Row="0"
+                       BackgroundColor="#1E3A5F"
+                       CornerRadius="0"
+                       Padding="0"
+                       HasShadow="False">
+                    <Grid ColumnDefinitions="*,Auto" 
+                          Padding="20,15"
+                          HeightRequest="70">
+
+                        <VerticalStackLayout Grid.Column="0" 
+                                            Spacing="3" 
+                                            VerticalOptions="Center">
+                            <Label Text="{Binding ApplicationsListTitle}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"/>
+                            <Label Text="{Binding FilteredApplications.Count, StringFormat='{0} application(s)'}"
+                                   FontSize="12"
+                                   TextColor="#94A3B8"/>
+                        </VerticalStackLayout>
+
+                        <!-- Close Button -->
+                        <Frame Grid.Column="1"
+                               BackgroundColor="#2C5282"
+                               Padding="0"
+                               WidthRequest="40"
+                               HeightRequest="40"
+                               CornerRadius="10"
+                               VerticalOptions="Center"
+                               HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseDrawerCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="✕"
+                                   FontSize="20"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!-- FILTER CHIPS -->
+                <Frame Grid.Row="1"
+                       BackgroundColor="#F8FAFC"
+                       CornerRadius="0"
+                       Padding="15,12"
+                       HasShadow="False"
+                       BorderColor="#E0E0E0">
+                    <ScrollView Orientation="Horizontal"
+                               HorizontalScrollBarVisibility="Never">
+                        <HorizontalStackLayout Spacing="8">
+
+                            <!-- All Filter -->
+                            <Frame BackgroundColor="#1E3A5F"
+                                   CornerRadius="20"
+                                   Padding="12,8"
+                                   HasShadow="False">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FilterCommand}"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="🔍 Filter"
+                                       FontSize="12"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+
+                            <!-- Approved -->
+                            <Frame BackgroundColor="#E8F5E9"
+                                   CornerRadius="20"
+                                   Padding="12,8"
+                                   HasShadow="False"
+                                   BorderColor="#4CAF50">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
+                                                        CommandParameter="Approved"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="✅ Approved"
+                                       FontSize="12"
+                                       TextColor="#1B5E20"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+
+                            <!-- Replied -->
+                            <Frame BackgroundColor="#E3F2FD"
+                                   CornerRadius="20"
+                                   Padding="12,8"
+                                   HasShadow="False"
+                                   BorderColor="#2196F3">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
+                                                        CommandParameter="Replied"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="💬 Replied"
+                                       FontSize="12"
+                                       TextColor="#0D47A1"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+
+                            <!-- Pending -->
+                            <Frame BackgroundColor="#FFF3E0"
+                                   CornerRadius="20"
+                                   Padding="12,8"
+                                   HasShadow="False"
+                                   BorderColor="#FFA500">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
+                                                        CommandParameter="Pending"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="⏳ Pending"
+                                       FontSize="12"
+                                       TextColor="#E65100"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+
+                            <!-- Rejected -->
+                            <Frame BackgroundColor="#FFEBEE"
+                                   CornerRadius="20"
+                                   Padding="12,8"
+                                   HasShadow="False"
+                                   BorderColor="#F44336">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
+                                                        CommandParameter="Rejected"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="❌ Rejected"
+                                       FontSize="12"
+                                       TextColor="#B71C1C"
+                                       FontAttributes="Bold"/>
+                            </Frame>
+
+                        </HorizontalStackLayout>
+                    </ScrollView>
+                </Frame>
+
+                <!-- APPLICATIONS LIST -->
+                <CollectionView Grid.Row="2"
+                               ItemsSource="{Binding FilteredApplications}"
+                               SelectionMode="None"
+                               Margin="12,8">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="12"
+                                   Padding="14"
+                                   Margin="0,0,0,10"
+                                   HasShadow="False"
+                                   BorderColor="#E0E0E0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewApplicationDetailCommand}"
+                                                        CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="8">
+
+                                    <!-- Title and Date Row -->
+                                    <Grid Grid.Row="0" 
+                                          ColumnDefinitions="*,Auto" 
+                                          ColumnSpacing="8">
+                                        <Label Grid.Column="0"
+                                               Text="{Binding OpportunityTitle}"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               TextColor="#1E3A5F"
+                                               LineBreakMode="TailTruncation"
+                                               MaxLines="2"/>
+                                        <Label Grid.Column="1"
+                                               Text="{Binding AppliedDate}"
+                                               FontSize="10"
+                                               TextColor="#94A3B8"
+                                               VerticalOptions="Start"/>
+                                    </Grid>
+
+                                    <!-- Company -->
+                                    <Label Grid.Row="1"
+                                           Text="{Binding Company}"
+                                           FontSize="12"
+                                           TextColor="#64748B"/>
+
+                                    <!-- Status Badge -->
+                                    <Frame Grid.Row="2"
+                                           BackgroundColor="{Binding StatusColor}"
+                                           CornerRadius="10"
+                                           Padding="10,5"
+                                           HasShadow="False"
+                                           HorizontalOptions="Start">
+                                        <HorizontalStackLayout Spacing="5">
+                                            <Label Text="{Binding StatusIcon}"
+                                                   FontSize="12"
+                                                   TextColor="White"
+                                                   VerticalOptions="Center"/>
+                                            <Label Text="{Binding Status}"
+                                                   FontSize="11"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"
+                                                   VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <!-- Empty State -->
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <VerticalStackLayout Padding="40" Spacing="15">
+                                <Label Text="🔍"
+                                       FontSize="48"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="No applications found"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"
+                                       HorizontalTextAlignment="Center"/>
+                                <Label Text="Try adjusting your filters"
+                                       FontSize="13"
+                                       TextColor="#64748B"
+                                       HorizontalTextAlignment="Center"/>
+                            </VerticalStackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+
+            </Grid>
+        </Frame>
+
+    </Grid>
 </ContentPage>

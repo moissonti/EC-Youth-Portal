@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows.Input;
 
 namespace EC_Youth_Portal.ViewModel
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : BaseViewModel
     {
         public MainPageViewModel()
         {
@@ -22,17 +20,15 @@ namespace EC_Youth_Portal.ViewModel
         public ICommand OpenWebsiteCommand { get; }
         #endregion
 
-        #region Command Methods
-
         private async Task OnLogin()
         {
             try
             {
-                await Shell.Current.GoToAsync("//LoginPage");
+                await Shell.Current.GoToAsync("LoginPage");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Navigation error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Navigation to Login failed: {ex.Message}");
             }
         }
 
@@ -40,11 +36,11 @@ namespace EC_Youth_Portal.ViewModel
         {
             try
             {
-                await Shell.Current.GoToAsync("//RegisterPage");
+                await Shell.Current.GoToAsync("RegisterPage");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Navigation error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Navigation to Register failed: {ex.Message}");
             }
         }
 
@@ -60,16 +56,5 @@ namespace EC_Youth_Portal.ViewModel
                 System.Diagnostics.Debug.WriteLine($"Failed to open website: {ex.Message}");
             }
         }
-
-        #endregion
-
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

@@ -101,7 +101,7 @@ namespace EC_Youth_Portal.ViewModel
             ViewMessagesCommand = new Command(OnViewMessages);
             BrowseJobsCommand = new Command(OnBrowseJobs);
             UpdateProfileCommand = new Command(OnUpdateProfile);
-            Y2RConnectCommand = new Command(OnY2RConnect);
+            //Y2RConnectCommand = new Command(OnY2RConnect);
             SearchTappedCommand = new Command(OnSearchTapped);
             ChangeLocationCommand = new Command(OnChangeLocation);
             ViewBursaryDetailCommand = new Command(async () => await OnViewBursaryDetail());
@@ -178,7 +178,7 @@ namespace EC_Youth_Portal.ViewModel
 
             if (action == "Logout")
             {
-                await Shell.Current.GoToAsync("//MainTabs");
+                await Shell.Current.GoToAsync("LoginPage");
             }
         }
 
@@ -208,10 +208,10 @@ namespace EC_Youth_Portal.ViewModel
             await Shell.Current.GoToAsync("//DashboardTabs/MyProfilePage");
         }
 
-        private async void OnY2RConnect()
-        {
-            await Shell.Current.GoToAsync("//DashboardTabs/ApplicationsPage");
-        }
+        //private async void OnY2RConnect()
+        //{
+        //    await Shell.Current.GoToAsync("//DashboardTabs/ApplicationsPage");
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

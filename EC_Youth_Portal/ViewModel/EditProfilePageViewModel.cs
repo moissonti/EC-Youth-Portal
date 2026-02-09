@@ -39,7 +39,7 @@ namespace EC_Youth_Portal.ViewModel
             set
             {
                 _currentSectionView = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(CurrentSectionView));
             }
         }
 
@@ -89,8 +89,13 @@ namespace EC_Youth_Portal.ViewModel
             SaveCurrentSectionCommand = new Command(async () => await SaveCurrentSection());
             BackCommand = new Command(async () => await GoBack());
 
-            // Load first tab by default
-            SwitchToTab(0);
+            //// Load first tab by default
+            //MainThread.BeginInvokeOnMainThread(() =>
+            //{
+            //    SwitchToTab(0);
+            //});
+
+            _ = LoadInitialTabAsync();
         }
 
         private void SwitchToTab(int tabIndex)
@@ -143,11 +148,18 @@ namespace EC_Youth_Portal.ViewModel
                     }
                     CurrentSectionView = _documentsView;
                     break;
-            }
+            } 
 
             // Update all tab colors
             UpdateTabColors();
         }
+
+        private async Task LoadInitialTabAsync()
+        {
+            await Task.Delay(50);
+            SwitchToTab(0);
+        }
+
 
         private void UpdateTabColors()
         {

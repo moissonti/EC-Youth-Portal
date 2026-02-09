@@ -9,10 +9,19 @@ namespace EC_Youth_Portal
         {
             InitializeComponent();
 
+            // Authentication Routes
+            Routing.RegisterRoute("LoginPage", typeof(LoginPage));
+            Routing.RegisterRoute("RegisterPage", typeof(RegisterPage));
+
+            // Profile Routes
             Routing.RegisterRoute("CreateProfilePage", typeof(CreateProfilePage));
+
+            // DashbBoard Routes
             Routing.RegisterRoute("EditProfilePage", typeof(EditProfilePage)); 
-             Routing.RegisterRoute("AccountInformationPage", typeof(AccountInformationPage));
-                Routing.RegisterRoute("ApplyOpportunityPage", typeof(ApplyOpportunityPage));
+            Routing.RegisterRoute("AccountInformationPage", typeof(AccountInformationPage));
+            Routing.RegisterRoute("SettingsPage", typeof(SettingPage));
+            Routing.RegisterRoute("ApplyOpportunityPage", typeof(ApplyOpportunityPage));
+
         }
     }
 }

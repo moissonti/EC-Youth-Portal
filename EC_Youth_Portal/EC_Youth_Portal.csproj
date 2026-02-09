@@ -97,6 +97,9 @@
 	  <MauiXaml Update="Views\DashBoard\PathwayBuilderPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\DashBoard\SettingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\DashBoard\Y2RPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

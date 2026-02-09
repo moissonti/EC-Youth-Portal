@@ -89,18 +89,6 @@
                                    MaxLines="3"
                                    Margin="0,0,0,10"/>
 
-                            <Button Text="Explore Opportunities →"
-                                    BackgroundColor="#FFA500"
-                                    TextColor="White"
-                                    CornerRadius="25"
-                                    HeightRequest="48"
-                                    FontSize="15"
-                                    FontAttributes="Bold"
-                                    HorizontalOptions="Start"
-                                    Margin="0,0,0,15">
-
-                            </Button>
-
                         </VerticalStackLayout>
 
                     </VerticalStackLayout>
@@ -145,9 +133,6 @@
                            CornerRadius="16" 
                            Padding="18" 
                            HasShadow="True">
-                        <Frame.GestureRecognizers>
-
-                        </Frame.GestureRecognizers>
                         <VerticalStackLayout Spacing="10">
                             <Frame BackgroundColor="#FFA500" 
                                    WidthRequest="48" 
@@ -177,10 +162,6 @@
                            CornerRadius="16" 
                            Padding="18" 
                            HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
-                                                 CommandParameter="Bursaries"/>-->
-                        </Frame.GestureRecognizers>
                         <VerticalStackLayout Spacing="10">
                             <Frame BackgroundColor="#FFA500" 
                                    WidthRequest="48" 
@@ -210,10 +191,6 @@
                            CornerRadius="16" 
                            Padding="18" 
                            HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
-                                                 CommandParameter="Learnerships"/>-->
-                        </Frame.GestureRecognizers>
                         <VerticalStackLayout Spacing="10">
                             <Frame BackgroundColor="#FFA500" 
                                    WidthRequest="48" 
@@ -243,10 +220,6 @@
                            CornerRadius="16" 
                            Padding="18" 
                            HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
-                                                 CommandParameter="Internships"/>-->
-                        </Frame.GestureRecognizers>
                         <VerticalStackLayout Spacing="10">
                             <Frame BackgroundColor="#FFA500" 
                                    WidthRequest="48" 
@@ -276,10 +249,6 @@
                            CornerRadius="16" 
                            Padding="18" 
                            HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
-                                                 CommandParameter="Training"/>-->
-                        </Frame.GestureRecognizers>
                         <VerticalStackLayout Spacing="10">
                             <Frame BackgroundColor="#FFA500" 
                                    WidthRequest="48" 
@@ -309,10 +278,6 @@
                            CornerRadius="16" 
                            Padding="18" 
                            HasShadow="True">
-                        <Frame.GestureRecognizers>
-                            <!--<TapGestureRecognizer Command="{Binding CategorySelectedCommand}" 
-                                                 CommandParameter="SMME"/>-->
-                        </Frame.GestureRecognizers>
                         <VerticalStackLayout Spacing="10">
                             <Frame BackgroundColor="#FFA500" 
                                    WidthRequest="48" 
@@ -497,85 +462,53 @@
 
                 </VerticalStackLayout>
 
-                <!-- Footer Section -->
-                <VerticalStackLayout Spacing="0"
-                                    Margin="0,30,0,0">
-
-                    <!-- Decorative Line -->
-                    <BoxView HeightRequest="1"
-                            Color="#E0E0E0"
-                            HorizontalOptions="Fill"
-                            Margin="0,0,0,20"/>
-
-                    <!-- Footer Content -->
-                    <VerticalStackLayout Spacing="12"
-                                        HorizontalOptions="Center"
-                                        Padding="20,0,20,30">
-
-                        <!-- Made by Text -->
-                        <Label Text="Developed with ❤️ by"
-                               FontSize="13"
-                               TextColor="#666"
-                               HorizontalOptions="Center"
-                               Opacity="0.8"/>
-
-                        <!-- Company Logo/Name -->
-                        <Frame BackgroundColor="#1E3A5F"
-                               Padding="15,10"
-                               CornerRadius="8"
-                               HasShadow="False"
-                               HorizontalOptions="Center">
-                            <Label Text="CCMLP LABS"
-                                   FontSize="16"
-                                   FontAttributes="Bold"
-                                   TextColor="#FFA500"
-                                   HorizontalOptions="Center"/>
-                        </Frame>
-
-                        <!-- Website URL -->
-                        <Label HorizontalOptions="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="🌐 "
-                                          FontSize="12"/>
-                                    <Span Text="www.ccmlplabs.com"
-                                          FontSize="12"
-                                          TextColor="#FFA500"
-                                          TextDecorations="Underline"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                            <Label.GestureRecognizers>
-                                <!--<TapGestureRecognizer Command="{Binding OpenWebsiteCommand}"/>-->
-                            </Label.GestureRecognizers>
-                        </Label>
-
-                        <!-- Tagline -->
-                        <Label Text="Innovating Solutions for Tomorrow"
-                               FontSize="11"
-                               TextColor="#666"
-                               FontAttributes="Italic"
-                               HorizontalOptions="Center"
-                               Opacity="0.7"
-                               Margin="0,5,0,0"/>
-
-                        <!-- Copyright -->
-                        <Label Text="© 2026 CCMLP Labs. All rights reserved."
-                               FontSize="10"
-                               TextColor="#999"
-                               HorizontalOptions="Center"
-                               Margin="0,8,0,0"/>
-
-                    </VerticalStackLayout>
-
-                </VerticalStackLayout>
-
                 <!-- Bottom Spacing for Fixed Button Bar -->
-                <!--
-                <BoxView HeightRequest="100"
-                         Color="Transparent"/>-->
+                <BoxView HeightRequest="20"
+                         Color="Transparent"/>
 
             </VerticalStackLayout>
         </ScrollView>
+
+        <!-- FIXED BOTTOM BAR - AUTHENTICATION BUTTONS -->
+        <Frame Grid.Row="1" 
+               BackgroundColor="White" 
+               Padding="20,15" 
+               CornerRadius="0" 
+               HasShadow="True"
+               BorderColor="#E0E0E0">
+            <VerticalStackLayout Spacing="12">
+
+                <Label Text="Ready to unlock your potential?"
+                       FontSize="13"
+                       FontAttributes="Bold"
+                       TextColor="#1E3A5F"
+                       HorizontalOptions="Center"/>
+
+                <Grid ColumnDefinitions="*,*" 
+                      ColumnSpacing="12">
+                    <Button Text="Login"
+                            Grid.Column="0"
+                            BackgroundColor="Transparent"
+                            TextColor="#1E3A5F"
+                            BorderColor="#1E3A5F"
+                            BorderWidth="2"
+                            CornerRadius="10"
+                            HeightRequest="48"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            Command="{Binding LoginCommand}"/>
+
+                    <Button Text="Register"
+                            Grid.Column="1"
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            CornerRadius="10"
+                            HeightRequest="48"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            Command="{Binding RegisterCommand}"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
     </Grid>
 </ContentPage>
-

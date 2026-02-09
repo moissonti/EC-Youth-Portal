@@ -100,14 +100,13 @@ namespace EC_Youth_Portal.ViewModel
 
         private async void OnNavigateToPersonalInfo()
         {
-            // TODO: Navigate to personal information page
+            
             await Shell.Current.GoToAsync("AccountInformationPage");
         }
 
         private async void OnNavigateToSettings()
         {
-            // TODO: Navigate to settings page
-            await Shell.Current.DisplayAlert("Settings", "Settings page coming soon!", "OK");
+            await Shell.Current.GoToAsync("SettingsPage");
         }
 
         private async void OnNavigateToAbout()
@@ -133,7 +132,7 @@ namespace EC_Youth_Portal.ViewModel
             if (confirm)
             {
                 // Navigate back to main tabs (login screen)
-                await Shell.Current.GoToAsync("//MainTabs");
+                await Shell.Current.GoToAsync("LoginPage");
             }
         }
 

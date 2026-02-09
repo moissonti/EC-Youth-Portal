@@ -4,13 +4,21 @@ namespace EC_Youth_Portal.Views;
 
 public partial class RegisterPage : ContentPage
 {
-	public RegisterPage()
-	{
-		InitializeComponent();
+    private RegisterPageViewModel _viewModel;
 
-        if (BindingContext is RegisterPageViewModel vm)
-        {
-            vm.SetView(this); // Pass View Reference to ViewModel
-        }
+    public RegisterPage()
+    {
+        InitializeComponent();
+
+        _viewModel = new RegisterPageViewModel();
+        BindingContext = _viewModel;
+
+        // CRITICAL: Set the page reference for animations
+        _viewModel.SetView(this);
+    }
+
+    private async void OnBackClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
     }
 }

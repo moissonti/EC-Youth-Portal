@@ -194,14 +194,7 @@ namespace EC_Youth_Portal.ViewModel
 
         private async Task OnLogin()
         {
-            try
-            {
-                await Shell.Current.GoToAsync(nameof(Views.LoginPage));
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Navigation error: {ex.Message}");
-            }
+            await Shell.Current.GoToAsync("LoginPage");
 
         }
 

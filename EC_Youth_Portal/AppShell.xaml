@@ -13,51 +13,15 @@
         Shell.FlyoutBehavior="Disabled"
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False" />
-    
 
-    <!-- Main Tab Bar - Starts from MainPage -->
-    <TabBar Route="MainTabs">
 
-        <!-- Main Page Tab -->
-        <ShellContent
-        Title="Home"
+    <!-- Main Page - No Tabs, just single page -->
+    <ShellContent
         Route="MainPage"
-        ContentTemplate="{DataTemplate views:MainPage}">
-            <ShellContent.Icon>
-                <FontImageSource 
-                Glyph="🏠" 
-                FontFamily="Segoe UI Emoji"
-                Color="{StaticResource PrimaryNavy}"/>
-            </ShellContent.Icon>
-        </ShellContent>
-
-        <!-- Login Page Tab -->
-        <ShellContent
-        Title="Login"
-        Route="LoginPage"
-        ContentTemplate="{DataTemplate views:LoginPage}">
-            <ShellContent.Icon>
-                <FontImageSource 
-                Glyph="🔑" 
-                FontFamily="Segoe UI Emoji"
-                Color="{StaticResource PrimaryNavy}"/>
-            </ShellContent.Icon>
-        </ShellContent>
-
-        <!-- Register Page Tab -->
-        <ShellContent
-        Title="Register"
-        Route="RegisterPage"
-        ContentTemplate="{DataTemplate views:RegisterPage}">
-            <ShellContent.Icon>
-                <FontImageSource 
-                Glyph="✨" 
-                FontFamily="Segoe UI Emoji"
-                Color="{StaticResource PrimaryOrange}"/>
-            </ShellContent.Icon>
-        </ShellContent>
-
-    </TabBar>
+        ContentTemplate="{DataTemplate views:MainPage}"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False" />
 
     <!-- Dashboard Tab Bar (After Login) -->
     <TabBar Route="DashboardTabs">
@@ -75,7 +39,7 @@
             </ShellContent.Icon>
         </ShellContent>
 
-        <!-- Y2R Connect -->
+        <!-- Y2R Connect --><!--
         <ShellContent
             Title="Y2R"
             Route="Y2RPage"
@@ -86,7 +50,7 @@
                     FontFamily="Segoe UI Emoji"
                     Color="{StaticResource PrimaryNavy}"/>
             </ShellContent.Icon>
-        </ShellContent>
+        </ShellContent>-->
 
         <!-- My Applications -->
         <ShellContent
@@ -101,7 +65,7 @@
             </ShellContent.Icon>
         </ShellContent>
 
-        <!-- Pathway Builder -->
+        <!-- Pathway Builder --><!--
         <ShellContent
             Title="Pathway"
             Route="PathwayPage"
@@ -112,7 +76,7 @@
                     FontFamily="Segoe UI Emoji"
                     Color="{StaticResource PrimaryNavy}"/>
             </ShellContent.Icon>
-        </ShellContent>
+        </ShellContent>-->
 
         <ShellContent
             Title="Me"

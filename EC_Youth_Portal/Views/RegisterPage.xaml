@@ -3,163 +3,211 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:EC_Youth_Portal.ViewModel"
              x:Class="EC_Youth_Portal.Views.RegisterPage"
-             BackgroundColor="#F5F5F5"
+             BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
-              Shell.NavBarIsVisible="False">
-
-    <ContentPage.BindingContext>
-        <viewmodels:RegisterPageViewModel/>
-    </ContentPage.BindingContext>
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
 
     <Grid>
-        <!-- MAIN CONTENT -->
+
+        <!-- Decorative Semi-Circles (Background) -->
+        <Grid>
+            <!-- Top Right Semi-Circle -->
+            <Ellipse WidthRequest="180"
+                     HeightRequest="180"
+                     Fill="#FFA500"
+                     Opacity="0.08"
+                     HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     Margin="0,-90,-90,0"/>
+
+            <!-- Bottom Left Semi-Circle -->
+            <Ellipse WidthRequest="200"
+                     HeightRequest="200"
+                     Fill="#1E3A5F"
+                     Opacity="0.06"
+                     HorizontalOptions="Start"
+                     VerticalOptions="End"
+                     Margin="-100,0,0,-100"/>
+        </Grid>
+
+        <!-- Main Content -->
         <ScrollView>
             <VerticalStackLayout Spacing="0">
 
+                <!-- Header Section -->
+                <VerticalStackLayout Padding="30,50,30,20"
+                                    Spacing="8">
 
-                <!-- Welcome Section - CENTERED -->
-                <VerticalStackLayout Spacing="10"
-                     HorizontalOptions="Center"
-                     Margin="0,20,0,0">
-                                    <Label Text="Register Here !!"
-                     FontSize="28"
-                     FontAttributes="Bold"
-                     TextColor="#1E3A5F"
-                     HorizontalTextAlignment="Center"/>
-                                <Label Text="Join our Community to access a pool of information"
-                     FontSize="14"
-                     TextColor="#64748B"
-                     HorizontalTextAlignment="Center"/>     
+                    <!-- Back Arrow -->
+                    <Label Text="←"
+                           FontSize="28"
+                           TextColor="#1E3A5F"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Start"
+                           Margin="0,0,0,20">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBackClicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label Text="Register"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="Let's Get Started"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="Create your account"
+                           FontSize="13"
+                           TextColor="#94A3B8"
+                           HorizontalTextAlignment="Start"
+                           Margin="0,0,0,10"/>
                 </VerticalStackLayout>
 
-                <!-- FORM SECTION -->
-                <VerticalStackLayout Padding="25,30,25,25"
-                                    Spacing="20">
+                <!-- Form Section -->
+                <VerticalStackLayout Padding="30,0,30,30"
+                                    Spacing="18">
 
-                    <!-- Full Name Field -->
+                    <!-- Full Name -->
                     <VerticalStackLayout Spacing="8">
                         <Label Text="Full Name"
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               TextColor="#1E3A5F"/>
-                        <Frame Padding="0"
-                               CornerRadius="12"
-                               HasShadow="False"
-                               BorderColor="#E0E0E0"
-                               BackgroundColor="White">
+                               FontSize="12"
+                               TextColor="#1E3A5F"
+                               FontAttributes="Bold"/>
+                        <Border StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="15,0"
+                                HeightRequest="50">
                             <Entry Placeholder="Enter your full name"
-                                   PlaceholderColor="#94A3B8"
+                                   Text="{Binding FullName}"
                                    TextColor="#1E3A5F"
-                                   FontSize="15"
-                                   Margin="15,0"
-                                   Text="{Binding FullName}"/>
-                        </Frame>
+                                   PlaceholderColor="#BDBDBD"
+                                   FontSize="14"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="Transparent"/>
+                        </Border>
                     </VerticalStackLayout>
 
-                    <!-- Username Field -->
+                    <!-- Username -->
                     <VerticalStackLayout Spacing="8">
                         <Label Text="Username"
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               TextColor="#1E3A5F"/>
-                        <Frame Padding="0"
-                               CornerRadius="12"
-                               HasShadow="False"
-                               BorderColor="#E0E0E0"
-                               BackgroundColor="White">
+                               FontSize="12"
+                               TextColor="#1E3A5F"
+                               FontAttributes="Bold"/>
+                        <Border StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="15,0"
+                                HeightRequest="50">
                             <Entry Placeholder="Choose a username"
-                                   PlaceholderColor="#94A3B8"
+                                   Text="{Binding Username}"
                                    TextColor="#1E3A5F"
-                                   FontSize="15"
-                                   Margin="15,0"
-                                   Text="{Binding Username}"/>
-                        </Frame>
+                                   PlaceholderColor="#BDBDBD"
+                                   FontSize="14"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="Transparent"/>
+                        </Border>
                     </VerticalStackLayout>
 
-                    <!-- Location Field -->
+                    <!-- Location -->
                     <VerticalStackLayout Spacing="8">
                         <Label Text="Location"
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               TextColor="#1E3A5F"/>
-                        <Frame Padding="0"
-                               CornerRadius="12"
-                               HasShadow="False"
-                               BorderColor="#E0E0E0"
-                               BackgroundColor="White">
+                               FontSize="12"
+                               TextColor="#1E3A5F"
+                               FontAttributes="Bold"/>
+                        <Border StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="15,0"
+                                HeightRequest="50">
                             <Entry Placeholder="Your city/town"
-                                   PlaceholderColor="#94A3B8"
+                                   Text="{Binding Location}"
                                    TextColor="#1E3A5F"
-                                   FontSize="15"
-                                   Margin="15,0"
-                                   Text="{Binding Location}"/>
-                        </Frame>
+                                   PlaceholderColor="#BDBDBD"
+                                   FontSize="14"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="Transparent"/>
+                        </Border>
                     </VerticalStackLayout>
 
-                    <!-- Password Field -->
+                    <!-- Password -->
                     <VerticalStackLayout Spacing="8">
                         <Label Text="Password"
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               TextColor="#1E3A5F"/>
-                        <Frame Padding="0"
-                               CornerRadius="12"
-                               HasShadow="False"
-                               BorderColor="#E0E0E0"
-                               BackgroundColor="White">
+                               FontSize="12"
+                               TextColor="#1E3A5F"
+                               FontAttributes="Bold"/>
+                        <Border StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="15,0"
+                                HeightRequest="50">
                             <Entry Placeholder="Create a password"
-                                   PlaceholderColor="#94A3B8"
-                                   TextColor="#1E3A5F"
-                                   FontSize="15"
+                                   Text="{Binding Password}"
                                    IsPassword="True"
-                                   Margin="15,0"
-                                   Text="{Binding Password}"/>
-                        </Frame>
+                                   TextColor="#1E3A5F"
+                                   PlaceholderColor="#BDBDBD"
+                                   FontSize="14"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="Transparent"/>
+                        </Border>
                     </VerticalStackLayout>
 
-                    <!-- Re-enter Password Field -->
+                    <!-- Re-enter Password -->
                     <VerticalStackLayout Spacing="8">
                         <Label Text="Re-enter Password"
-                               FontSize="14"
-                               FontAttributes="Bold"
-                               TextColor="#1E3A5F"/>
-                        <Frame Padding="0"
-                               CornerRadius="12"
-                               HasShadow="False"
-                               BorderColor="#E0E0E0"
-                               BackgroundColor="White">
+                               FontSize="12"
+                               TextColor="#1E3A5F"
+                               FontAttributes="Bold"/>
+                        <Border StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="15,0"
+                                HeightRequest="50">
                             <Entry Placeholder="Confirm your password"
-                                   PlaceholderColor="#94A3B8"
-                                   TextColor="#1E3A5F"
-                                   FontSize="15"
+                                   Text="{Binding RePassword}"
                                    IsPassword="True"
-                                   Margin="15,0"
-                                   Text="{Binding RePassword}"/>
-                        </Frame>
+                                   TextColor="#1E3A5F"
+                                   PlaceholderColor="#BDBDBD"
+                                   FontSize="14"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="Transparent"/>
+                        </Border>
                     </VerticalStackLayout>
 
                     <!-- Register Button -->
                     <Button Text="Register"
+                            Command="{Binding RegisterCommand}"
                             BackgroundColor="#FFA500"
                             TextColor="White"
-                            CornerRadius="12"
-                            HeightRequest="55"
                             FontSize="16"
                             FontAttributes="Bold"
-                            Margin="0,15,0,0"
-                            Command="{Binding RegisterCommand}"/>
+                            CornerRadius="8"
+                            HeightRequest="52"
+                            Margin="0,12,0,15"/>
 
                     <!-- Login Link -->
                     <HorizontalStackLayout HorizontalOptions="Center"
-                                          Spacing="5">
+                                          Spacing="5"
+                                          Margin="0,0,0,20">
                         <Label Text="Already have an account?"
                                FontSize="13"
-                               TextColor="#64748B"/>
+                               TextColor="#757575"/>
                         <Label Text="Login"
                                FontSize="13"
-                               TextColor="#FFA500"
                                FontAttributes="Bold"
-                               TextDecorations="Underline">
+                               TextColor="#FFA500">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding LoginCommand}"/>
                             </Label.GestureRecognizers>
@@ -171,7 +219,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- BOTTOM SHEET OVERLAY (Hidden by default) -->
+        <!-- Bottom Sheet Overlay -->
         <BoxView BackgroundColor="Black"
                  Opacity="{Binding OverlayOpacity}"
                  InputTransparent="{Binding IsOverlayInputTransparent}">
@@ -180,27 +228,25 @@
             </BoxView.GestureRecognizers>
         </BoxView>
 
-        <!-- BOTTOM SHEET MODAL -->
+        <!-- Bottom Sheet Modal -->
         <Frame BackgroundColor="White"
-               CornerRadius="25"
-               Padding="0"
-               HasShadow="True"
-               VerticalOptions="End"
-               TranslationY="{Binding BottomSheetTranslationY}">
+       CornerRadius="25"
+       Padding="0"
+       HasShadow="True"
+       VerticalOptions="End"
+       TranslationY="{Binding BottomSheetTranslationY}">
 
             <Grid RowDefinitions="Auto,*,Auto"
-                  RowSpacing="0">
+          RowSpacing="0">
 
                 <!-- Handle Bar -->
-                <VerticalStackLayout Grid.Row="0"
-                                    Padding="0,15,0,15"
-                                    HorizontalOptions="Center">
-                    <BoxView WidthRequest="40"
-                             HeightRequest="4"
-                             BackgroundColor="#E0E0E0"
-                             CornerRadius="2"
-                             HorizontalOptions="Center"/>
-                </VerticalStackLayout>
+                <BoxView Grid.Row="0"
+                 WidthRequest="40"
+                 HeightRequest="4"
+                 BackgroundColor="#E0E0E0"
+                 CornerRadius="2"
+                 HorizontalOptions="Center"
+                 Margin="0,15"/>
 
                 <!-- Modal Content -->
                 <ScrollView Grid.Row="1"
@@ -229,15 +275,14 @@
                                    Margin="0,5,0,0"/>
                         </VerticalStackLayout>
 
-                        <!-- PPIA Content -->
-                        <Frame BackgroundColor="#F5F5F5"
-                               Padding="15"
-                               CornerRadius="12"
-                               HasShadow="False"
-                               Margin="0,10,0,0">
+                        <!-- POPIA Content -->
+                        <Border StrokeThickness="0"
+                                BackgroundColor="#F5F5F5"
+                                Padding="15"
+                                StrokeShape="RoundRectangle 12"
+                                Margin="0,10,0,0">
                             <VerticalStackLayout Spacing="12">
 
-                                <!-- Section 1 -->
                                 <VerticalStackLayout Spacing="6">
                                     <Label Text="1. Information Collection"
                                            FontSize="15"
@@ -249,7 +294,6 @@
                                            LineBreakMode="WordWrap"/>
                                 </VerticalStackLayout>
 
-                                <!-- Section 2 -->
                                 <VerticalStackLayout Spacing="6">
                                     <Label Text="2. Data Usage"
                                            FontSize="15"
@@ -261,7 +305,6 @@
                                            LineBreakMode="WordWrap"/>
                                 </VerticalStackLayout>
 
-                                <!-- Section 3 -->
                                 <VerticalStackLayout Spacing="6">
                                     <Label Text="3. Data Security"
                                            FontSize="15"
@@ -273,7 +316,6 @@
                                            LineBreakMode="WordWrap"/>
                                 </VerticalStackLayout>
 
-                                <!-- Section 4 -->
                                 <VerticalStackLayout Spacing="6">
                                     <Label Text="4. Your Rights"
                                            FontSize="15"
@@ -285,7 +327,6 @@
                                            LineBreakMode="WordWrap"/>
                                 </VerticalStackLayout>
 
-                                <!-- Section 5 -->
                                 <VerticalStackLayout Spacing="6">
                                     <Label Text="5. Cookies &amp; Tracking"
                                            FontSize="15"
@@ -298,14 +339,14 @@
                                 </VerticalStackLayout>
 
                             </VerticalStackLayout>
-                        </Frame>
+                        </Border>
 
                         <!-- Acceptance Notice -->
-                        <Frame BackgroundColor="#FFF3E0"
-                               Padding="12"
-                               CornerRadius="10"
-                               HasShadow="False"
-                               BorderColor="#FFA500">
+                        <Border StrokeThickness="1"
+                                Stroke="#FFA500"
+                                BackgroundColor="#FFF3E0"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 10">
                             <HorizontalStackLayout Spacing="10">
                                 <Label Text="⚠️"
                                        FontSize="20"
@@ -316,7 +357,7 @@
                                        LineBreakMode="WordWrap"
                                        VerticalOptions="Center"/>
                             </HorizontalStackLayout>
-                        </Frame>
+                        </Border>
 
                     </VerticalStackLayout>
                 </ScrollView>
@@ -328,17 +369,23 @@
                       Padding="25,15,25,25"
                       BackgroundColor="White">
 
-                    <Button Grid.Column="0"
-                            Text="Decline"
+                    <Border Grid.Column="0"
+                            StrokeThickness="2"
+                            Stroke="#1E3A5F"
                             BackgroundColor="Transparent"
-                            TextColor="#1E3A5F"
-                            BorderColor="#1E3A5F"
-                            BorderWidth="2"
-                            CornerRadius="12"
-                            HeightRequest="50"
-                            FontSize="15"
-                            FontAttributes="Bold"
-                            Command="{Binding DeclineCommand}"/>
+                            StrokeShape="RoundRectangle 12"
+                            Padding="0"
+                            HeightRequest="50">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DeclineCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Decline"
+                               TextColor="#1E3A5F"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
 
                     <Button Grid.Column="1"
                             Text="Accept &amp; Continue"

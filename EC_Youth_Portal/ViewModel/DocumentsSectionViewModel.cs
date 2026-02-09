@@ -18,12 +18,36 @@ namespace EC_Youth_Portal.ViewModel
         //private bool _acceptTerms;
         //private bool _acceptPrivacy;
 
-        public bool HasIDDocument { get => _hasIDDocument; set { _hasIDDocument = value; OnPropertyChanged(); } }
-        public bool HasCVDocument { get => _hasCVDocument; set { _hasCVDocument = value; OnPropertyChanged(); } }
-        public bool HasMatricDocument { get => _hasMatricDocument; set { _hasMatricDocument = value; OnPropertyChanged(); } }
-        public string IDDocumentName { get => _idDocumentName; set { _idDocumentName = value; OnPropertyChanged(); } }
-        public string CVDocumentName { get => _cvDocumentName; set { _cvDocumentName = value; OnPropertyChanged(); } }
-        public string MatricDocumentName { get => _matricDocumentName; set { _matricDocumentName = value; OnPropertyChanged(); } }
+        public bool HasIDDocument 
+        {
+          get => _hasIDDocument; 
+          set { _hasIDDocument = value; OnPropertyChanged(); } 
+        }
+        public bool HasCVDocument
+        {
+          get => _hasCVDocument; 
+          set { _hasCVDocument = value; OnPropertyChanged(); } 
+        }
+        public bool HasMatricDocument 
+        {
+            get => _hasMatricDocument; 
+            set { _hasMatricDocument = value; OnPropertyChanged(); } 
+        }
+        public string IDDocumentName
+        { 
+            get => _idDocumentName; 
+            set { _idDocumentName = value; OnPropertyChanged(); } 
+        }
+        public string CVDocumentName 
+        { 
+            get => _cvDocumentName;
+            set { _cvDocumentName = value; OnPropertyChanged(); } 
+        }
+        public string MatricDocumentName 
+        {
+            get => _matricDocumentName; 
+            set { _matricDocumentName = value; OnPropertyChanged(); } 
+        }
         //public bool AcceptTerms { get => _acceptTerms; set { _acceptTerms = value; OnPropertyChanged(); } }
         //public bool AcceptPrivacy { get => _acceptPrivacy; set { _acceptPrivacy = value; OnPropertyChanged(); } }
 

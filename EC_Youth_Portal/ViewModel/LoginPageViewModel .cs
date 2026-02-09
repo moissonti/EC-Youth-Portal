@@ -98,7 +98,7 @@ namespace EC_Youth_Portal.ViewModel
 
         private async Task OnNavigateToRegister()
         {
-            await Shell.Current.GoToAsync("//MainTabs/RegisterPage");
+            await Shell.Current.GoToAsync("RegisterPage");
         }
 
         private async Task OnForgotPassword()

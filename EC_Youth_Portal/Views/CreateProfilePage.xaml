@@ -20,256 +20,221 @@
 
     <Grid RowDefinitions="Auto,*,Auto">
 
-        <!-- MODERN CURVED HEADER WITH GRADIENT -->
-        <Grid Grid.Row="0" RowDefinitions="*,30">
+        <!-- REDESIGNED COMPACT HEADER -->
+        <Border Grid.Row="0"
+                BackgroundColor="#1E3A5F"
+                StrokeThickness="0"
+                Margin="0,0,0,15">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,24,24"/>
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                        Opacity="0.12"
+                        Radius="15"
+                        Offset="0,3"/>
+            </Border.Shadow>
 
-            <!-- Main Header Content -->
-            <Border Grid.Row="0"
-                    Grid.RowSpan="2"
-                    BackgroundColor="#1E3A5F">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="0,0,32,32"/>
-                </Border.StrokeShape>
+            <Grid Padding="20,15,20,20" 
+                  RowDefinitions="Auto,Auto,Auto" 
+                  RowSpacing="12">
 
-                <Grid Padding="24,20,24,35" RowDefinitions="Auto,Auto,Auto" RowSpacing="15">
+                <!-- Row 1: Title and Step Badge -->
+                <Grid Grid.Row="0" 
+                      ColumnDefinitions="*,Auto" 
+                      ColumnSpacing="12">
 
-                    <!-- Top Row: Back Button + Avatar/Step Counter -->
-                    <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                    <!-- Title Section -->
+                    <VerticalStackLayout Grid.Column="0" 
+                                        Spacing="3"
+                                        VerticalOptions="Center">
+                        <Label Text="Complete Your Profile"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               LineBreakMode="TailTruncation"/>
+                        <Label Text="{Binding CurrentStepText}"
+                               FontSize="12"
+                               TextColor="#94A3B8"
+                               LineBreakMode="TailTruncation"/>
+                    </VerticalStackLayout>
 
-                        <!-- Back Button --><!--
-                        <Border WidthRequest="42"
-                                HeightRequest="42"
-                                BackgroundColor="#2C5282"
-                                StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12"/>
-                            </Border.StrokeShape>
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BackCommand}"/>
-                            </Border.GestureRecognizers>
-                            <Label Text="←"
-                                   FontSize="22"
-                                   TextColor="White"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                        </Border>-->
-
-                        <!-- Center Spacer -->
-                        <BoxView Grid.Column="1" IsVisible="False"/>
-
-                        <!-- Step Counter Badge -->
-                        <Border Grid.Column="2"
-                                BackgroundColor="#FFA500"
-                                Padding="14,8"
-                                StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20"/>
-                            </Border.StrokeShape>
-                            <HorizontalStackLayout Spacing="6">
-                                <Label Text="✓"
-                                       FontSize="14"
-                                       TextColor="White"
-                                       VerticalOptions="Center"/>
-                                <Label Text="{Binding CurrentStep, StringFormat='Step {0}/5'}"
-                                       FontSize="13"
-                                       FontAttributes="Bold"
-                                       TextColor="White"
-                                       VerticalOptions="Center"/>
-                            </HorizontalStackLayout>
-                        </Border>
-                    </Grid>
-
-                    <!-- Title Section with Icon -->
-                    <Grid Grid.Row="1" ColumnDefinitions="Auto,*" ColumnSpacing="12">
-
-                        <!-- Icon Container -->
-                        <Border WidthRequest="52"
-                                HeightRequest="52"
-                                BackgroundColor="#2C5282"
-                                StrokeThickness="2"
-                                Stroke="#FFA500">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="16"/>
-                            </Border.StrokeShape>
-                            <Label Text="👤"
-                                   FontSize="26"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                        </Border>
-
-                        <!-- Title and Subtitle -->
-                        <VerticalStackLayout Grid.Column="1" 
-                                            Spacing="4"
-                                            VerticalOptions="Center">
-                            <Label Text="Complete Your Profile"
-                                   FontSize="22"
+                    <!-- Step Counter Badge -->
+                    <Border Grid.Column="1"
+                            BackgroundColor="#FFA500"
+                            Padding="12,6"
+                            StrokeThickness="0"
+                            VerticalOptions="Start">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16"/>
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="#FFA500"
+                                    Opacity="0.3"
+                                    Radius="8"
+                                    Offset="0,2"/>
+                        </Border.Shadow>
+                        <HorizontalStackLayout Spacing="5">
+                            <Label Text="{Binding CurrentStep}"
+                                   FontSize="14"
                                    FontAttributes="Bold"
                                    TextColor="White"
-                                   LineBreakMode="TailTruncation"/>
-                            <Label Text="{Binding CurrentStepText}"
-                                   FontSize="13"
-                                   TextColor="#94A3B8"
-                                   LineBreakMode="TailTruncation"/>
-                        </VerticalStackLayout>
-                    </Grid>
-
-                    <!-- Progress Indicators -->
-                    <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*,*" ColumnSpacing="6">
-
-                        <!-- Step 1 -->
-                        <Border Grid.Column="0"
-                                BackgroundColor="{Binding Step1Color}"
-                                HeightRequest="8"
-                                StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="4"/>
-                            </Border.StrokeShape>
-                            <Border.Shadow>
-                                <Shadow Brush="{Binding Step1Color}"
-                                        Opacity="0.4"
-                                        Radius="8"
-                                        Offset="0,2"/>
-                            </Border.Shadow>
-                        </Border>
-
-                        <!-- Step 2 -->
-                        <Border Grid.Column="1"
-                                BackgroundColor="{Binding Step2Color}"
-                                HeightRequest="8"
-                                StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="4"/>
-                            </Border.StrokeShape>
-                            <Border.Shadow>
-                                <Shadow Brush="{Binding Step2Color}"
-                                        Opacity="0.4"
-                                        Radius="8"
-                                        Offset="0,2"/>
-                            </Border.Shadow>
-                        </Border>
-
-                        <!-- Step 3 -->
-                        <Border Grid.Column="2"
-                                BackgroundColor="{Binding Step3Color}"
-                                HeightRequest="8"
-                                StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="4"/>
-                            </Border.StrokeShape>
-                            <Border.Shadow>
-                                <Shadow Brush="{Binding Step3Color}"
-                                        Opacity="0.4"
-                                        Radius="8"
-                                        Offset="0,2"/>
-                            </Border.Shadow>
-                        </Border>
-
-                        <!-- Step 4 -->
-                        <Border Grid.Column="3"
-                                BackgroundColor="{Binding Step4Color}"
-                                HeightRequest="8"
-                                StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="4"/>
-                            </Border.StrokeShape>
-                            <Border.Shadow>
-                                <Shadow Brush="{Binding Step4Color}"
-                                        Opacity="0.4"
-                                        Radius="8"
-                                        Offset="0,2"/>
-                            </Border.Shadow>
-                        </Border>
-
-                        <!-- Step 5 -->
-                        <Border Grid.Column="4"
-                                BackgroundColor="{Binding Step5Color}"
-                                HeightRequest="8"
-                                StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="4"/>
-                            </Border.StrokeShape>
-                            <Border.Shadow>
-                                <Shadow Brush="{Binding Step5Color}"
-                                        Opacity="0.4"
-                                        Radius="8"
-                                        Offset="0,2"/>
-                            </Border.Shadow>
-                        </Border>
-                    </Grid>
-
+                                   VerticalOptions="Center"/>
+                            <Label Text="/"
+                                   FontSize="12"
+                                   TextColor="White"
+                                   Opacity="0.7"
+                                   VerticalOptions="Center"/>
+                            <Label Text="5"
+                                   FontSize="12"
+                                   TextColor="White"
+                                   Opacity="0.7"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Border>
                 </Grid>
-            </Border>
 
-            <!-- Decorative Accent Dots (bottom right) -->
-            <Grid Grid.Row="1"
-                  HorizontalOptions="End"
-                  Margin="0,0,30,0"
-                  ColumnDefinitions="Auto,Auto,Auto"
-                  ColumnSpacing="4"
-                  VerticalOptions="Start">
-                <Ellipse Grid.Column="0"
-                         Fill="#FFA500"
-                         WidthRequest="6"
-                         HeightRequest="6"
-                         Opacity="0.6"/>
-                <Ellipse Grid.Column="1"
-                         Fill="#FFA500"
-                         WidthRequest="6"
-                         HeightRequest="6"
-                         Opacity="0.4"/>
-                <Ellipse Grid.Column="2"
-                         Fill="#FFA500"
-                         WidthRequest="6"
-                         HeightRequest="6"
-                         Opacity="0.2"/>
+                <!-- Row 2: Progress Bar -->
+                <Grid Grid.Row="1" 
+                      ColumnDefinitions="*,*,*,*,*" 
+                      ColumnSpacing="6"
+                      Margin="0,0,0,0">
+
+                    <!-- Step 1 -->
+                    <Border Grid.Column="0"
+                            BackgroundColor="{Binding Step1Color}"
+                            HeightRequest="6"
+                            StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="3"/>
+                        </Border.StrokeShape>
+                    </Border>
+
+                    <!-- Step 2 -->
+                    <Border Grid.Column="1"
+                            BackgroundColor="{Binding Step2Color}"
+                            HeightRequest="6"
+                            StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="3"/>
+                        </Border.StrokeShape>
+                    </Border>
+
+                    <!-- Step 3 -->
+                    <Border Grid.Column="2"
+                            BackgroundColor="{Binding Step3Color}"
+                            HeightRequest="6"
+                            StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="3"/>
+                        </Border.StrokeShape>
+                    </Border>
+
+                    <!-- Step 4 -->
+                    <Border Grid.Column="3"
+                            BackgroundColor="{Binding Step4Color}"
+                            HeightRequest="6"
+                            StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="3"/>
+                        </Border.StrokeShape>
+                    </Border>
+
+                    <!-- Step 5 -->
+                    <Border Grid.Column="4"
+                            BackgroundColor="{Binding Step5Color}"
+                            HeightRequest="6"
+                            StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="3"/>
+                        </Border.StrokeShape>
+                    </Border>
+                </Grid>
+
+                <!-- Row 3: Step Labels (Optional - shows what each step is) -->
+                <Grid Grid.Row="2" 
+                      ColumnDefinitions="*,*,*,*,*" 
+                      ColumnSpacing="6"
+                      IsVisible="False">
+                    <Label Grid.Column="0" 
+                           Text="•" 
+                           FontSize="8" 
+                           TextColor="#94A3B8" 
+                           HorizontalOptions="Center"/>
+                    <Label Grid.Column="1" 
+                           Text="•" 
+                           FontSize="8" 
+                           TextColor="#94A3B8" 
+                           HorizontalOptions="Center"/>
+                    <Label Grid.Column="2" 
+                           Text="•" 
+                           FontSize="8" 
+                           TextColor="#94A3B8" 
+                           HorizontalOptions="Center"/>
+                    <Label Grid.Column="3" 
+                           Text="•" 
+                           FontSize="8" 
+                           TextColor="#94A3B8" 
+                           HorizontalOptions="Center"/>
+                    <Label Grid.Column="4" 
+                           Text="•" 
+                           FontSize="8" 
+                           TextColor="#94A3B8" 
+                           HorizontalOptions="Center"/>
+                </Grid>
+
             </Grid>
-        </Grid>
+        </Border>
 
         <!-- DYNAMIC CONTENT - Only loads current section -->
-        <ScrollView Grid.Row="1" Margin="0,10,0,0">
+        <ScrollView Grid.Row="1" Margin="0,0,0,0">
             <ContentView x:Name="SectionContainer" 
-                         Padding="20"/>
+                         Padding="20,0,20,20"/>
         </ScrollView>
 
-        <!-- BOTTOM ACTION BUTTONS -->
+        <!-- BOTTOM ACTION BUTTONS  -->
         <Border Grid.Row="2"
                 BackgroundColor="White"
                 StrokeThickness="0">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="24,24,0,0"/>
+                <RoundRectangle CornerRadius="20,20,0,0"/>
             </Border.StrokeShape>
             <Border.Shadow>
                 <Shadow Brush="Black"
-                        Opacity="0.1"
-                        Radius="20"
-                        Offset="0,-4"/>
+                        Opacity="0.08"
+                        Radius="16"
+                        Offset="0,-3"/>
             </Border.Shadow>
 
-            <Grid Padding="20,18"
+            <Grid Padding="20,16,20,20"
                   ColumnDefinitions="*,*" 
-                  ColumnSpacing="12"
-                  RowDefinitions="Auto,Auto"
-                  RowSpacing="10">
+                  ColumnSpacing="12">
 
-                <!-- Previous Button -->
+                <!-- Previous Button (Only visible when ShowPreviousButton is true) -->
                 <Border Grid.Column="0"
                         BackgroundColor="Transparent"
-                        Stroke="#1E3A5F"
+                        Stroke="#E5E5E5"
                         StrokeThickness="2"
                         IsVisible="{Binding ShowPreviousButton}">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14"/>
+                        <RoundRectangle CornerRadius="12"/>
                     </Border.StrokeShape>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding PreviousCommand}"/>
                     </Border.GestureRecognizers>
-                    <Label Text="← Previous"
-                           TextColor="#1E3A5F"
-                           FontAttributes="Bold"
-                           FontSize="15"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           Padding="0,14"/>
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                          Spacing="6"
+                                          Padding="0,15">
+                        <Label Text="←"
+                               FontSize="16"
+                               TextColor="#1E3A5F"
+                               VerticalOptions="Center"/>
+                        <Label Text="Previous"
+                               TextColor="#1E3A5F"
+                               FontAttributes="Bold"
+                               FontSize="15"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
                 </Border>
 
                 <!-- Next/Complete Button (When Previous is visible) -->
@@ -278,24 +243,30 @@
                         StrokeThickness="0"
                         IsVisible="{Binding ShowPreviousButton}">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14"/>
+                        <RoundRectangle CornerRadius="12"/>
                     </Border.StrokeShape>
                     <Border.Shadow>
                         <Shadow Brush="#FFA500"
-                                Opacity="0.4"
+                                Opacity="0.35"
                                 Radius="12"
                                 Offset="0,4"/>
                     </Border.Shadow>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NextCommand}"/>
                     </Border.GestureRecognizers>
-                    <Label Text="{Binding NextButtonText}"
-                           TextColor="White"
-                           FontAttributes="Bold"
-                           FontSize="15"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           Padding="0,14"/>
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                          Spacing="6"
+                                          Padding="0,15">
+                        <Label Text="{Binding NextButtonText}"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               FontSize="15"
+                               VerticalOptions="Center"/>
+                        <Label Text="→"
+                               FontSize="16"
+                               TextColor="White"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
                 </Border>
 
                 <!-- Next/Complete Button (When Previous is NOT visible - full width) -->
@@ -305,53 +276,34 @@
                         StrokeThickness="0"
                         IsVisible="{Binding ShowPreviousButton, Converter={StaticResource InvertedBoolConverter}}">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="14"/>
+                        <RoundRectangle CornerRadius="12"/>
                     </Border.StrokeShape>
                     <Border.Shadow>
                         <Shadow Brush="#FFA500"
-                                Opacity="0.4"
+                                Opacity="0.35"
                                 Radius="12"
                                 Offset="0,4"/>
                     </Border.Shadow>
                     <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NextCommand}"/>
                     </Border.GestureRecognizers>
-                    <Label Text="{Binding NextButtonText}"
-                           TextColor="White"
-                           FontAttributes="Bold"
-                           FontSize="15"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           Padding="0,14"/>
-                </Border>
-
-                <!-- Save Draft Button -->
-                <Border Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        BackgroundColor="Transparent"
-                        Stroke="#E0E0E0"
-                        StrokeThickness="1.5">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12"/>
-                    </Border.StrokeShape>
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SaveDraftCommand}"/>
-                    </Border.GestureRecognizers>
                     <HorizontalStackLayout HorizontalOptions="Center"
-                                          Spacing="6"
-                                          Padding="0,12">
-                        <Label Text="💾"
-                               FontSize="14"
-                               VerticalOptions="Center"/>
-                        <Label Text="Save as Draft"
-                               TextColor="#64748B"
-                               FontSize="13"
+                                          Spacing="8"
+                                          Padding="0,15">
+                        <Label Text="{Binding NextButtonText}"
+                               TextColor="White"
                                FontAttributes="Bold"
+                               FontSize="15"
+                               VerticalOptions="Center"/>
+                        <Label Text="→"
+                               FontSize="16"
+                               TextColor="White"
                                VerticalOptions="Center"/>
                     </HorizontalStackLayout>
                 </Border>
+
             </Grid>
         </Border>
     </Grid>
-    
+
 </ContentPage>

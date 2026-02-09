@@ -7,7 +7,7 @@
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False"
-              Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,168 +15,312 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="220,*">
+    <Grid>
 
-        <!-- Orange Curved Header -->
-        <Grid Grid.Row="0">
-            <!-- Orange Background -->
-            <BoxView BackgroundColor="#FFA500"
-                     VerticalOptions="Fill"
-                     HorizontalOptions="Fill"/>
+        <!-- Decorative Semi-Circles (Background) - Different from Register -->
+        <Grid>
+            <!-- Top Left Semi-Circle -->
+            <Ellipse WidthRequest="160"
+                     HeightRequest="160"
+                     Fill="#1E3A5F"
+                     Opacity="0.07"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="-80,-80,0,0"/>
 
-            <!-- White Curve at Bottom using Path -->
-            <Path Data="M 0,200 Q 190,240 380,200 L 380,220 L 0,220 Z"
-                  Fill="White"
-                  VerticalOptions="End"
-                  HorizontalOptions="Fill"
-                  HeightRequest="40"
-                  Aspect="Fill"/>
+            <!-- Bottom Right Semi-Circle -->
+            <Ellipse WidthRequest="220"
+                     HeightRequest="220"
+                     Fill="#FFA500"
+                     Opacity="0.05"
+                     HorizontalOptions="End"
+                     VerticalOptions="End"
+                     Margin="0,0,-110,-110"/>
 
-            <!-- Back Arrow -->
-            <Label Text="←"
-                   FontSize="28"
-                   TextColor="#1E3A5F"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Start"
-                   VerticalOptions="Start"
-                   Margin="20,50,0,0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnBackClicked"/>
-                </Label.GestureRecognizers>
-            </Label>
+            <!-- Middle Right Accent -->
+            <Ellipse WidthRequest="100"
+                     HeightRequest="100"
+                     Fill="#1E3A5F"
+                     Opacity="0.04"
+                     HorizontalOptions="End"
+                     VerticalOptions="Center"
+                     Margin="0,0,-50,0"/>
         </Grid>
 
         <!-- Main Content -->
-        <ScrollView Grid.Row="1">
-            <VerticalStackLayout Padding="30,0,30,30"
-                                Spacing="0">
+        <ScrollView>
+            <VerticalStackLayout Spacing="0">
 
-                <!-- Illustration -->
-                <Image Source="login_illustration.jpeg"
-                       HeightRequest="200"
-                       Aspect="AspectFit"
-                       Margin="0,-60,0,10"/>
+                <!-- Header Section -->
+                <VerticalStackLayout Padding="10,10,30,0"
+                                    Spacing="8">
 
-                <!-- Login Title -->
-                <Label Text="Login"
-                       FontSize="28"
-                       FontAttributes="Bold"
-                       TextColor="#1E3A5F"
-                       HorizontalTextAlignment="Center"
-                       Margin="0,0,0,8"/>
-
-                <!-- Subtitle -->
-                <Label Text="Let's Get Started"
-                       FontSize="16"
-                       FontAttributes="Bold"
-                       TextColor="#1E3A5F"
-                       HorizontalTextAlignment="Center"
-                       Margin="0,0,0,4"/>
-
-                <Label Text="Register an account"
-                       FontSize="13"
-                       TextColor="#94A3B8"
-                       HorizontalTextAlignment="Center"
-                       Margin="0,0,0,30"/>
-
-                <!-- Email or Mobile Input -->
-                <Label Text="Email or Mobile"
-                       FontSize="12"
-                       TextColor="#1E3A5F"
-                       FontAttributes="Bold"
-                       Margin="0,0,0,8"/>
-
-                <Border StrokeThickness="1"
-                        Stroke="#E5E5E5"
-                        BackgroundColor="White"
-                        StrokeShape="RoundRectangle 8"
-                        Padding="15,0"
-                        HeightRequest="50"
-                        Margin="0,0,0,20">
-                    <Entry Placeholder="example@gmail.com"
-                           Text="{Binding Email}"
-                           Keyboard="Email"
+                    <!-- Back Arrow -->
+                    <Label Text="←"
+                           FontSize="28"
                            TextColor="#1E3A5F"
-                           PlaceholderColor="#BDBDBD"
-                           FontSize="14"
-                           VerticalOptions="Center"
-                           BackgroundColor="Transparent"/>
-                </Border>
-
-                <!-- Password Input -->
-                <Label Text="Password"
-                       FontSize="12"
-                       TextColor="#1E3A5F"
-                       FontAttributes="Bold"
-                       Margin="0,0,0,8"/>
-
-                <Border StrokeThickness="1"
-                        Stroke="#E5E5E5"
-                        BackgroundColor="White"
-                        StrokeShape="RoundRectangle 8"
-                        Padding="15,0"
-                        HeightRequest="50"
-                        Margin="0,0,0,8">
-                    <Grid ColumnDefinitions="*,Auto">
-                        <Entry Grid.Column="0"
-                               Placeholder="****************"
-                               Text="{Binding Password}"
-                               IsPassword="True"
-                               TextColor="#1E3A5F"
-                               PlaceholderColor="#BDBDBD"
-                               FontSize="14"
-                               VerticalOptions="Center"
-                               BackgroundColor="Transparent"/>
-
-                        <Label Grid.Column="1"
-                               Text="👁"
-                               FontSize="18"
-                               TextColor="#FFA500"
-                               VerticalOptions="Center"
-                               Padding="10,0,0,0"/>
-                    </Grid>
-                </Border>
-
-                <!-- Forgot Password -->
-                <Label Text="Forgot password?"
-                       FontSize="12"
-                       TextColor="#FFA500"
-                       HorizontalOptions="End"
-                       Margin="0,0,0,30">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
-                    </Label.GestureRecognizers>
-                </Label>
-
-                <!-- Login Button -->
-                <Button Text="Login"
-                        Command="{Binding LoginCommand}"
-                        BackgroundColor="#FFA500"
-                        TextColor="White"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        CornerRadius="8"
-                        HeightRequest="52"
-                        Margin="0,0,0,20"/>
-
-                <!-- Sign Up Link -->
-                <HorizontalStackLayout HorizontalOptions="Center"
-                                      Spacing="5">
-                    <Label Text="Already have account?"
-                           FontSize="13"
-                           TextColor="#757575"/>
-                    <Label Text="Sign in"
-                           FontSize="13"
                            FontAttributes="Bold"
-                           TextColor="#FFA500">
+                           HorizontalOptions="Start"
+                           Margin="0,0,0,20">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}"/>
+                            <TapGestureRecognizer Tapped="OnBackClicked"/>
                         </Label.GestureRecognizers>
                     </Label>
-                </HorizontalStackLayout>
+
+                    <Label Text="Login"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="Let's Get Started"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#1E3A5F"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="Register an account"
+                           FontSize="13"
+                           TextColor="#94A3B8"
+                           HorizontalTextAlignment="Start"
+                           Margin="0,0,0,10"/>
+                </VerticalStackLayout>
+
+                <!-- Illustration with Modern Card Design -->
+                <Border StrokeThickness="0"
+                        BackgroundColor="#F8F9FA"
+                        StrokeShape="RoundRectangle 20"
+                        Padding="20"
+                        Margin="30,0,30,30"
+                        HeightRequest="200">
+                    <Border.Shadow>
+                        <Shadow Brush="#1E3A5F"
+                                Offset="0,2"
+                                Radius="10"
+                                Opacity="0.08"/>
+                    </Border.Shadow>
+
+                    <Image Source="login_illustration.jpeg"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+
+                <!-- Form Section -->
+                <VerticalStackLayout Padding="30,0,30,30"
+                                    Spacing="20">
+
+                    <!-- Email or Mobile Input -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Email or Mobile"
+                               FontSize="12"
+                               TextColor="#1E3A5F"
+                               FontAttributes="Bold"/>
+                        <Border StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="15,0"
+                                HeightRequest="50">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,1"
+                                        Radius="3"
+                                        Opacity="0.05"/>
+                            </Border.Shadow>
+                            <Entry Placeholder="example@gmail.com"
+                                   Text="{Binding Email}"
+                                   Keyboard="Email"
+                                   TextColor="#1E3A5F"
+                                   PlaceholderColor="#BDBDBD"
+                                   FontSize="14"
+                                   VerticalOptions="Center"
+                                   BackgroundColor="Transparent"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Password Input with Toggle -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Password"
+                               FontSize="12"
+                               TextColor="#1E3A5F"
+                               FontAttributes="Bold"/>
+                        <Border StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="15,0"
+                                HeightRequest="50">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,1"
+                                        Radius="3"
+                                        Opacity="0.05"/>
+                            </Border.Shadow>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Entry Grid.Column="0"
+                                       Placeholder="Enter your password"
+                                       Text="{Binding Password}"
+                                       IsPassword="True"
+                                       TextColor="#1E3A5F"
+                                       PlaceholderColor="#BDBDBD"
+                                       FontSize="14"
+                                       VerticalOptions="Center"
+                                       BackgroundColor="Transparent"/>
+
+                                <Border Grid.Column="1"
+                                        StrokeThickness="0"
+                                        BackgroundColor="Transparent"
+                                        Padding="8"
+                                        VerticalOptions="Center">
+                                    <Label Text="👁"
+                                           FontSize="20"
+                                           TextColor="#FFA500"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Forgot Password with Modern Style -->
+                    <Label Text="Forgot password?"
+                           FontSize="13"
+                           FontAttributes="Bold"
+                           TextColor="#FFA500"
+                           HorizontalOptions="End"
+                           Margin="0,0,0,10">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <!-- Login Button with Gradient Effect (using Shadow) -->
+                    <Border StrokeThickness="0"
+                            BackgroundColor="#FFA500"
+                            StrokeShape="RoundRectangle 8"
+                            Padding="0"
+                            HeightRequest="52"
+                            Margin="0,10,0,20">
+                        <Border.Shadow>
+                            <Shadow Brush="#FFA500"
+                                    Offset="0,4"
+                                    Radius="12"
+                                    Opacity="0.25"/>
+                        </Border.Shadow>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginCommand}"/>
+                        </Border.GestureRecognizers>
+                        <Label Text="Login"
+                               TextColor="White"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <!-- Divider with Text -->
+                    <Grid ColumnDefinitions="*,Auto,*"
+                          ColumnSpacing="15"
+                          Margin="0,10,0,20">
+                        <BoxView Grid.Column="0"
+                                 HeightRequest="1"
+                                 BackgroundColor="#E5E5E5"
+                                 VerticalOptions="Center"/>
+                        <Label Grid.Column="1"
+                               Text="or"
+                               FontSize="12"
+                               TextColor="#94A3B8"
+                               VerticalOptions="Center"/>
+                        <BoxView Grid.Column="2"
+                                 HeightRequest="1"
+                                 BackgroundColor="#E5E5E5"
+                                 VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Social Login Options (Modern Cards) -->
+                    <!--<Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12"
+                          Margin="0,0,0,30">
+
+                        --><!-- Google Login --><!--
+                        <Border Grid.Column="0"
+                                StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="12"
+                                HeightRequest="50">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,2"
+                                        Radius="4"
+                                        Opacity="0.05"/>
+                            </Border.Shadow>
+                            <HorizontalStackLayout Spacing="8"
+                                                  HorizontalOptions="Center"
+                                                  VerticalOptions="Center">
+                                <Label Text="G"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="#DB4437"/>
+                                <Label Text="Google"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                            </HorizontalStackLayout>
+                        </Border>
+
+                        --><!-- Facebook Login --><!--
+                        <Border Grid.Column="1"
+                                StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                BackgroundColor="White"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="12"
+                                HeightRequest="50">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                        Offset="0,2"
+                                        Radius="4"
+                                        Opacity="0.05"/>
+                            </Border.Shadow>
+                            <HorizontalStackLayout Spacing="8"
+                                                  HorizontalOptions="Center"
+                                                  VerticalOptions="Center">
+                                <Label Text="f"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       TextColor="#1877F2"/>
+                                <Label Text="Facebook"
+                                       FontSize="13"
+                                       FontAttributes="Bold"
+                                       TextColor="#1E3A5F"/>
+                            </HorizontalStackLayout>
+                        </Border>
+                    </Grid>-->
+
+                    <!-- Sign Up Link -->
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                          Spacing="5"
+                                          Margin="0,0,0,20">
+                        <Label Text="Don't have an account?"
+                               FontSize="13"
+                               TextColor="#757575"/>
+                        <Label Text="Sign up"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#FFA500"
+                               TextDecorations="Underline">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
 
             </VerticalStackLayout>
         </ScrollView>
 
     </Grid>
+
 </ContentPage>

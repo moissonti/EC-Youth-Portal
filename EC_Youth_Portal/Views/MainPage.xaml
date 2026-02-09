@@ -94,212 +94,109 @@
                     </VerticalStackLayout>
                 </Grid>
 
-                <!-- QUICK ACCESS SECTION -->
-                <VerticalStackLayout Padding="20,25,20,20" 
-                                    BackgroundColor="White" 
-                                    Spacing="18">
+                <!-- CAROUSEL SECTION -->
+                <VerticalStackLayout Padding="20,25,20,-10" 
+                    BackgroundColor="White" 
+                    Spacing="18">
+
+                    <!-- Section Header -->
                     <Grid ColumnDefinitions="Auto,*" 
-                          ColumnSpacing="12">
+          ColumnSpacing="12">
                         <BoxView Grid.Column="0" 
-                                 WidthRequest="4" 
-                                 HeightRequest="28" 
-                                 BackgroundColor="#FFA500" 
-                                 CornerRadius="2"/>
+                 WidthRequest="4" 
+                 HeightRequest="28" 
+                 BackgroundColor="#FFA500" 
+                 CornerRadius="2"/>
                         <Label Grid.Column="1"
-                               Text="Quick Access" 
-                               FontSize="22" 
-                               FontAttributes="Bold"
-                               TextColor="#1E3A5F"
-                               VerticalOptions="Center"/>
+               Text="Explore Opportunities" 
+               FontSize="22" 
+               FontAttributes="Bold"
+               TextColor="#1E3A5F"
+               VerticalOptions="Center"/>
                     </Grid>
-                    <Label Text="Explore opportunities that match your goals"
-                           FontSize="13"
-                           TextColor="#64748B"
-                           Margin="16,0,0,5"/>
+
+                    <Label Text="Discover programs and resources tailored for you"
+           FontSize="13"
+           TextColor="#64748B"
+           Margin="16,0,0,10"/>
+
+                    <!-- Carousel -->
+                    <CarouselView ItemsSource="{Binding CarouselItems}"
+                  Position="{Binding CurrentCarouselPosition}"
+                  HeightRequest="280"
+                  Loop="True"
+                  PeekAreaInsets="30">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="8,0"
+                       Padding="0"
+                       CornerRadius="16"
+                       HasShadow="True"
+                       BorderColor="Transparent">
+
+                                    <Grid RowDefinitions="140,*">
+
+                                        <!-- Gradient Header with Icon -->
+                                        <Grid Grid.Row="0">
+                                            <Grid.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                    <GradientStop Color="{Binding GradientStart}" Offset="0.0" />
+                                                    <GradientStop Color="{Binding GradientEnd}" Offset="1.0" />
+                                                </LinearGradientBrush>
+                                            </Grid.Background>
+
+                                            <!-- Icon with Orange Backdrop -->
+                                            <Frame BackgroundColor="#FFA500"
+                                   WidthRequest="70"
+                                   HeightRequest="70"
+                                   CornerRadius="16"
+                                   Padding="0"
+                                   HasShadow="False"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                                <Image Source="{Binding Icon}"
+                                       HeightRequest="45"
+                                       WidthRequest="45"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Aspect="AspectFit"/>
+                                            </Frame>
+                                        </Grid>
+
+                                        <!-- Content -->
+                                        <VerticalStackLayout Grid.Row="1" 
+                                             Padding="20,18"
+                                             Spacing="8"
+                                             BackgroundColor="White">
+
+                                            <Label Text="{Binding Title}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"
+                                   HorizontalTextAlignment="Center"/>
+
+                                            <Label Text="{Binding Description}"
+                                   FontSize="13"
+                                   TextColor="#64748B"
+                                   HorizontalTextAlignment="Center"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="3"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+                    <!-- Carousel Indicators -->
+                    <IndicatorView x:Name="carouselIndicator"
+                   IndicatorColor="#E2E8F0"
+                   SelectedIndicatorColor="#FFA500"
+                   IndicatorsShape="Circle"
+                   HorizontalOptions="Center"
+                   Margin="0,5,0,0"/>
+
                 </VerticalStackLayout>
-
-                <!-- CATEGORY CARDS - MODERN GRID -->
-                <Grid ColumnSpacing="12" 
-                      RowSpacing="12" 
-                      Padding="20,0,20,20" 
-                      RowDefinitions="Auto,Auto,Auto" 
-                      ColumnDefinitions="*,*" 
-                      BackgroundColor="White">
-
-                    <!-- Jobs Card -->
-                    <Frame Grid.Row="0" 
-                           Grid.Column="0" 
-                           BackgroundColor="#1E3A5F" 
-                           CornerRadius="16" 
-                           Padding="18" 
-                           HasShadow="True">
-                        <VerticalStackLayout Spacing="10">
-                            <Frame BackgroundColor="#FFA500" 
-                                   WidthRequest="48" 
-                                   HeightRequest="48" 
-                                   CornerRadius="14" 
-                                   Padding="0" 
-                                   HasShadow="False">
-                                <Label Text="💼" 
-                                       FontSize="26" 
-                                       HorizontalOptions="Center" 
-                                       VerticalOptions="Center"/>
-                            </Frame>
-                            <Label Text="Jobs" 
-                                   TextColor="White" 
-                                   FontSize="17" 
-                                   FontAttributes="Bold"/>
-                            <Label Text="120 Opportunities" 
-                                   TextColor="#94A3B8" 
-                                   FontSize="12"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- Bursaries Card -->
-                    <Frame Grid.Row="0" 
-                           Grid.Column="1" 
-                           BackgroundColor="#1E3A5F" 
-                           CornerRadius="16" 
-                           Padding="18" 
-                           HasShadow="True">
-                        <VerticalStackLayout Spacing="10">
-                            <Frame BackgroundColor="#FFA500" 
-                                   WidthRequest="48" 
-                                   HeightRequest="48" 
-                                   CornerRadius="14" 
-                                   Padding="0" 
-                                   HasShadow="False">
-                                <Label Text="🎓" 
-                                       FontSize="26" 
-                                       HorizontalOptions="Center" 
-                                       VerticalOptions="Center"/>
-                            </Frame>
-                            <Label Text="Bursaries" 
-                                   TextColor="White" 
-                                   FontSize="17" 
-                                   FontAttributes="Bold"/>
-                            <Label Text="19 Programmes" 
-                                   TextColor="#94A3B8" 
-                                   FontSize="12"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- Learnerships Card -->
-                    <Frame Grid.Row="1" 
-                           Grid.Column="0" 
-                           BackgroundColor="#1E3A5F" 
-                           CornerRadius="16" 
-                           Padding="18" 
-                           HasShadow="True">
-                        <VerticalStackLayout Spacing="10">
-                            <Frame BackgroundColor="#FFA500" 
-                                   WidthRequest="48" 
-                                   HeightRequest="48" 
-                                   CornerRadius="14" 
-                                   Padding="0" 
-                                   HasShadow="False">
-                                <Label Text="🧩" 
-                                       FontSize="26" 
-                                       HorizontalOptions="Center" 
-                                       VerticalOptions="Center"/>
-                            </Frame>
-                            <Label Text="Learnerships" 
-                                   TextColor="White" 
-                                   FontSize="17" 
-                                   FontAttributes="Bold"/>
-                            <Label Text="41 Programmes" 
-                                   TextColor="#94A3B8" 
-                                   FontSize="12"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- Internships Card -->
-                    <Frame Grid.Row="1" 
-                           Grid.Column="1" 
-                           BackgroundColor="#1E3A5F" 
-                           CornerRadius="16" 
-                           Padding="18" 
-                           HasShadow="True">
-                        <VerticalStackLayout Spacing="10">
-                            <Frame BackgroundColor="#FFA500" 
-                                   WidthRequest="48" 
-                                   HeightRequest="48" 
-                                   CornerRadius="14" 
-                                   Padding="0" 
-                                   HasShadow="False">
-                                <Label Text="🏢" 
-                                       FontSize="26" 
-                                       HorizontalOptions="Center" 
-                                       VerticalOptions="Center"/>
-                            </Frame>
-                            <Label Text="Internships" 
-                                   TextColor="White" 
-                                   FontSize="17" 
-                                   FontAttributes="Bold"/>
-                            <Label Text="73 Positions" 
-                                   TextColor="#94A3B8" 
-                                   FontSize="12"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- Training Card -->
-                    <Frame Grid.Row="2" 
-                           Grid.Column="0" 
-                           BackgroundColor="#1E3A5F" 
-                           CornerRadius="16" 
-                           Padding="18" 
-                           HasShadow="True">
-                        <VerticalStackLayout Spacing="10">
-                            <Frame BackgroundColor="#FFA500" 
-                                   WidthRequest="48" 
-                                   HeightRequest="48" 
-                                   CornerRadius="14" 
-                                   Padding="0" 
-                                   HasShadow="False">
-                                <Label Text="📘" 
-                                       FontSize="26" 
-                                       HorizontalOptions="Center" 
-                                       VerticalOptions="Center"/>
-                            </Frame>
-                            <Label Text="Training" 
-                                   TextColor="White" 
-                                   FontSize="17" 
-                                   FontAttributes="Bold"/>
-                            <Label Text="Skills Dev" 
-                                   TextColor="#94A3B8" 
-                                   FontSize="12"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- SMME Funding Card -->
-                    <Frame Grid.Row="2" 
-                           Grid.Column="1" 
-                           BackgroundColor="#1E3A5F" 
-                           CornerRadius="16" 
-                           Padding="18" 
-                           HasShadow="True">
-                        <VerticalStackLayout Spacing="10">
-                            <Frame BackgroundColor="#FFA500" 
-                                   WidthRequest="48" 
-                                   HeightRequest="48" 
-                                   CornerRadius="14" 
-                                   Padding="0" 
-                                   HasShadow="False">
-                                <Label Text="💰" 
-                                       FontSize="26" 
-                                       HorizontalOptions="Center" 
-                                       VerticalOptions="Center"/>
-                            </Frame>
-                            <Label Text="SMME" 
-                                   TextColor="White" 
-                                   FontSize="17" 
-                                   FontAttributes="Bold"/>
-                            <Label Text="Funding" 
-                                   TextColor="#94A3B8" 
-                                   FontSize="12"/>
-                        </VerticalStackLayout>
-                    </Frame>
-                </Grid>
 
                 <!-- FEATURED OPPORTUNITIES SECTION -->
                 <VerticalStackLayout Padding="20,30,20,15" 

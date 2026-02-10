@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EC_Youth_Portal.ViewModel"
              x:Class="EC_Youth_Portal.Views.DashBoard.DashboardLandingPage"
-              BackgroundColor="#F5F5F5"
+             x:DataType="viewmodels:DashboardLandingPageViewModel"
+             BackgroundColor="#F5F5F5"
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False">
-    
+
     <Grid RowDefinitions="Auto,*">
 
-        <!-- CUSTOM HEADER -->
+        <!-- FIXED HEADER WITH NOTIFICATIONS & OPTIONS -->
         <Frame Grid.Row="0"
                BackgroundColor="#1E3A5F"
                CornerRadius="0"
                Padding="0"
                HasShadow="True">
-            <Grid ColumnDefinitions="50,*,50,50"
-                  Padding="15,10"
-                  HeightRequest="60">
+            <Grid ColumnDefinitions="*,50,50"
+                  Padding="20,10"
+                  HeightRequest="65">
 
-                <!-- Page Title (Center) -->
-                <Label Grid.Column="1"
-                       Text="Dashboard"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       TextColor="White"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
+                <!-- Title Section -->
+                <VerticalStackLayout Grid.Column="0" 
+                                    Spacing="3" 
+                                    VerticalOptions="Center">
+                    <Label Text="Dashboard"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                    <Label Text="Discover opportunities that match your profile"
+                           FontSize="12"
+                           TextColor="#94A3B8"/>
+                </VerticalStackLayout>
 
                 <!-- Notifications Icon -->
-                <Frame Grid.Column="2"
+                <Frame Grid.Column="1"
                        BackgroundColor="Transparent"
                        Padding="0"
                        WidthRequest="40"
@@ -40,31 +46,33 @@
                     </Frame.GestureRecognizers>
                     <Grid>
                         <Label Text="🔔"
-                               FontSize="24"
+                               FontSize="22"
+                               TextColor="White"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"/>
                         <!-- Notification Badge -->
-                        <Frame BackgroundColor="#FF4444"
-                               CornerRadius="8"
-                               Padding="0"
-                               WidthRequest="16"
-                               HeightRequest="16"
-                               HorizontalOptions="End"
-                               VerticalOptions="Start"
-                               HasShadow="False"
-                               IsVisible="{Binding HasNotifications}">
+                        <Border BackgroundColor="#FF4444"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 9"
+                                Padding="0"
+                                WidthRequest="18"
+                                HeightRequest="18"
+                                HorizontalOptions="End"
+                                VerticalOptions="Start"
+                                Margin="0,-2,-2,0"
+                                IsVisible="{Binding HasNotifications}">
                             <Label Text="{Binding NotificationCount}"
                                    FontSize="10"
                                    FontAttributes="Bold"
                                    TextColor="White"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
-                        </Frame>
+                        </Border>
                     </Grid>
                 </Frame>
 
-                <!-- Options Menu (Right) -->
-                <Frame Grid.Column="3"
+                <!-- Options Menu -->
+                <Frame Grid.Column="2"
                        BackgroundColor="Transparent"
                        Padding="0"
                        WidthRequest="40"
@@ -75,572 +83,426 @@
                         <TapGestureRecognizer Command="{Binding OptionsTappedCommand}"/>
                     </Frame.GestureRecognizers>
                     <Label Text="⋮"
-                           FontSize="28"
+                           FontSize="26"
                            TextColor="White"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                            Rotation="90"/>
                 </Frame>
-
             </Grid>
         </Frame>
 
         <!-- SCROLLABLE CONTENT -->
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout Padding="20" Spacing="20">
+            <VerticalStackLayout Spacing="0">
 
-                <!-- Welcome Card -->
-                <Frame BackgroundColor="White"
-                       CornerRadius="16"
-                       Padding="20"
-                       HasShadow="False"
-                       BorderColor="#E0E0E0">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="{Binding WelcomeMessage}"
-                               FontSize="22"
-                               FontAttributes="Bold"
-                               TextColor="#1E3A5F"/>
-                        <Label Text="{Binding SubMessage}"
-                               FontSize="14"
-                               TextColor="#64748B"
-                               LineBreakMode="WordWrap"/>
-                    </VerticalStackLayout>
-                </Frame>
+                <!-- Decorative Background Elements -->
+                <Grid HeightRequest="0">
+                    <!-- Top Center Circle -->
+                    <Ellipse WidthRequest="120"
+                             HeightRequest="120"
+                             Fill="#FFA500"
+                             Opacity="0.06"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Start"
+                             Margin="0,-60,0,0"/>
 
-                <!-- Location Display -->
-                <Frame BackgroundColor="White"
-                       CornerRadius="12"
-                       Padding="15"
-                       HasShadow="False"
-                       BorderColor="#E0E0E0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangeLocationCommand}"/>
-                    </Frame.GestureRecognizers>
-                    <Grid ColumnDefinitions="Auto,*,Auto">
-                        <Label Grid.Column="0"
-                               Text="📍"
-                               FontSize="20"
-                               VerticalOptions="Center"
-                               Margin="0,0,10,0"/>
-                        <VerticalStackLayout Grid.Column="1"
-                                           Spacing="2"
-                                           VerticalOptions="Center">
-                            <Label Text="Your Location"
-                                   FontSize="11"
-                                   TextColor="#94A3B8"/>
-                            <Label Text="{Binding UserLocation}"
-                                   FontSize="15"
-                                   FontAttributes="Bold"
-                                   TextColor="#1E3A5F"/>
-                        </VerticalStackLayout>
-                        <Label Grid.Column="2"
-                               Text="›"
-                               FontSize="20"
-                               TextColor="#FFA500"
-                               VerticalOptions="Center"/>
-                    </Grid>
-                </Frame>
+                    <!-- Middle Left Circle -->
+                    <Ellipse WidthRequest="80"
+                             HeightRequest="80"
+                             Fill="#1E3A5F"
+                             Opacity="0.05"
+                             HorizontalOptions="Start"
+                             VerticalOptions="Start"
+                             Margin="-40,150,0,0"/>
 
-                <!-- Search Bar -->
-                <Frame BackgroundColor="White"
-                       CornerRadius="12"
-                       Padding="15,12"
-                       HasShadow="False"
-                       BorderColor="#E0E0E0">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SearchTappedCommand}"/>
-                    </Frame.GestureRecognizers>
-                    <Grid ColumnDefinitions="Auto,*,Auto">
-                        <Label Grid.Column="0"
-                               Text="🔍"
-                               FontSize="20"
-                               VerticalOptions="Center"
-                               Margin="0,0,10,0"/>
-                        <Label Grid.Column="1"
-                               Text="Search for jobs, internships, events..."
-                               FontSize="14"
-                               TextColor="#94A3B8"
-                               VerticalOptions="Center"/>
-                        <Frame Grid.Column="2"
-                               BackgroundColor="#FFA500"
-                               CornerRadius="8"
-                               Padding="8,6"
-                               HasShadow="False">
-                            <Label Text="GO"
-                                   FontSize="12"
-                                   FontAttributes="Bold"
-                                   TextColor="White"
-                                   VerticalOptions="Center"/>
-                        </Frame>
-                    </Grid>
-                </Frame>
-
-                <!-- Quick Stats Grid -->
-                <Grid ColumnDefinitions="*,*"
-                      ColumnSpacing="15"
-                      RowDefinitions="Auto,Auto"
-                      RowSpacing="15">
-
-                    <!-- Applications Stat -->
-                    <Frame Grid.Column="0" Grid.Row="0"
-                           BackgroundColor="White"
-                           CornerRadius="16"
-                           Padding="20"
-                           HasShadow="False"
-                           BorderColor="#E0E0E0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewApplicationsCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout Spacing="8">
-                            <Label Text="📋"
-                                   FontSize="32"
-                                   HorizontalOptions="Start"/>
-                            <Label Text="{Binding ApplicationCount}"
-                                   FontSize="28"
-                                   FontAttributes="Bold"
-                                   TextColor="#1E3A5F"/>
-                            <Label Text="Applications"
-                                   FontSize="13"
-                                   TextColor="#64748B"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- Opportunities Stat -->
-                    <Frame Grid.Column="1" Grid.Row="0"
-                           BackgroundColor="White"
-                           CornerRadius="16"
-                           Padding="20"
-                           HasShadow="False"
-                           BorderColor="#E0E0E0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewOpportunitiesCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout Spacing="8">
-                            <Label Text="💼"
-                                   FontSize="32"
-                                   HorizontalOptions="Start"/>
-                            <Label Text="{Binding OpportunityCount}"
-                                   FontSize="28"
-                                   FontAttributes="Bold"
-                                   TextColor="#1E3A5F"/>
-                            <Label Text="Opportunities"
-                                   FontSize="13"
-                                   TextColor="#64748B"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- Profile Completion -->
-                    <Frame Grid.Column="0" Grid.Row="1"
-                           BackgroundColor="White"
-                           CornerRadius="16"
-                           Padding="20"
-                           HasShadow="False"
-                           BorderColor="#E0E0E0">
-                        <VerticalStackLayout Spacing="8">
-                            <Label Text="✅"
-                                   FontSize="32"
-                                   HorizontalOptions="Start"/>
-                            <Label Text="{Binding ProfileCompletionPercentage}"
-                                   FontSize="28"
-                                   FontAttributes="Bold"
-                                   TextColor="#4CAF50"/>
-                            <Label Text="Profile Complete"
-                                   FontSize="13"
-                                   TextColor="#64748B"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
-                    <!-- Messages Stat -->
-                    <Frame Grid.Column="1" Grid.Row="1"
-                           BackgroundColor="White"
-                           CornerRadius="16"
-                           Padding="20"
-                           HasShadow="False"
-                           BorderColor="#E0E0E0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewMessagesCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout Spacing="8">
-                            <Label Text="💬"
-                                   FontSize="32"
-                                   HorizontalOptions="Start"/>
-                            <Label Text="{Binding MessageCount}"
-                                   FontSize="28"
-                                   FontAttributes="Bold"
-                                   TextColor="#1E3A5F"/>
-                            <Label Text="Messages"
-                                   FontSize="13"
-                                   TextColor="#64748B"/>
-                        </VerticalStackLayout>
-                    </Frame>
-
+                    <!-- Bottom Right Circle -->
+                    <Ellipse WidthRequest="100"
+                             HeightRequest="100"
+                             Fill="#FFA500"
+                             Opacity="0.04"
+                             HorizontalOptions="End"
+                             VerticalOptions="End"
+                             Margin="0,0,-50,-50"/>
                 </Grid>
 
-                <!-- Quick Actions Section -->
-                <VerticalStackLayout Spacing="15">
-                    <Label Text="Quick Actions"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TextColor="#1E3A5F"/>
+                <VerticalStackLayout Padding="20,15,20,20" Spacing="18">
 
-                    <!-- Browse Jobs Action -->
-                    <Frame BackgroundColor="White"
-                           CornerRadius="12"
-                           Padding="15"
-                           HasShadow="False"
-                           BorderColor="#E0E0E0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BrowseJobsCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="Auto,*,Auto">
-                            <Frame Grid.Column="0"
-                                   BackgroundColor="#FFF3E0"
-                                   CornerRadius="8"
-                                   Padding="10"
-                                   WidthRequest="40"
-                                   HeightRequest="40"
-                                   HasShadow="False">
-                                <Label Text="🔍"
+                    <!-- Welcome Section with Page Description -->
+                    <Border BackgroundColor="White"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 16"
+                            Padding="18">
+                        <Border.Shadow>
+                            <Shadow Brush="Black"
+                                    Opacity="0.06"
+                                    Radius="10"
+                                    Offset="0,2"/>
+                        </Border.Shadow>
+
+                        <VerticalStackLayout Spacing="12">
+                            <!-- Welcome Message -->
+                            <Label Text="{Binding WelcomeMessage}"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#1E3A5F"/>
+
+                            <!-- Page Description -->
+                            <Label Text="{Binding OpportunityCount, StringFormat='{0} AI-matched opportunities'}"
+                                   FontSize="13"
+                                   TextColor="#64748B"
+                                   LineBreakMode="WordWrap"/>
+
+                            <!-- Compact Stats Row -->
+                            <Grid ColumnDefinitions="*,*,*"
+                                  ColumnSpacing="8"
+                                  Margin="0,8,0,0">
+
+                                <!-- Applications -->
+                                <Border Grid.Column="0"
+                                        BackgroundColor="#F8F9FA"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 12"
+                                        Padding="12,10">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ViewApplicationsCommand}"/>
+                                    </Border.GestureRecognizers>
+                                    <VerticalStackLayout Spacing="3">
+                                        <Label Text="{Binding ApplicationCount}"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="#1E3A5F"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="Applied"
+                                               FontSize="10"
+                                               TextColor="#64748B"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <!-- Profile Completion -->
+                                <Border Grid.Column="1"
+                                        BackgroundColor="#F8F9FA"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 12"
+                                        Padding="12,10">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding UpdateProfileCommand}"/>
+                                    </Border.GestureRecognizers>
+                                    <VerticalStackLayout Spacing="3">
+                                        <Label Text="{Binding ProfileCompletionPercentage}"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="#4CAF50"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="Profile"
+                                               FontSize="10"
+                                               TextColor="#64748B"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                                <!-- Messages -->
+                                <Border Grid.Column="2"
+                                        BackgroundColor="#F8F9FA"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 12"
+                                        Padding="12,10">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ViewMessagesCommand}"/>
+                                    </Border.GestureRecognizers>
+                                    <VerticalStackLayout Spacing="3">
+                                        <Label Text="{Binding MessageCount}"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="#FFA500"
+                                               HorizontalOptions="Center"/>
+                                        <Label Text="Messages"
+                                               FontSize="10"
+                                               TextColor="#64748B"
+                                               HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Search & Filter Section -->
+                    <VerticalStackLayout Spacing="12">
+
+                        <!-- Search Bar -->
+                        <Border BackgroundColor="White"
+                                StrokeThickness="1"
+                                Stroke="#E5E5E5"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="15,12">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SearchTappedCommand}"/>
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <Label Grid.Column="0"
+                                       Text="🔍"
                                        FontSize="20"
-                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Margin="0,0,12,0"/>
+                                <Label Grid.Column="1"
+                                       Text="Search opportunities..."
+                                       FontSize="14"
+                                       TextColor="#94A3B8"
                                        VerticalOptions="Center"/>
-                            </Frame>
+                            </Grid>
+                        </Border>
 
-                            <VerticalStackLayout Grid.Column="1" 
-                                               Spacing="3"
-                                               VerticalOptions="Center"
-                                               Margin="15,0,0,0">
-                                <Label Text="Browse Jobs"
-                                       FontSize="15"
-                                       FontAttributes="Bold"
-                                       TextColor="#1E3A5F"/>
-                                <Label Text="Find opportunities that match your skills"
-                                       FontSize="12"
-                                       TextColor="#64748B"/>
-                            </VerticalStackLayout>
+                        <!-- Filter Pills -->
+                        <ScrollView Orientation="Horizontal"
+                                    HorizontalScrollBarVisibility="Never">
+                            <HorizontalStackLayout Spacing="10">
+                                <Border BackgroundColor="#1E3A5F"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 20"
+                                        Padding="16,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="All"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="All"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="White"/>
+                                </Border>
 
-                            <Label Grid.Column="2"
-                                   Text="›"
-                                   FontSize="24"
-                                   TextColor="#FFA500"
-                                   VerticalOptions="Center"/>
-                        </Grid>
-                    </Frame>
+                                <Border BackgroundColor="Transparent"
+                                        Stroke="#E5E5E5"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 20"
+                                        Padding="16,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Jobs"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="💼 Jobs"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                </Border>
 
-                    <!-- Update Profile Action -->
-                    <Frame BackgroundColor="White"
-                           CornerRadius="12"
-                           Padding="15"
-                           HasShadow="False"
-                           BorderColor="#E0E0E0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding UpdateProfileCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="Auto,*,Auto">
-                            <Frame Grid.Column="0"
-                                   BackgroundColor="#E3F2FD"
-                                   CornerRadius="8"
-                                   Padding="10"
-                                   WidthRequest="40"
-                                   HeightRequest="40"
-                                   HasShadow="False">
-                                <Label Text="✏️"
-                                       FontSize="20"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center"/>
-                            </Frame>
+                                <Border BackgroundColor="Transparent"
+                                        Stroke="#E5E5E5"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 20"
+                                        Padding="16,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Bursaries"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="🎓 Bursaries"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                </Border>
 
-                            <VerticalStackLayout Grid.Column="1" 
-                                               Spacing="3"
-                                               VerticalOptions="Center"
-                                               Margin="15,0,0,0">
-                                <Label Text="Update Profile"
-                                       FontSize="15"
-                                       FontAttributes="Bold"
-                                       TextColor="#1E3A5F"/>
-                                <Label Text="Keep your information up to date"
-                                       FontSize="12"
-                                       TextColor="#64748B"/>
-                            </VerticalStackLayout>
+                                <Border BackgroundColor="Transparent"
+                                        Stroke="#E5E5E5"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 20"
+                                        Padding="16,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Learnerships"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="🧩 Learnerships"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                </Border>
 
-                            <Label Grid.Column="2"
-                                   Text="›"
-                                   FontSize="24"
-                                   TextColor="#FFA500"
-                                   VerticalOptions="Center"/>
-                        </Grid>
-                    </Frame>
+                                <Border BackgroundColor="Transparent"
+                                        Stroke="#E5E5E5"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 20"
+                                        Padding="16,8">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Internships"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="🏢 Internships"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="#1E3A5F"/>
+                                </Border>
+                            </HorizontalStackLayout>
+                        </ScrollView>
+                    </VerticalStackLayout>
 
-                    <!-- Connect with Recruiters Action -->
-                    <!--<Frame BackgroundColor="White"
-                           CornerRadius="12"
-                           Padding="15"
-                           HasShadow="False"
-                           BorderColor="#E0E0E0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Y2RConnectCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="Auto,*,Auto">
-                            <Frame Grid.Column="0"
-                                   BackgroundColor="#FFF3E0"
-                                   CornerRadius="8"
-                                   Padding="10"
-                                   WidthRequest="40"
-                                   HeightRequest="40"
-                                   HasShadow="False">
-                                <Label Text="🤝"
-                                       FontSize="20"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center"/>
-                            </Frame>
-
-                            <VerticalStackLayout Grid.Column="1" 
-                                               Spacing="3"
-                                               VerticalOptions="Center"
-                                               Margin="15,0,0,0">
-                                <Label Text="Y2R Connect"
-                                       FontSize="15"
-                                       FontAttributes="Bold"
-                                       TextColor="#1E3A5F"/>
-                                <Label Text="Connect with recruiters and employers"
-                                       FontSize="12"
-                                       TextColor="#64748B"/>
-                            </VerticalStackLayout>
-
-                            <Label Grid.Column="2"
-                                   Text="›"
-                                   FontSize="24"
-                                   TextColor="#FFA500"
-                                   VerticalOptions="Center"/>
-                        </Grid>
-                    </Frame>-->
-
-                </VerticalStackLayout>
-
-                <!-- Featured Opportunities Section -->
-                <VerticalStackLayout Spacing="15">
+                    <!-- Opportunities Section Header -->
                     <Grid ColumnDefinitions="*,Auto">
                         <Label Grid.Column="0"
-               Text="Featured Opportunities"
-               FontSize="18"
-               FontAttributes="Bold"
-               TextColor="#1E3A5F"/>
+                               Text="AI-Matched For You"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#1E3A5F"
+                               VerticalOptions="Center"/>
                         <Label Grid.Column="1"
-               Text="View All ›"
-               FontSize="14"
-               FontAttributes="Bold"
-               TextColor="#FFA500"
-               VerticalOptions="Center">
+                               Text="View All ›"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#FFA500"
+                               VerticalOptions="Center">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ViewAllOpportunitiesCommand}"/>
                             </Label.GestureRecognizers>
                         </Label>
                     </Grid>
 
-                    <!-- Bursary Opportunity Card -->
-                    <Frame BackgroundColor="White"
-           CornerRadius="16"
-           Padding="0"
-           HasShadow="False"
-           BorderColor="#E0E0E0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewBursaryDetailCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid RowDefinitions="Auto,Auto,Auto,Auto" Padding="15">
+                    <!-- CLICKABLE OPPORTUNITY CARDS -->
+                    <CollectionView ItemsSource="{Binding Opportunities}"
+                                    SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="viewmodels:OpportunityCard">
+                                <Border BackgroundColor="White"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 16"
+                                        Padding="16"
+                                        Margin="0,0,0,12">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black"
+                                                Opacity="0.05"
+                                                Radius="8"
+                                                Offset="0,2"/>
+                                    </Border.Shadow>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:DashboardLandingPageViewModel}}, Path=ViewOpportunityDetailCommand}" 
+                                                            CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
 
-                            <!-- Header: Match Badge & Type -->
-                            <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,12">
-                                <Frame Grid.Column="0"
-                       BackgroundColor="#4CAF50"
-                       Padding="8,4"
-                       CornerRadius="12"
-                       HasShadow="False"
-                       HorizontalOptions="Start">
-                                    <Label Text="95% Match"
-                           TextColor="White"
-                           FontSize="11"
-                           FontAttributes="Bold"/>
-                                </Frame>
-                                <Frame Grid.Column="1"
-                       BackgroundColor="#FFD54F"
-                       Padding="8,4"
-                       CornerRadius="6"
-                       HasShadow="False">
-                                    <Label Text="BURSARY"
-                           TextColor="#1E3A5F"
-                           FontSize="10"
-                           FontAttributes="Bold"/>
-                                </Frame>
-                            </Grid>
+                                    <Grid RowDefinitions="Auto,Auto,Auto,Auto"
+                                          RowSpacing="12">
 
-                            <!-- Title & Company -->
-                            <VerticalStackLayout Grid.Row="1" Spacing="6" Margin="0,0,0,12">
-                                <Label Text="Engineering Excellence Bursary 2026"
-                       FontSize="16"
-                       FontAttributes="Bold"
-                       TextColor="#1E3A5F"
-                       LineBreakMode="WordWrap"/>
-                                <HorizontalStackLayout Spacing="6">
-                                    <Label Text="🏢"
-                           FontSize="12"/>
-                                    <Label Text="National Bursary Foundation"
-                           FontSize="13"
-                           TextColor="#64748B"/>
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
+                                        <!-- Header Row: Type Badge & Match Score -->
+                                        <Grid Grid.Row="0"
+                                              ColumnDefinitions="Auto,*,Auto">
 
-                            <!-- Details Grid -->
-                            <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,0,0,12">
-                                <VerticalStackLayout Grid.Column="0" Spacing="3">
-                                    <Label Text="📍 Location"
-                           FontSize="10"
-                           TextColor="#94A3B8"/>
-                                    <Label Text="Eastern Cape"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           TextColor="#1E3A5F"/>
-                                </VerticalStackLayout>
-                                <VerticalStackLayout Grid.Column="1" Spacing="3">
-                                    <Label Text="💰 Value"
-                           FontSize="10"
-                           TextColor="#94A3B8"/>
-                                    <Label Text="R120,000 p/a"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           TextColor="#1E3A5F"/>
-                                </VerticalStackLayout>
-                            </Grid>
+                                            <!-- Type Icon -->
+                                            <Border Grid.Column="0"
+                                                    BackgroundColor="#F8F9FA"
+                                                    StrokeThickness="0"
+                                                    StrokeShape="RoundRectangle 10"
+                                                    Padding="10"
+                                                    WidthRequest="44"
+                                                    HeightRequest="44">
+                                                <Label Text="{Binding TypeIcon}"
+                                                       FontSize="22"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"/>
+                                            </Border>
 
-                            <!-- View More Button -->
-                            <Button Grid.Row="3"
-                    Text="View Details →"
-                    BackgroundColor="Transparent"
-                    TextColor="#FFA500"
-                    BorderColor="#FFA500"
-                    BorderWidth="2"
-                    CornerRadius="10"
-                    Padding="10,8"
-                    FontSize="13"
-                    FontAttributes="Bold"
-                    Command="{Binding ViewBursaryDetailCommand}"/>
-                        </Grid>
-                    </Frame>
+                                            <!-- Match Score Badge -->
+                                            <Border Grid.Column="2"
+                                                    BackgroundColor="#E8F5E9"
+                                                    StrokeThickness="0"
+                                                    StrokeShape="RoundRectangle 12"
+                                                    Padding="10,6">
+                                                <Label Text="{Binding MatchScore, StringFormat='{0}% Match'}"
+                                                       FontSize="11"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#4CAF50"/>
+                                            </Border>
+                                        </Grid>
 
-                    <!-- Job Opportunity Card -->
-                    <Frame BackgroundColor="White"
-           CornerRadius="16"
-           Padding="0"
-           HasShadow="False"
-           BorderColor="#E0E0E0">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewJobDetailCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <Grid RowDefinitions="Auto,Auto,Auto,Auto" Padding="15">
+                                        <!-- Title & Company -->
+                                        <VerticalStackLayout Grid.Row="1"
+                                                           Spacing="6">
+                                            <Label Text="{Binding Title}"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#1E3A5F"
+                                                   LineBreakMode="WordWrap"
+                                                   MaxLines="2"/>
+                                            <HorizontalStackLayout Spacing="6">
+                                                <Label Text="🏢"
+                                                       FontSize="12"
+                                                       VerticalOptions="Center"/>
+                                                <Label Text="{Binding Company}"
+                                                       FontSize="13"
+                                                       TextColor="#64748B"
+                                                       VerticalOptions="Center"/>
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
 
-                            <!-- Header: Match Badge & Type -->
-                            <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,12">
-                                <Frame Grid.Column="0"
-                       BackgroundColor="#FF9800"
-                       Padding="8,4"
-                       CornerRadius="12"
-                       HasShadow="False"
-                       HorizontalOptions="Start">
-                                    <Label Text="88% Match"
-                           TextColor="White"
-                           FontSize="11"
-                           FontAttributes="Bold"/>
-                                </Frame>
-                                <Frame Grid.Column="1"
-                       BackgroundColor="#81C784"
-                       Padding="8,4"
-                       CornerRadius="6"
-                       HasShadow="False">
-                                    <Label Text="JOB"
-                           TextColor="White"
-                           FontSize="10"
-                           FontAttributes="Bold"/>
-                                </Frame>
-                            </Grid>
+                                        <!-- Details Grid -->
+                                        <Grid Grid.Row="2"
+                                              ColumnDefinitions="*,*,*"
+                                              ColumnSpacing="12">
 
-                            <!-- Title & Company -->
-                            <VerticalStackLayout Grid.Row="1" Spacing="6" Margin="0,0,0,12">
-                                <Label Text="Junior Software Developer"
-                       FontSize="16"
-                       FontAttributes="Bold"
-                       TextColor="#1E3A5F"
-                       LineBreakMode="WordWrap"/>
-                                <HorizontalStackLayout Spacing="6">
-                                    <Label Text="🏢"
-                           FontSize="12"/>
-                                    <Label Text="Tech Solutions SA"
-                           FontSize="13"
-                           TextColor="#64748B"/>
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
+                                            <!-- Location -->
+                                            <VerticalStackLayout Grid.Column="0"
+                                                               Spacing="3">
+                                                <Label Text="📍 Location"
+                                                       FontSize="10"
+                                                       TextColor="#94A3B8"/>
+                                                <Label Text="{Binding Location}"
+                                                       FontSize="12"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#1E3A5F"
+                                                       LineBreakMode="TailTruncation"/>
+                                            </VerticalStackLayout>
 
-                            <!-- Details Grid -->
-                            <Grid Grid.Row="2" ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,0,0,12">
-                                <VerticalStackLayout Grid.Column="0" Spacing="3">
-                                    <Label Text="📍 Location"
-                           FontSize="10"
-                           TextColor="#94A3B8"/>
-                                    <Label Text="East London"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           TextColor="#1E3A5F"/>
-                                </VerticalStackLayout>
-                                <VerticalStackLayout Grid.Column="1" Spacing="3">
-                                    <Label Text="💼 Type"
-                           FontSize="10"
-                           TextColor="#94A3B8"/>
-                                    <Label Text="Full-time"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           TextColor="#1E3A5F"/>
-                                </VerticalStackLayout>
-                            </Grid>
+                                            <!-- Detail 1 -->
+                                            <VerticalStackLayout Grid.Column="1"
+                                                               Spacing="3">
+                                                <Label Text="{Binding Detail1Label}"
+                                                       FontSize="10"
+                                                       TextColor="#94A3B8"/>
+                                                <Label Text="{Binding Detail1Value}"
+                                                       FontSize="12"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#1E3A5F"
+                                                       LineBreakMode="TailTruncation"/>
+                                            </VerticalStackLayout>
 
-                            <!-- View More Button -->
-                            <Button Grid.Row="3"
-                    Text="View Details →"
-                    BackgroundColor="Transparent"
-                    TextColor="#FFA500"
-                    BorderColor="#FFA500"
-                    BorderWidth="2"
-                    CornerRadius="10"
-                    Padding="10,8"
-                    FontSize="13"
-                    FontAttributes="Bold"
-                    Command="{Binding ViewJobDetailCommand}"/>
-                        </Grid>
-                    </Frame>
+                                            <!-- Detail 2 -->
+                                            <VerticalStackLayout Grid.Column="2"
+                                                               Spacing="3">
+                                                <Label Text="{Binding Detail2Label}"
+                                                       FontSize="10"
+                                                       TextColor="#94A3B8"/>
+                                                <Label Text="{Binding Detail2Value}"
+                                                       FontSize="12"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#1E3A5F"
+                                                       LineBreakMode="TailTruncation"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
 
-                </VerticalStackLayout>
+                                        <!-- View Details Button -->
+                                        <Border Grid.Row="3"
+                                                BackgroundColor="#FFA500"
+                                                StrokeThickness="0"
+                                                StrokeShape="RoundRectangle 10"
+                                                Padding="0,12">
+                                            <Border.Shadow>
+                                                <Shadow Brush="#FFA500"
+                                                        Opacity="0.25"
+                                                        Radius="8"
+                                                        Offset="0,2"/>
+                                            </Border.Shadow>
+                                            <Label Text="View Details →"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"
+                                                   HorizontalOptions="Center"/>
+                                        </Border>
 
-                <!-- Recent Activity Section -->
-                <VerticalStackLayout Spacing="15">
-                    <Label Text="Recent Activity"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TextColor="#1E3A5F"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
-                    <Frame BackgroundColor="White"
-                           CornerRadius="12"
-                           Padding="15"
-                           HasShadow="False"
-                           BorderColor="#E0E0E0">
-                        <Label Text="No recent activity"
-                               FontSize="14"
-                               TextColor="#64748B"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center"
-                               Padding="20"/>
-                    </Frame>
+                    <!-- Bottom Spacing -->
+                    <BoxView HeightRequest="20"
+                             Color="Transparent"/>
+
                 </VerticalStackLayout>
 
             </VerticalStackLayout>
         </ScrollView>
 
     </Grid>
-    
+
 </ContentPage>

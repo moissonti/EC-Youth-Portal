@@ -87,7 +87,7 @@ namespace EC_Youth_Portal.ViewModel
 
         private async void OnEditProfile()
         {
-            // TODO: Navigate to edit profile page
+            
             await Shell.Current.GoToAsync("EditProfilePage");
             //await Shell.Current.DisplayAlert("Edit Profile", "Edit profile page coming soon!", "OK");
         }

@@ -132,7 +132,7 @@ namespace EC_Youth_Portal.ViewModel
             if (confirm)
             {
                 // Navigate back to main tabs (login screen)
-                await Shell.Current.GoToAsync("LoginPage");
+                await Shell.Current.GoToAsync("//MainPage");
             }
         }
 

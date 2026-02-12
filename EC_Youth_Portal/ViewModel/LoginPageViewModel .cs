@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace EC_Youth_Portal.ViewModel
 {
-    public class LoginPageViewModel : INotifyPropertyChanged
+    public class LoginPageViewModel : BaseViewModel
     {
 
         // Will Move all these to become Models on all my view Models
@@ -18,31 +18,19 @@ namespace EC_Youth_Portal.ViewModel
         public string Email
         {
             get => _email;
-            set
-            {
-                _email = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _email, value);
         }
 
         public string Password
         {
             get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _password, value);
         }
 
         public string ErrorMessage
         {
             get => _errorMessage;
-            set
-            {
-                _errorMessage = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _errorMessage, value);
         }
 
         public ICommand LoginCommand { get; }
@@ -108,13 +96,6 @@ namespace EC_Youth_Portal.ViewModel
                 "Forgot Password",
                 "Password recovery feature coming soon!",
                 "OK");
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

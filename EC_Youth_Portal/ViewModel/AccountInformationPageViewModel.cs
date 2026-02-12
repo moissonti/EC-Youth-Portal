@@ -219,7 +219,7 @@ namespace EC_Youth_Portal.ViewModel
                         "OK");
 
                     // Navigate back to login/main page
-                    await Shell.Current.GoToAsync("//MainTabs");
+                    await Shell.Current.GoToAsync("//DashboardHome");
                 }
             }
         }

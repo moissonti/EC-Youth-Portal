@@ -45,11 +45,20 @@
                         <TapGestureRecognizer Command="{Binding NotificationsTappedCommand}"/>
                     </Frame.GestureRecognizers>
                     <Grid>
-                        <Label Text="🔔"
-                               FontSize="22"
-                               TextColor="White"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center"/>
+                        <Border BackgroundColor="Transparent"
+                                StrokeThickness="0"
+                                WidthRequest="32"
+                                HeightRequest="32"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+                            <Path Data="M10 2C9.44772 2 9 2.44772 9 3V3.5C7.067 4.28 6 6.08 6 8V12L4 14V15H16V14L14 12V8C14 6.08 12.933 4.28 11 3.5V3C11 2.44772 10.5523 2 10 2ZM8 16C8 17.1046 8.89543 18 10 18C11.1046 18 12 17.1046 12 16"
+                                  Fill="White"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center"
+                                  WidthRequest="20"
+                                  HeightRequest="20"
+                                  Aspect="Uniform"/>
+                        </Border>
                         <!-- Notification Badge -->
                         <Border BackgroundColor="#FF4444"
                                 StrokeThickness="0"
@@ -82,12 +91,20 @@
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OptionsTappedCommand}"/>
                     </Frame.GestureRecognizers>
-                    <Label Text="⋮"
-                           FontSize="26"
-                           TextColor="White"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           Rotation="90"/>
+                    <Border BackgroundColor="Transparent"
+                            StrokeThickness="0"
+                            WidthRequest="32"
+                            HeightRequest="32"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                        <Path Data="M12 8C13.1 8 14 7.1 14 6C14 4.9 13.1 4 12 4C10.9 4 10 4.9 10 6C10 7.1 10.9 8 12 8ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10ZM12 16C10.9 16 10 16.9 10 18C10 19.1 10.9 20 12 20C13.1 20 14 19.1 14 18C14 16.9 13.1 16 12 16Z"
+                              Fill="White"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center"
+                              WidthRequest="20"
+                              HeightRequest="20"
+                              Aspect="Uniform"/>
+                    </Border>
                 </Frame>
             </Grid>
         </Frame>
@@ -240,11 +257,17 @@
                                 <TapGestureRecognizer Command="{Binding SearchTappedCommand}"/>
                             </Border.GestureRecognizers>
                             <Grid ColumnDefinitions="Auto,*">
-                                <Label Grid.Column="0"
-                                       Text="🔍"
-                                       FontSize="20"
-                                       VerticalOptions="Center"
-                                       Margin="0,0,12,0"/>
+                                <Border Grid.Column="0"
+                                        BackgroundColor="Transparent"
+                                        StrokeThickness="0"
+                                        WidthRequest="20"
+                                        HeightRequest="20"
+                                        Margin="0,0,12,0"
+                                        VerticalOptions="Center">
+                                    <Path Data="M9 2C5.146 2 2 5.146 2 9C2 12.854 5.146 16 9 16C10.748 16 12.345 15.348 13.574 14.28L19.146 19.854C19.342 20.049 19.658 20.049 19.854 19.854C20.049 19.658 20.049 19.342 19.854 19.146L14.28 13.574C15.348 12.345 16 10.748 16 9C16 5.146 12.854 2 9 2ZM9 3C12.314 3 15 5.686 15 9C15 12.314 12.314 15 9 15C5.686 15 3 12.314 3 9C3 5.686 5.686 3 9 3Z"
+                                          Fill="#1E3A5F"
+                                          Aspect="Uniform"/>
+                                </Border>
                                 <Label Grid.Column="1"
                                        Text="Search opportunities..."
                                        FontSize="14"
@@ -278,10 +301,22 @@
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Jobs"/>
                                     </Border.GestureRecognizers>
-                                    <Label Text="💼 Jobs"
-                                           FontSize="13"
-                                           FontAttributes="Bold"
-                                           TextColor="#1E3A5F"/>
+                                    <HorizontalStackLayout Spacing="6">
+                                        <Border BackgroundColor="Transparent"
+                                                StrokeThickness="0"
+                                                WidthRequest="16"
+                                                HeightRequest="16"
+                                                VerticalOptions="Center">
+                                            <Path Data="M8 2C7.448 2 7 2.448 7 3V4H4C2.895 4 2 4.895 2 6V18C2 19.105 2.895 20 4 20H16C17.105 20 18 19.105 18 18V6C18 4.895 17.105 4 16 4H13V3C13 2.448 12.552 2 12 2H8ZM8 3H12V5H8V3ZM4 5H7V6H13V5H16C16.552 5 17 5.448 17 6V9H3V6C3 5.448 3.448 5 4 5ZM3 10H17V18C17 18.552 16.552 19 16 19H4C3.448 19 3 18.552 3 18V10Z"
+                                                  Fill="#1E3A5F"
+                                                  Aspect="Uniform"/>
+                                        </Border>
+                                        <Label Text="Jobs"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="#1E3A5F"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
                                 </Border>
 
                                 <Border BackgroundColor="Transparent"
@@ -292,10 +327,22 @@
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Bursaries"/>
                                     </Border.GestureRecognizers>
-                                    <Label Text="🎓 Bursaries"
-                                           FontSize="13"
-                                           FontAttributes="Bold"
-                                           TextColor="#1E3A5F"/>
+                                    <HorizontalStackLayout Spacing="6">
+                                        <Border BackgroundColor="Transparent"
+                                                StrokeThickness="0"
+                                                WidthRequest="16"
+                                                HeightRequest="16"
+                                                VerticalOptions="Center">
+                                            <Path Data="M12 2L3 7V8H21V7L12 2ZM12 4.236L17.236 7H6.764L12 4.236ZM4 9V11H6V9H4ZM7 9V11H9V9H7ZM10 9V11H12V9H10ZM13 9V11H15V9H13ZM16 9V11H18V9H16ZM4 12V14H6V12H4ZM7 12V14H9V12H7ZM10 12V14H12V12H10ZM13 12V14H15V12H13ZM16 12V14H18V12H16ZM3 15V17H21V15H3ZM2 18V20H22V18H2Z"
+                                                  Fill="#1E3A5F"
+                                                  Aspect="Uniform"/>
+                                        </Border>
+                                        <Label Text="Bursaries"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="#1E3A5F"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
                                 </Border>
 
                                 <Border BackgroundColor="Transparent"
@@ -306,10 +353,22 @@
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Learnerships"/>
                                     </Border.GestureRecognizers>
-                                    <Label Text="🧩 Learnerships"
-                                           FontSize="13"
-                                           FontAttributes="Bold"
-                                           TextColor="#1E3A5F"/>
+                                    <HorizontalStackLayout Spacing="6">
+                                        <Border BackgroundColor="Transparent"
+                                                StrokeThickness="0"
+                                                WidthRequest="16"
+                                                HeightRequest="16"
+                                                VerticalOptions="Center">
+                                            <Path Data="M19 3H14.82C14.4 1.84 13.3 1 12 1C10.7 1 9.6 1.84 9.18 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM12 3C12.55 3 13 3.45 13 4C13 4.55 12.55 5 12 5C11.45 5 11 4.55 11 4C11 3.45 11.45 3 12 3ZM7 7H17V9H7V7ZM7 11H17V13H7V11ZM7 15H14V17H7V15Z"
+                                                  Fill="#1E3A5F"
+                                                  Aspect="Uniform"/>
+                                        </Border>
+                                        <Label Text="Learnerships"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="#1E3A5F"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
                                 </Border>
 
                                 <Border BackgroundColor="Transparent"
@@ -320,10 +379,22 @@
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding FilterCommand}" CommandParameter="Internships"/>
                                     </Border.GestureRecognizers>
-                                    <Label Text="🏢 Internships"
-                                           FontSize="13"
-                                           FontAttributes="Bold"
-                                           TextColor="#1E3A5F"/>
+                                    <HorizontalStackLayout Spacing="6">
+                                        <Border BackgroundColor="Transparent"
+                                                StrokeThickness="0"
+                                                WidthRequest="16"
+                                                HeightRequest="16"
+                                                VerticalOptions="Center">
+                                            <Path Data="M3 3V21H21V3H3ZM5 5H19V19H5V5ZM7 7V9H17V7H7ZM7 11V13H17V11H7ZM7 15V17H14V15H7Z"
+                                                  Fill="#1E3A5F"
+                                                  Aspect="Uniform"/>
+                                        </Border>
+                                        <Label Text="Internships"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="#1E3A5F"
+                                               VerticalOptions="Center"/>
+                                    </HorizontalStackLayout>
                                 </Border>
                             </HorizontalStackLayout>
                         </ScrollView>
@@ -385,10 +456,13 @@
                                                     Padding="10"
                                                     WidthRequest="44"
                                                     HeightRequest="44">
-                                                <Label Text="{Binding TypeIcon}"
-                                                       FontSize="22"
-                                                       HorizontalOptions="Center"
-                                                       VerticalOptions="Center"/>
+                                                <Path Data="{Binding IconPath}"
+                                                      Fill="#1E3A5F"
+                                                      HorizontalOptions="Center"
+                                                      VerticalOptions="Center"
+                                                      WidthRequest="24"
+                                                      HeightRequest="24"
+                                                      Aspect="Uniform"/>
                                             </Border>
 
                                             <!-- Match Score Badge -->
@@ -400,7 +474,7 @@
                                                 <Label Text="{Binding MatchScore, StringFormat='{0}% Match'}"
                                                        FontSize="11"
                                                        FontAttributes="Bold"
-                                                       TextColor="#4CAF50"/>
+                                                       TextColor="#FFA500"/>
                                             </Border>
                                         </Grid>
 
@@ -414,9 +488,15 @@
                                                    LineBreakMode="WordWrap"
                                                    MaxLines="2"/>
                                             <HorizontalStackLayout Spacing="6">
-                                                <Label Text="🏢"
-                                                       FontSize="12"
-                                                       VerticalOptions="Center"/>
+                                                <Border BackgroundColor="Transparent"
+                                                        StrokeThickness="0"
+                                                        WidthRequest="14"
+                                                        HeightRequest="14"
+                                                        VerticalOptions="Center">
+                                                    <Path Data="M3 3V21H21V3H3ZM5 5H19V19H5V5ZM7 7V9H17V7H7ZM7 11V13H17V11H7ZM7 15V17H14V15H7Z"
+                                                          Fill="#1E3A5F"
+                                                          Aspect="Uniform"/>
+                                                </Border>
                                                 <Label Text="{Binding Company}"
                                                        FontSize="13"
                                                        TextColor="#64748B"
@@ -432,9 +512,21 @@
                                             <!-- Location -->
                                             <VerticalStackLayout Grid.Column="0"
                                                                Spacing="3">
-                                                <Label Text="📍 Location"
-                                                       FontSize="10"
-                                                       TextColor="#94A3B8"/>
+                                                <HorizontalStackLayout Spacing="3">
+                                                    <Border BackgroundColor="Transparent"
+                                                            StrokeThickness="0"
+                                                            WidthRequest="10"
+                                                            HeightRequest="10"
+                                                            VerticalOptions="Center">
+                                                        <Path Data="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z"
+                                                              Fill="#1E3A5F"
+                                                              Aspect="Uniform"/>
+                                                    </Border>
+                                                    <Label Text="Location"
+                                                           FontSize="10"
+                                                           TextColor="#94A3B8"
+                                                           VerticalOptions="Center"/>
+                                                </HorizontalStackLayout>
                                                 <Label Text="{Binding Location}"
                                                        FontSize="12"
                                                        FontAttributes="Bold"
@@ -504,5 +596,6 @@
         </ScrollView>
 
     </Grid>
+
 
 </ContentPage>

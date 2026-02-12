@@ -39,23 +39,27 @@
                 <VerticalStackLayout Padding="30,10,30,20"
                                     Spacing="8">
 
-                    <!-- Back Arrow -->
-                    <Label Text="←"
-                           FontSize="28"
-                           TextColor="#1E3A5F"
-                           FontAttributes="Bold"
-                           HorizontalOptions="Start"
-                           Margin="0,0,0,20">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnBackClicked"/>
-                        </Label.GestureRecognizers>
-                    </Label>
+                    <!-- Back Arrow + Title Row -->
+                    <HorizontalStackLayout Spacing="10"
+                       VerticalOptions="Center"
+                       Margin="0,0,0,10">
 
-                    <Label Text="Register"
-                           FontSize="28"
-                           FontAttributes="Bold"
-                           TextColor="#1E3A5F"
-                           HorizontalTextAlignment="Start"/>
+                        <Label Text="←"
+           FontSize="28"
+           TextColor="#1E3A5F"
+           FontAttributes="Bold"
+           VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBackClicked"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <Label Text="Register"
+           FontSize="28"
+           FontAttributes="Bold"
+           TextColor="#1E3A5F"
+           VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
 
                     <Label Text="Let's Get Started"
                            FontSize="16"

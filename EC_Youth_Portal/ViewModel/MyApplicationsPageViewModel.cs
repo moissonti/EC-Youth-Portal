@@ -10,7 +10,7 @@ using SkiaSharp;
 
 namespace EC_Youth_Portal.ViewModel
 {
-    public class MyApplicationsPageViewModel : INotifyPropertyChanged
+    public class MyApplicationsPageViewModel : BaseViewModel
     {
         private ObservableCollection<ApplicationItem> _allApplications;
         private ObservableCollection<ApplicationItem> _filteredApplications;
@@ -25,9 +25,10 @@ namespace EC_Youth_Portal.ViewModel
             get => _isDrawerOpen;
             set
             {
-                _isDrawerOpen = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(IsOverlayVisible));
+                if (SetProperty(ref _isDrawerOpen, value))
+                {
+                    OnPropertyChanged(nameof(IsOverlayVisible));
+                }
             }
         }
 
@@ -36,11 +37,7 @@ namespace EC_Youth_Portal.ViewModel
         public double DrawerTranslationX
         {
             get => _drawerTranslationX;
-            set
-            {
-                _drawerTranslationX = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _drawerTranslationX, value);
         }
 
         // Summary Stats
@@ -69,11 +66,7 @@ namespace EC_Youth_Portal.ViewModel
         public ObservableCollection<ApplicationItem> FilteredApplications
         {
             get => _filteredApplications;
-            set
-            {
-                _filteredApplications = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _filteredApplications, value);   
         }
 
         public ObservableCollection<ApplicationItem> AllApplications => _allApplications;
@@ -81,21 +74,13 @@ namespace EC_Youth_Portal.ViewModel
         public string ApplicationsListTitle
         {
             get => _applicationsListTitle;
-            set
-            {
-                _applicationsListTitle = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _applicationsListTitle, value);
         }
 
         public Chart ApplicationChart
         {
             get => _applicationChart;
-            set
-            {
-                _applicationChart = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _applicationChart, value);   
         }
 
         // Commands
@@ -204,25 +189,25 @@ namespace EC_Youth_Portal.ViewModel
                 {
                     Label = "Approved",
                     ValueLabel = ApprovedCount.ToString(),
-                    Color = SKColor.Parse("#4CAF50")
+                    Color = SKColor.Parse("#1E3A5F") // Navy for Approved
                 },
                 new ChartEntry(RepliedCount)
                 {
                     Label = "Replied",
                     ValueLabel = RepliedCount.ToString(),
-                    Color = SKColor.Parse("#2196F3")
+                    Color = SKColor.Parse("#2C5282") // Secondary Navy for Replied
                 },
                 new ChartEntry(PendingCount)
                 {
                     Label = "Pending",
                     ValueLabel = PendingCount.ToString(),
-                    Color = SKColor.Parse("#FFA500")
+                    Color = SKColor.Parse("#FFA500") // Orange for Pending
                 },
                 new ChartEntry(RejectedCount)
                 {
                     Label = "Rejected",
                     ValueLabel = RejectedCount.ToString(),
-                    Color = SKColor.Parse("#F44336")
+                    Color = SKColor.Parse("#94A3B8") // Gray for Rejected
                 }
             };
 
@@ -320,11 +305,6 @@ namespace EC_Youth_Portal.ViewModel
             return $"{percentage:F1}% of total";
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 
     // Application Item Model
@@ -346,12 +326,13 @@ namespace EC_Youth_Portal.ViewModel
             _ => "?"
         };
 
+        // Updated colors to match app theme
         public Color StatusColor => Status switch
         {
-            "Approved" => Color.FromArgb("#4CAF50"),
-            "Replied" => Color.FromArgb("#2196F3"),
-            "Pending" => Color.FromArgb("#FFA500"),
-            "Rejected" => Color.FromArgb("#F44336"),
+            "Approved" => Color.FromArgb("#1E3A5F"),   // Navy
+            "Replied" => Color.FromArgb("#2C5282"),     // Secondary Navy
+            "Pending" => Color.FromArgb("#FFA500"),     // Orange
+            "Rejected" => Color.FromArgb("#94A3B8"),    // Gray
             _ => Color.FromArgb("#999999")
         };
     }

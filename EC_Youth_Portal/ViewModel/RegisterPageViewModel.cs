@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace EC_Youth_Portal.ViewModel
 {
-    internal class RegisterPageViewModel : INotifyPropertyChanged
+    internal class RegisterPageViewModel : BaseViewModel
     {
         private Page _page; 
 
@@ -27,81 +27,49 @@ namespace EC_Youth_Portal.ViewModel
         public string FullName
         {
             get => _fullName;
-            set
-            {
-                _fullName = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty (ref _fullName, value);
         }
 
         public string Username
         {
             get => _username;
-            set
-            {
-                _username = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty (ref _username, value);  
         }
 
         public string Location
         {
             get => _location;
-            set
-            {
-                _location = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty (ref _location, value);  
         }
 
         public string Password
         {
             get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty (ref _password, value);
         }
 
         public string RePassword
         {
             get => _rePassword;
-            set
-            {
-                _rePassword = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _rePassword, value);
         }
 
         public double BottomSheetTranslationY
         {
             get => _bottomSheetTranslationY;
-            set
-            {
-                _bottomSheetTranslationY = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _bottomSheetTranslationY, value); 
         }
 
         public double OverlayOpacity
         {
             get => _overlayOpacity;
-            set
-            {
-                _overlayOpacity = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _overlayOpacity, value);
         }
 
         public bool IsOverlayInputTransparent
         {
             get => _isOverlayInputTransparent;
-            set
-            {
-                _isOverlayInputTransparent = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty (ref _isOverlayInputTransparent, value);
         }
 
         // Commands

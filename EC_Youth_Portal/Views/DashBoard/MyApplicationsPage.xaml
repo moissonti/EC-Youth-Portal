@@ -107,7 +107,7 @@
                                 <Label Text="{Binding SuccessRate}"
                                        FontSize="32"
                                        FontAttributes="Bold"
-                                       TextColor="#4CAF50"/>
+                                       TextColor="#1E3A5F"/>
                             </VerticalStackLayout>
                         </Frame>
                     </Grid>
@@ -141,7 +141,7 @@
                                     <BoxView WidthRequest="12"
                                             HeightRequest="12"
                                             CornerRadius="6"
-                                            BackgroundColor="#4CAF50"
+                                            BackgroundColor="#1E3A5F"
                                             VerticalOptions="Center"/>
                                     <Label Text="Approved"
                                            FontSize="12"
@@ -154,7 +154,7 @@
                                     <BoxView WidthRequest="12"
                                             HeightRequest="12"
                                             CornerRadius="6"
-                                            BackgroundColor="#2196F3"
+                                            BackgroundColor="#2C5282"
                                             VerticalOptions="Center"/>
                                     <Label Text="Replied"
                                            FontSize="12"
@@ -180,7 +180,7 @@
                                     <BoxView WidthRequest="12"
                                             HeightRequest="12"
                                             CornerRadius="6"
-                                            BackgroundColor="#F44336"
+                                            BackgroundColor="#94A3B8"
                                             VerticalOptions="Center"/>
                                     <Label Text="Rejected"
                                            FontSize="12"
@@ -204,11 +204,11 @@
 
                         <!-- Replied -->
                         <Frame Grid.Column="0" Grid.Row="0"
-                               BackgroundColor="#E3F2FD"
+                               BackgroundColor="#EBF0F5"
                                CornerRadius="14"
                                Padding="16"
                                HasShadow="False"
-                               BorderColor="#2196F3">
+                               BorderColor="#2C5282">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
                                                     CommandParameter="Replied"/>
@@ -218,7 +218,7 @@
                                     <Label Grid.Column="0"
                                            Text="Replied"
                                            FontSize="12"
-                                           TextColor="#0D47A1"
+                                           TextColor="#1E3A5F"
                                            FontAttributes="Bold"/>
                                     <Label Grid.Column="1"
                                            Text="💬"
@@ -227,16 +227,16 @@
                                 <Label Text="{Binding RepliedCount}"
                                        FontSize="28"
                                        FontAttributes="Bold"
-                                       TextColor="#0D47A1"/>
+                                       TextColor="#2C5282"/>
                                 <Label Text="{Binding RepliedPercent}"
                                        FontSize="10"
-                                       TextColor="#1976D2"/>
+                                       TextColor="#64748B"/>
                             </VerticalStackLayout>
                         </Frame>
 
                         <!-- Pending -->
                         <Frame Grid.Column="1" Grid.Row="0"
-                               BackgroundColor="#FFF3E0"
+                               BackgroundColor="#FFF5E6"
                                CornerRadius="14"
                                Padding="16"
                                HasShadow="False"
@@ -250,7 +250,7 @@
                                     <Label Grid.Column="0"
                                            Text="Pending"
                                            FontSize="12"
-                                           TextColor="#E65100"
+                                           TextColor="#CC8400"
                                            FontAttributes="Bold"/>
                                     <Label Grid.Column="1"
                                            Text="⏳"
@@ -259,20 +259,20 @@
                                 <Label Text="{Binding PendingCount}"
                                        FontSize="28"
                                        FontAttributes="Bold"
-                                       TextColor="#E65100"/>
+                                       TextColor="#FFA500"/>
                                 <Label Text="{Binding PendingPercent}"
                                        FontSize="10"
-                                       TextColor="#F57C00"/>
+                                       TextColor="#64748B"/>
                             </VerticalStackLayout>
                         </Frame>
 
                         <!-- Approved -->
                         <Frame Grid.Column="0" Grid.Row="1"
-                               BackgroundColor="#E8F5E9"
+                               BackgroundColor="#E8EDF2"
                                CornerRadius="14"
                                Padding="16"
                                HasShadow="False"
-                               BorderColor="#4CAF50">
+                               BorderColor="#1E3A5F">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
                                                     CommandParameter="Approved"/>
@@ -282,7 +282,7 @@
                                     <Label Grid.Column="0"
                                            Text="Approved"
                                            FontSize="12"
-                                           TextColor="#1B5E20"
+                                           TextColor="#1E3A5F"
                                            FontAttributes="Bold"/>
                                     <Label Grid.Column="1"
                                            Text="✅"
@@ -291,20 +291,20 @@
                                 <Label Text="{Binding ApprovedCount}"
                                        FontSize="28"
                                        FontAttributes="Bold"
-                                       TextColor="#1B5E20"/>
+                                       TextColor="#1E3A5F"/>
                                 <Label Text="{Binding ApprovedPercent}"
                                        FontSize="10"
-                                       TextColor="#2E7D32"/>
+                                       TextColor="#64748B"/>
                             </VerticalStackLayout>
                         </Frame>
 
                         <!-- Rejected -->
                         <Frame Grid.Column="1" Grid.Row="1"
-                               BackgroundColor="#FFEBEE"
+                               BackgroundColor="#F5F5F5"
                                CornerRadius="14"
                                Padding="16"
                                HasShadow="False"
-                               BorderColor="#F44336">
+                               BorderColor="#94A3B8">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
                                                     CommandParameter="Rejected"/>
@@ -314,7 +314,7 @@
                                     <Label Grid.Column="0"
                                            Text="Rejected"
                                            FontSize="12"
-                                           TextColor="#B71C1C"
+                                           TextColor="#64748B"
                                            FontAttributes="Bold"/>
                                     <Label Grid.Column="1"
                                            Text="❌"
@@ -323,10 +323,10 @@
                                 <Label Text="{Binding RejectedCount}"
                                        FontSize="28"
                                        FontAttributes="Bold"
-                                       TextColor="#B71C1C"/>
+                                       TextColor="#94A3B8"/>
                                 <Label Text="{Binding RejectedPercent}"
                                        FontSize="10"
-                                       TextColor="#C62828"/>
+                                       TextColor="#64748B"/>
                             </VerticalStackLayout>
                         </Frame>
 
@@ -518,39 +518,39 @@
                             </Frame>
 
                             <!-- Approved -->
-                            <Frame BackgroundColor="#E8F5E9"
+                            <Frame BackgroundColor="#E8EDF2"
                                    CornerRadius="20"
                                    Padding="12,8"
                                    HasShadow="False"
-                                   BorderColor="#4CAF50">
+                                   BorderColor="#1E3A5F">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
                                                         CommandParameter="Approved"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="✅ Approved"
                                        FontSize="12"
-                                       TextColor="#1B5E20"
+                                       TextColor="#1E3A5F"
                                        FontAttributes="Bold"/>
                             </Frame>
 
                             <!-- Replied -->
-                            <Frame BackgroundColor="#E3F2FD"
+                            <Frame BackgroundColor="#EBF0F5"
                                    CornerRadius="20"
                                    Padding="12,8"
                                    HasShadow="False"
-                                   BorderColor="#2196F3">
+                                   BorderColor="#2C5282">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
                                                         CommandParameter="Replied"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="💬 Replied"
                                        FontSize="12"
-                                       TextColor="#0D47A1"
+                                       TextColor="#2C5282"
                                        FontAttributes="Bold"/>
                             </Frame>
 
                             <!-- Pending -->
-                            <Frame BackgroundColor="#FFF3E0"
+                            <Frame BackgroundColor="#FFF5E6"
                                    CornerRadius="20"
                                    Padding="12,8"
                                    HasShadow="False"
@@ -561,23 +561,23 @@
                                 </Frame.GestureRecognizers>
                                 <Label Text="⏳ Pending"
                                        FontSize="12"
-                                       TextColor="#E65100"
+                                       TextColor="#CC8400"
                                        FontAttributes="Bold"/>
                             </Frame>
 
                             <!-- Rejected -->
-                            <Frame BackgroundColor="#FFEBEE"
+                            <Frame BackgroundColor="#F5F5F5"
                                    CornerRadius="20"
                                    Padding="12,8"
                                    HasShadow="False"
-                                   BorderColor="#F44336">
+                                   BorderColor="#94A3B8">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding FilterByStatusCommand}" 
                                                         CommandParameter="Rejected"/>
                                 </Frame.GestureRecognizers>
                                 <Label Text="❌ Rejected"
                                        FontSize="12"
-                                       TextColor="#B71C1C"
+                                       TextColor="#64748B"
                                        FontAttributes="Bold"/>
                             </Frame>
 

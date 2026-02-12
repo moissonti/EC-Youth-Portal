@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace EC_Youth_Portal.ViewModel
 {
-    public class MyProfilePageViewModel : INotifyPropertyChanged
+    public class MyProfilePageViewModel : BaseViewModel
     {
 
         // Will Move all these to become Models on all my view Models
@@ -17,31 +17,19 @@ namespace EC_Youth_Portal.ViewModel
         public string UserName
         {
             get => _userName;
-            set
-            {
-                _userName = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _userName, value);
         }
 
         public string UserEmail
         {
             get => _userEmail;
-            set
-            {
-                _userEmail = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _userEmail, value);
         }
 
         public string ProfileCompletionPercentage
         {
             get => _profileCompletionPercentage;
-            set
-            {
-                _profileCompletionPercentage = value;
-                OnPropertyChanged();
-            }
+            set => SetProperty(ref _profileCompletionPercentage, value);
         }
 
         // Commands
@@ -134,13 +122,6 @@ namespace EC_Youth_Portal.ViewModel
                 // Navigate back to main tabs (login screen)
                 await Shell.Current.GoToAsync("//MainPage");
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }   
 }

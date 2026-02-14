@@ -119,11 +119,10 @@
                            HasShadow="False"
                            BorderColor="#E0E0E0"
                            BackgroundColor="White">
-                        <Entry Placeholder="e.g., 0712345678"
+                        <Entry Placeholder="e.6, 59 St Marks Road..."
                                PlaceholderColor="#94A3B8"
                                TextColor="#1E3A5F"
                                FontSize="15"
-                               Keyboard="Telephone"
                                Margin="15,0"
                                Text="{Binding Location}"/>
                     </Frame>

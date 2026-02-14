@@ -7,12 +7,12 @@ using System.Windows.Input;
 
 namespace EC_Youth_Portal.ViewModel
 {
-    public class PersonalInfoSectionViewModel : INotifyPropertyChanged
+    public class PersonalInfoSectionViewModel : BaseViewModel
     {
         // Will Move all these to become Models on all my view Models
         private string _preferredName;
         private string _idNumber;
-        private string _phoneNumber;
+        private string _location;
         private DateTime _dateOfBirth = DateTime.Now.AddYears(-18);
         private string _gender;
         private string _race;
@@ -26,18 +26,18 @@ namespace EC_Youth_Portal.ViewModel
         public DateTime TodayDate => DateTime.Now;
 
         // Properties
-        public string PreferredName { get => _preferredName; set { _preferredName = value; OnPropertyChanged(); } }
-        public string IdNumber { get => _idNumber; set { _idNumber = value; OnPropertyChanged(); } }
-        public string PhoneNumber { get => _phoneNumber; set { _phoneNumber = value; OnPropertyChanged(); } }
-        public DateTime DateOfBirth { get => _dateOfBirth; set { _dateOfBirth = value; OnPropertyChanged(); } }
-        public string Gender { get => _gender; set { _gender = value; OnPropertyChanged(); } }
-        public string Race { get => _race; set { _race = value; OnPropertyChanged(); } }
-        public bool HasDisability { get => _hasDisability; set { _hasDisability = value; OnPropertyChanged(); } }
-        public string DisabilityDetails { get => _disabilityDetails; set { _disabilityDetails = value; OnPropertyChanged(); } }
-        public string District { get => _district; set { _district = value; OnPropertyChanged(); } }
-        public string PreferredLanguage { get => _preferredLanguage; set { _preferredLanguage = value; OnPropertyChanged(); } }
-        public string Bio { get => _bio; set { _bio = value; OnPropertyChanged(); } }
-        public ImageSource ProfilePicture { get => _profilePicture; set { _profilePicture = value; OnPropertyChanged(); } }
+        public string PreferredName { get => _preferredName; set => SetProperty(ref _preferredName, value); }
+        public string IdNumber { get => _idNumber; set => SetProperty(ref _idNumber, value); }
+        public string Location { get => _location; set => SetProperty(ref _location, value); }
+        public DateTime DateOfBirth { get => _dateOfBirth; set => SetProperty(ref _dateOfBirth, value); }
+        public string Gender { get => _gender; set => SetProperty(ref _gender, value); }
+        public string Race { get => _race; set => SetProperty(ref _race, value); }
+        public bool HasDisability { get => _hasDisability; set => SetProperty(ref _hasDisability, value); }
+        public string DisabilityDetails { get => _disabilityDetails; set => SetProperty(ref _disabilityDetails, value); }
+        public string District { get => _district; set => SetProperty(ref _district, value); }
+        public string PreferredLanguage { get => _preferredLanguage; set => SetProperty(ref _preferredLanguage, value); }
+        public string Bio { get => _bio; set => SetProperty(ref _bio, value); }
+        public ImageSource ProfilePicture { get => _profilePicture; set => SetProperty(ref _profilePicture, value); }
 
         public ICommand UploadPhotoCommand { get; }
 
@@ -51,7 +51,7 @@ namespace EC_Youth_Portal.ViewModel
         {
             // TODO: Load user data from database/API
             PreferredName = "John Doe";
-            PhoneNumber = "0712345678";
+            Location = "EL, SA";
         }
 
         private async Task UploadPhoto()
@@ -69,7 +69,7 @@ namespace EC_Youth_Portal.ViewModel
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(PhoneNumber))
+            if (string.IsNullOrWhiteSpace(Location))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Phone Number is required", "OK");
                 return false;

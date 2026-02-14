@@ -13,7 +13,6 @@ public partial class RegisterPage : ContentPage
         _viewModel = new RegisterPageViewModel();
         BindingContext = _viewModel;
 
-        // CRITICAL: Set the page reference for animations
         _viewModel.SetView(this);
     }
 

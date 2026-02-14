@@ -16,7 +16,7 @@ namespace EC_Youth_Portal.ViewModel
         //  Will Move all these Fields to become Models on all my view Models
         private string _fullName;
         private string _username;
-        private string _location;
+        private string _cellNumber;
         private string _password;
         private string _rePassword;
         private double _bottomSheetTranslationY = 800;
@@ -36,10 +36,10 @@ namespace EC_Youth_Portal.ViewModel
             set => SetProperty (ref _username, value);  
         }
 
-        public string Location
+        public string CellNumber
         {
-            get => _location;
-            set => SetProperty (ref _location, value);  
+            get => _cellNumber;
+            set => SetProperty (ref _cellNumber, value);  
         }
 
         public string Password
@@ -164,14 +164,6 @@ namespace EC_Youth_Portal.ViewModel
         {
             await Shell.Current.GoToAsync("LoginPage");
 
-        }
-
-        // INotifyPropertyChanged Implementation
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

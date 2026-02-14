@@ -124,7 +124,7 @@
 
                     <!-- Location -->
                     <VerticalStackLayout Spacing="8">
-                        <Label Text="Location"
+                        <Label Text="CellNumber"
                                FontSize="12"
                                TextColor="#1E3A5F"
                                FontAttributes="Bold"/>
@@ -134,8 +134,8 @@
                                 StrokeShape="RoundRectangle 8"
                                 Padding="15,0"
                                 HeightRequest="50">
-                            <Entry Placeholder="Your city/town"
-                                   Text="{Binding Location}"
+                            <Entry Placeholder="eg.063 844 0614"
+                                   Text="{Binding CellNumber}"
                                    TextColor="#1E3A5F"
                                    PlaceholderColor="#BDBDBD"
                                    FontSize="14"

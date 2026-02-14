@@ -125,7 +125,7 @@
                                FontSize="15"
                                Keyboard="Telephone"
                                Margin="15,0"
-                               Text="{Binding PhoneNumber}"/>
+                               Text="{Binding Location}"/>
                     </Frame>
                 </VerticalStackLayout>
 
